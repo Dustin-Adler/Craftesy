@@ -4,7 +4,7 @@ import userReducer from './user_reducer';
 
 const rootReducer = combineReducers({
     session: sessionReducer, 
-    user: userReducer
+    users: userReducer
 })
 
 export default rootReducer;

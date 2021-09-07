@@ -11,10 +11,9 @@ class userRegisterForm extends React.Component {
     update(field){
         return (e) => {
             this.setState(
-                {[field]: e.currentTarget.value}
+                {[field]: e.currentTarget.value},
             )
         }
-        console.log(this.state);
     }
 
     render() {
@@ -26,7 +25,7 @@ class userRegisterForm extends React.Component {
                         <input 
                             type="text"
                             value={this.state.firstName}
-                            onChange={this.update('firstName')} />
+                            onChange={this.update('first_name')} />
                     </label>
                     <label>Email: 
                         <input 

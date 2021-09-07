@@ -6,7 +6,7 @@ import userRegisterForm from './user_register_form'
 const mSTP = (state) => {
     return {
         user: {
-            firstName: '',
+            first_name: '',
             email: '',
             password: '',
         },
