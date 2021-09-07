@@ -1,9 +1,11 @@
 import React from "react";
 
-class userRegisterForm extends React.Component {
+class userLoginForm extends React.Component {
     constructor(props){
         super(props)
+
         this.state = this.props.user;
+        
     }
 
     update(field){
@@ -18,13 +20,7 @@ class userRegisterForm extends React.Component {
         return(
             <div>
                 <h5>{this.props.formType}</h5>
-                <form onSubmit={() => this.props.registerAccount(this.state)}>
-                    <label>FirstName: 
-                        <input 
-                            type="text"
-                            value={this.state.firstName}
-                            onChange={this.update('first_name')} />
-                    </label>
+                <form onSubmit={() => this.props.login(this.state)}>
                     <label>Email: 
                         <input 
                             type="text"
@@ -37,11 +33,11 @@ class userRegisterForm extends React.Component {
                             value={this.state.password}
                             onChange={this.update('password')} />
                     </label>
-                    <button>Register new Account</button>
+                    <button>Login</button>
                 </form>
             </div>
         )
     }
 }
 
-export default userRegisterForm;
+export default userLoginForm;

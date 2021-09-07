@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
             params[:user][:password]
         )
         if @user
-            login!(@user)
+            log_in(@user)
             render root
         else
             render json: ['Incorrect Email or Password'], status: 401
