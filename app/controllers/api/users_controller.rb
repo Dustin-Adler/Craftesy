@@ -22,7 +22,6 @@ class Api::UsersController < ApplicationController
     if @user
       render 'api/users/getAccountFromEmail'
     else 
-      console.log(params)
       render json: params[:email]
     end
   end
