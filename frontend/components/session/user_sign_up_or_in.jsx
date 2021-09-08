@@ -1,19 +1,23 @@
 import React from "react";
+import user_register_form from "./user_login_form_container";
+import user_login_form from "./user_login_form_container";
 
-class userLoginForm extends React.Component {
+class SignInOrSignUp extends React.Component {
     constructor(props){
         super(props)
 
-        this.state = this.props.user;
-        
+        this.state = this.props.user;  
     }
 
     update(field){
-        return (e) => {
-            this.setState(
-                {[field]: e.currentTarget.value},
-            )
-        }
+        return (e) => {this.setState({[field]: e.currentTarget.value})}
+    }
+
+    SignInOrSignUp(){
+        
+        <user_register_form />,
+        <user_login_form/>
+        
     }
 
     render() {
@@ -27,17 +31,11 @@ class userLoginForm extends React.Component {
                             value={this.state.email}
                             onChange={this.update('email')} />
                     </label>
-                    <label>Password: 
-                        <input 
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')} />
-                    </label>
-                    <button>Login</button>
+                    <button>Continue</button>
                 </form>
             </div>
         )
     }
 }
 
-export default userLoginForm;
+export default SignInOrSignUp;

@@ -16,10 +16,20 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def getAccountFromEmail
+    debugger
+    @user = user.find_by(email: params[:email])
+    if @user
+      render 'api/users/getAccountFromEmail'
+    else 
+      user = {:user {email: '', password: '', first_name: ''}}
+      render json: user
+    end
+  end
+
 #   def update
 #     @user = current_user
 #     if @user
-
 #     end
 #   end
 

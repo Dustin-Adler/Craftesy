@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :products, only: [:create, :update, :detroy, :show, :index]
   end
-
+  get 'api/users/getAccountFromEmail'
   root "static_pages#root"
   
 end

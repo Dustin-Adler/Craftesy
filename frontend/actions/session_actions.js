@@ -5,7 +5,6 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'
 export const RECEIVE_ALL_ERRORS = 'RECEIVE_ALL_ERRORS'
 
 const receiveCurrentUser = currentUser => {
-  debugger
   return {type: RECEIVE_CURRENT_USER,
   currentUser}
 }
@@ -19,12 +18,13 @@ const logoutCurrentUser = () => ({
 //   errors
 // })
 
+
 export const login = user => dispatch => (
-  SessionAPIUtil.login(user)
+    SessionAPIUtil.login(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
 )
 
 export const logout = () => dispatch => (
-  SessionAPIUtil.logout()
+    SessionAPIUtil.logout()
     .then(() => dispatch(logoutCurrentUser()))
 )

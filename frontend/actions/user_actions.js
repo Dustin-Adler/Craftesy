@@ -2,6 +2,7 @@ import * as UsersAPIUtil from '../utils/users_api_util'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const REMOVE_USER = 'REMOVE_USER'
+export const RECEIVE_EMAIL = 'RECEIVE_EMAIL'
 
 const receiveUser = user => ({
     type: RECEIVE_USER,
@@ -12,6 +13,17 @@ const removeUser = id => ({
     type: REMOVE_USER, 
     id
 })
+
+
+const receiveEmail = (email) => {
+    return {type: RECEIVE_EMAIL,
+    email}
+  }
+
+export const getAccountFromEmail = (email) => dispatch => (
+    SessionAPIUtil.getAccountFromEmail(email)
+    .then(userEmail => dispatch(receiveEmail(userEmail)))
+)
 
 export const registerAccount = user => dispatch => (
     UsersAPIUtil.registerAccount(user)
