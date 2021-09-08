@@ -1,9 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // import modal from '../modal/modal';
-import { openModal } from '../../actions/modal_actions';
 
 class Header extends React.Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+
+    }
+
     render() {
         return(
             <div className='header'>
@@ -18,7 +25,7 @@ class Header extends React.Component {
 
                     <button
                         className="sign-in-button"
-                        onClick={() => openModal(true)}
+                        onClick={() => this.props.openModal("true")}
                         >Sign In
                     </button>
 

@@ -1,6 +1,6 @@
 import React from "react";
-import user_register_form from "./sign_up_or_sign_in_container";
-import user_login_form from "./sign_up_or_sign_in_container";
+import userRegisterForm from "../user/user_register_form";
+import userLoginForm from "./user_login_form";
 
 class SignInOrSignUp extends React.Component {
     constructor(props){
@@ -20,9 +20,9 @@ class SignInOrSignUp extends React.Component {
         this.setState({email: something.email})
 
         if (this.state.email){
-            <user_login_form user={this.state}/>
+            return <userLoginForm user={this.state}/>
         } else {
-            <user_register_form user={this.state}/>
+            return <userRegisterForm user={this.state}/>
         }
     }
 

@@ -4,15 +4,22 @@ import { connect } from 'react-redux';
 import UserLogin from '../session/sign_up_or_sign_in_container';
 
 function Modal({modal, closeModal}) {
-    console.log(modal);
+    debugger
   if (!modal) {
     return null;
   }
-
+  let component;
+  switch (modal) {
+    case 'true':
+      component = <UserLogin />;
+      break;
+    default:
+      return null;
+  }
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        <UserLogin/>
+        { component }
       </div>
     </div>
   );
