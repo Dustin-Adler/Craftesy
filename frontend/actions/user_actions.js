@@ -14,7 +14,6 @@ const removeUser = id => ({
     id
 })
 
-
 const receiveEmail = (email) => {
     return {type: RECEIVE_EMAIL,
     email}
