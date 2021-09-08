@@ -16,9 +16,8 @@ class SignInOrSignUp extends React.Component {
     SignInOrSignUp(){
         debugger
         let something = this.props.getAccountFromEmail(this.state.email)
-        debugger
         this.setState({email: something.email})
-
+        debugger
         if (this.state.email){
             return <userLoginForm user={this.state}/>
         } else {

@@ -17,8 +17,8 @@ class Api::UsersController < ApplicationController
   end
 
   def getAccountFromEmail
-    debugger
-    @user = user.find_by(email: params[:email])
+    # debugger
+    @user = User.find_by(email: params[:email])
     if @user
       render 'api/users/getAccountFromEmail'
     else 

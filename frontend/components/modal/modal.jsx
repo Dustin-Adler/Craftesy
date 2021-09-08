@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import UserLogin from '../session/sign_up_or_sign_in_container';
 
 function Modal({modal, closeModal}) {
-    debugger
   if (!modal) {
     return null;
   }
