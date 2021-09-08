@@ -15,8 +15,13 @@ class SignInOrSignUp extends React.Component {
 
     SignInOrSignUp(){
         
-        <user_register_form />,
-        <user_login_form/>
+        // this.props.getUserByEmail(this.state)
+        // {'user'{email: "email"}}
+        // if (user.email){
+        //     <user_login_form user={user}/>
+        // } else {
+        //     <user_register_form user={user}/>,
+        // }
         
     }
 
@@ -24,7 +29,7 @@ class SignInOrSignUp extends React.Component {
         return(
             <div>
                 <div className='form-type'>{this.props.formType}</div>
-                <form onSubmit={() => this.props.login(this.state)}>
+                <form onSubmit={() => this.SignInOrSignUp()}>
                     <label>Email: 
                         <input 
                             type="text"

@@ -5,7 +5,7 @@ const userReducer = (state={}, action) => {
         case RECEIVE_USER:
             return {...state, [action.user.id]: action.user}
         case RECEIVE_EMAIL:
-            return {...state}
+            return {...state, [action.user.id]: action.user}
         case REMOVE_USER: 
             const newState = {...state}
             delete newState[action.id]
