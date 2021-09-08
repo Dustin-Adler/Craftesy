@@ -21,12 +21,6 @@ class userLoginForm extends React.Component {
             <div>
                 <div className='form-type'>{this.props.formType}</div>
                 <form onSubmit={() => this.props.login(this.state)}>
-                    <label>Email: 
-                        <input 
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.update('email')} />
-                    </label>
                     <label>Password: 
                         <input 
                             type="password"

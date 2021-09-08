@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import RegistrationContainer from './user/user_register_form_container';
-import LoginContainer from './session/user_login_form_container'
+import LoginContainer from './session/sign_up_or_sign_in_container'
 import Header from './header/header';
 
 const App = () => (
