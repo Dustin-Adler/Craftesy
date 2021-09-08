@@ -1,6 +1,6 @@
 import React from "react";
-import user_register_form from "./user_login_form_container";
-import user_login_form from "./user_login_form_container";
+import userRegisterForm from "../user/user_register_form";
+import userLoginForm from "./user_login_form";
 
 class SignInOrSignUp extends React.Component {
     constructor(props){
@@ -14,21 +14,23 @@ class SignInOrSignUp extends React.Component {
     }
 
     SignInOrSignUp(){
-        
-        // this.props.getUserByEmail(this.state)
-        // {'user'{email: "email"}}
-        // if (user.email){
-        //     <user_login_form user={user}/>
-        // } else {
-        //     <user_register_form user={user}/>,
-        // }
-        
+        debugger
+        let something = this.props.getAccountFromEmail(this.state.email)
+        debugger
+        this.setState({email: something.email})
+
+        if (this.state.email){
+            return <userLoginForm user={this.state}/>
+        } else {
+            return <userRegisterForm user={this.state}/>
+        }
     }
 
     render() {
         return(
             <div>
                 <div className='form-type'>{this.props.formType}</div>
+                
                 <form onSubmit={() => this.SignInOrSignUp()}>
                     <label>Email: 
                         <input 

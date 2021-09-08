@@ -15,12 +15,14 @@ const removeUser = id => ({
 })
 
 const receiveEmail = (email) => {
-    return {type: RECEIVE_EMAIL,
-    email}
+    return {
+      type: RECEIVE_EMAIL,
+      email
+    }
   }
 
 export const getAccountFromEmail = (email) => dispatch => (
-    SessionAPIUtil.getAccountFromEmail(email)
+    UsersAPIUtil.getAccountFromEmail(email)
     .then(userEmail => dispatch(receiveEmail(userEmail)))
 )
 

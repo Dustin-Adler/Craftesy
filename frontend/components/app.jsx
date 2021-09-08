@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import RegistrationContainer from './user/user_register_form_container';
-import LoginContainer from './session/user_login_form_container'
-import Header from './header/header';
+// import Header from './header/header';
+import Modal from './modal/modal';
+import HeaderContainer from './header/header_container';
 
 const App = () => (
   <div>
+    <Modal/>
     <header>
       <h1>Craftesy</h1>
       {/* <NavBar /> */}
-      <Route path='/' component={Header} />
+      <Route path='/' component={HeaderContainer} />
       {/* <Route path='/' component={RegistrationContainer} />
       <Route path='/' component={LoginContainer} /> */}
     </header>

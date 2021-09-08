@@ -1,20 +1,17 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import UserLogin from '../session/user_login_form_container';
-import UserRegistration from '../session/user_login_form_container';
+import UserLogin from '../session/sign_up_or_sign_in_container';
 
 function Modal({modal, closeModal}) {
+    debugger
   if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
-    case 'login':
+    case 'true':
       component = <UserLogin />;
-      break;
-    case 'signup':
-      component = <UserRegistration />;
       break;
     default:
       return null;
