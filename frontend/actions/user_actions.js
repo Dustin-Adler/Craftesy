@@ -1,4 +1,5 @@
 import * as UsersAPIUtil from '../utils/users_api_util'
+import * as SessionAPIUtil from '../utils/session_api_util'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const REMOVE_USER = 'REMOVE_USER'
@@ -13,6 +14,7 @@ const removeUser = id => ({
     type: REMOVE_USER, 
     id
 })
+
 
 const receiveEmail = (email) => {
     return {type: RECEIVE_EMAIL,

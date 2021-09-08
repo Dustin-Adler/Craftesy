@@ -15,7 +15,7 @@ class SignInOrSignUp extends React.Component {
 
     SignInOrSignUp(){
         debugger
-        const something = this.props.getUserByEmail(this.state.email)
+        let something = this.props.getAccountFromEmail(this.state.email)
         debugger
         this.setState({email: something.email})
 
@@ -30,6 +30,7 @@ class SignInOrSignUp extends React.Component {
         return(
             <div>
                 <div className='form-type'>{this.props.formType}</div>
+                
                 <form onSubmit={() => this.SignInOrSignUp()}>
                     <label>Email: 
                         <input 

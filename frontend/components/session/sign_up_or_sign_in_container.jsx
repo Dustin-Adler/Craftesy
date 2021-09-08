@@ -10,7 +10,8 @@ const mSTP = (state) => {
             first_name: '',
             email: '',
             password: '',
-        }
+        },
+        formType: 'Sign in to continue'
     };
 };
 
