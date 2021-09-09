@@ -18,6 +18,8 @@
   .modal-form {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-between;
     padding: 50px;
     border-width: 2px;
     border-color: #222222;
@@ -25,9 +27,10 @@
     border-radius: 24px;
     position: relative;
     margin: auto;
-    max-width: 600px;
+    max-width: 13em;
     width: 100%;
     z-index: 10;
+    border: thin solid black;
   }
 
   .close-x {
@@ -45,11 +48,19 @@
     cursor: pointer;
     font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     border-radius: 24px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     position: relative;
     vertical-align: middle;
     z-index: 10;
-    width:250;
+    width: 120%;
+    height: 3em;
     margin: 10px;
+  }
+
+  .form-type {
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
   }

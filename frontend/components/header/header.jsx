@@ -41,7 +41,7 @@ class Header extends React.Component {
                     {this.signInButton()}
 
                     <button
-                        className='cart-icon'><FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+                        className='cart-icon'>🛒︁
                     </button>
                 </div>
                 <div className='categories-list'>

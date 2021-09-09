@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
 .categories-list {
     display: flex;
     justify-content: space-evenly;
@@ -30,7 +32,9 @@
 }
 
 .logo {
-
+    font-family: 'Merriweather', serif;
+    color: navy;
+    margin-right: 1em;
 }
 
 .search-sign-in-and-cart {
@@ -41,10 +45,11 @@
 
 .main-search-field {
     flex: 1;
-    padding: 0 15px;
+    padding: 1em 1em;
+    margin: 1em 0;
     border-radius: 40px;
-    max-height: 48px;
-    min-height: 48px;
-    background-color:#f4f4f4;
+    max-height: 3em;
+    min-height: 3em;
     max-width: 700px;
+    background-color:#f4f4f4;
 }
