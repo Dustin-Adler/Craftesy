@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
+import * as UserActions from './actions/user_actions'
+import * as SessionActions from './actions/session_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -20,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   store = configureStore(preloadedState)
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
-  window.store
-  
+
+  window.store = store
+  window.UserActions = UserActions
+  window.SessionActions = SessionActions
+
 });

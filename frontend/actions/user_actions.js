@@ -14,10 +14,10 @@ const removeUser = id => ({
     id
 })
 
-const receiveEmail = (email) => {
+const receiveEmail = (user) => {
     return {
       type: RECEIVE_EMAIL,
-      email
+      user
     }
   }
 

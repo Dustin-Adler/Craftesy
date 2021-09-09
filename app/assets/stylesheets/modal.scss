@@ -1,0 +1,55 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .modal-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    border-width: 2px;
+    border-color: #222222;
+    background: #FFF;
+    border-radius: 24px;
+    position: relative;
+    margin: auto;
+    max-width: 600px;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .close-x {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+
+  .submit-button {
+    text-align: center;
+    color: #FFFFFF;
+    background: #222222;
+    border: none;
+    cursor: pointer;
+    font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    vertical-align: middle;
+    z-index: 10;
+    width:250;
+    margin: 10px;
+  }

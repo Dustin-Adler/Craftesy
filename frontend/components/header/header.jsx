@@ -11,26 +11,37 @@ class Header extends React.Component {
 
     }
 
+    signInButton(){
+        if (this.props.currentUser){
+            return (<button
+                className="sign-in-button"
+                onClick={()=> this.props.logout()}
+                >Sign Out
+            </button>)
+        } else {
+            return (<button
+                className="sign-in-button"
+                onClick={() => this.props.openModal("true")}
+                >Sign In
+            </button>)
+        }
+    }
+
     render() {
         return(
             <div className='header'>
                 <div className='search-sign-in-and-cart'>
-                    <label>Craftesy
+                    <div className="logo">Craftesy</div> 
                         <input 
                             type="search"
                             className='main-search-field'
                             placeholder="It's dangerous to go alone..."
                         />
-                    </label>
+
+                    {this.signInButton()}
 
                     <button
-                        className="sign-in-button"
-                        onClick={() => this.props.openModal("true")}
-                        >Sign In
-                    </button>
-
-                    <button
-                        className='cart-icon'>Cart-Icon
+                        className='cart-icon'><FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
                     </button>
                 </div>
                 <div className='categories-list'>

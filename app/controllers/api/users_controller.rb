@@ -17,13 +17,14 @@ class Api::UsersController < ApplicationController
   end
 
   def getAccountFromEmail
-    # debugger
+    
     @user = User.find_by(email: params[:email])
+    # debugger
     if @user
       render 'api/users/getAccountFromEmail'
+      # render json: ['found']
     else 
-      console.log(params)
-      render json: params[:email]
+      render json: ['not found']
     end
   end
 
