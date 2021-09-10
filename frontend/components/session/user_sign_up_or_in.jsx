@@ -14,12 +14,32 @@ class SignInOrSignUp extends React.Component {
         return (e) => {this.setState({[field]: e.currentTarget.value})}
     }
 
+    renderErrors() {
+        return(
+          <ul className='errors-list'>
+            {this.props.errors.map((error, i) => (
+              <li key={`error-${i}`} className='error'>
+                {error}
+              </li>
+            ))}
+          </ul>
+        );
+      }
+
+    componentWillUnmount(){
+        this.props.clearErrors()
+    }
+
     signInOrSignUp(){
         this.props.getAccountFromEmail(this.state.email)
         .then( res => {
             if (res.user.id){
                 this.setState({formNum: 1})
-            } else {
+            } 
+            else if (!res.user.email){
+                this.setState({formNum: 0})
+            } 
+            else {
                 this.setState({formNum: 2})
             }
         })
@@ -31,15 +51,29 @@ class SignInOrSignUp extends React.Component {
                 return(
                     <div className='modal-form'>
                         <div className='form-type'>{this.props.formType}</div>
-
+                        <p className="form-instructions">Sign in or register with your email address</p>
                         <form onSubmit={this.signInOrSignUp} className='form-items'>
                             <h5 className='form-field-name'>Email address</h5> 
                             <input 
+                                className="form-field-text"
                                 type="text"
                                 value={this.state.email}
                                 onChange={this.update('email')} />
+                            {this.renderErrors()}
                             <div><button className='submit-button'>Continue</button></div>
                         </form>
+                        <div className='separator'>
+                            <div className='text'>OR</div>
+                            <div className='line'></div>
+                        </div>
+                        <button 
+                            className='submit-button'
+                            onClick={()=>this.props.login({
+                                email: 'demo@account.id',
+                                password: 'password',
+                            }).then(()=>this.props.closeModal())}>
+                            Demo login
+                        </button> 
                     </div>
                 )
                 break;
@@ -48,7 +82,10 @@ class SignInOrSignUp extends React.Component {
                     user={this.state} 
                     login={this.props.login} 
                     closeModal={this.props.closeModal}
+                    errors={this.props.errors}
+                    clearErrors={this.props.clearErrors}
                     formType='Login'/>
+                    
                 break;
             case 2:
                 return <UserRegisterForm 
@@ -56,6 +93,8 @@ class SignInOrSignUp extends React.Component {
                     registerAccount={this.props.registerAccount} 
                     login={this.props.login} 
                     closeModal={this.props.closeModal} 
+                    errors={this.props.errors}
+                    clearErrors={this.props.clearErrors}
                     formType='Register'/>
                 break;
             default:

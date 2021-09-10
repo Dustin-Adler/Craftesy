@@ -19,12 +19,12 @@ class Api::UsersController < ApplicationController
   def getAccountFromEmail
     
     @user = User.find_by(email: params[:email])
-    # debugger
+    
     if @user
       render 'api/users/getAccountFromEmail'
-      # render json: ['found']
     else 
-      render json: ['not found']
+      @user = {id: nil, email: params[:email]}
+      render 'api/users/getAccountFromEmail'
     end
   end
 

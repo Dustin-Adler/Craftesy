@@ -18,7 +18,7 @@ class Api::SessionsController < ApplicationController
             log_out!
             render json: { message: 'Logged out successfully.' }
         else
-            render json: ['Sorry, we couldn\'t find a profile that is currently logged in.'], status: 404
+            render json: ['Sorry, but nobody seems to be logged in.'], status: 404
         end
     end
 

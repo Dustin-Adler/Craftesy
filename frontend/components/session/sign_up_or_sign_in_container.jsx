@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import React from 'react';
 import { registerAccount, getAccountFromEmail } from '../../actions/user_actions';
-import { login } from '../../actions/session_actions';
+import { login, clearErrors } from '../../actions/session_actions';
 import SignInOrSignUp from './user_sign_up_or_in';
 import { closeModal } from '../../actions/modal_actions';
 
-const mSTP = (state) => {
+const mSTP = ({errors}) => {
     return {
         user: {
             first_name: '',
@@ -13,7 +13,8 @@ const mSTP = (state) => {
             password: '',
             formNum: 0,
         },
-        formType: 'Sign in to continue'
+        formType: 'Sign in to continue',
+        errors: errors.session
     };
 };
 
@@ -22,7 +23,8 @@ const mDTP = (dispatch) => {
         login: (user) => dispatch(login(user)),
         registerAccount: (user) => dispatch(registerAccount(user)),
         getAccountFromEmail: (email) => dispatch(getAccountFromEmail(email)),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        clearErrors: () => dispatch(clearErrors())
     };
 };
 
