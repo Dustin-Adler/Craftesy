@@ -17,12 +17,18 @@ class Api::UsersController < ApplicationController
   end
 
   def getAccountFromEmail
-    debugger
-    @user = user.find_by(email: params[:email])
+    
+    @user = User.find_by(email: params[:email])
+    
     if @user
       render 'api/users/getAccountFromEmail'
     else 
+<<<<<<< HEAD
       render json: params[:email]
+=======
+      @user = {id: nil, email: params[:email]}
+      render 'api/users/getAccountFromEmail'
+>>>>>>> Auth/Splash
     end
   end
 

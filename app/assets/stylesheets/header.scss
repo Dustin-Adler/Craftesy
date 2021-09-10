@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@500&display=swap');
+
+.categories-list {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 1% 0 1% 0;
+}
+
+.sign-in-button {
+    font-size: 13px;
+    line-height: 1.4;
+    min-height: 36px;
+    min-width: 36px;
+    padding-top: 9px;
+    margin: 1px;
+
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;  
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-family: 'Merriweather', serif;
+    color: navy;
+    margin-right: 1em;
+}
+
+.search-sign-in-and-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-search-field {
+    flex: 1;
+    padding: 1em 1em;
+    margin: 1em 0;
+    border-radius: 40px;
+    max-height: 3em;
+    min-height: 3em;
+    max-width: 700px;
+    background-color:#f4f4f4;
+}
