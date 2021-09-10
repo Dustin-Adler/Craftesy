@@ -14,17 +14,6 @@ class SignInOrSignUp extends React.Component {
         return (e) => {this.setState({[field]: e.currentTarget.value})}
     }
 
-<<<<<<< HEAD
-    SignInOrSignUp(){
-        let something = this.props.getAccountFromEmail(this.state.email)
-        this.setState({email: something.email})
-
-        if (this.state.email){
-            return <userLoginForm user={this.state}/>
-        } else {
-            return <userRegisterForm user={this.state}/>
-        }
-=======
     renderErrors() {
         return(
           <ul className='errors-list'>
@@ -54,7 +43,6 @@ class SignInOrSignUp extends React.Component {
                 this.setState({formNum: 2})
             }
         })
->>>>>>> Auth/Splash
     }
 
     render() {
