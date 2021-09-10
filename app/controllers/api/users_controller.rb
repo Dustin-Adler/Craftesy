@@ -23,12 +23,8 @@ class Api::UsersController < ApplicationController
     if @user
       render 'api/users/getAccountFromEmail'
     else 
-<<<<<<< HEAD
-      render json: params[:email]
-=======
       @user = {id: nil, email: params[:email]}
       render 'api/users/getAccountFromEmail'
->>>>>>> Auth/Splash
     end
   end
 
