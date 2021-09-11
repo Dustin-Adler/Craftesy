@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 // import Header from './header/header';
 import Modal from './modal/modal';
 import HeaderContainer from './header/header_container';
+import ProductIndexContainer from './products/product_index_container'
 
 const App = () => (
   <div>
@@ -10,10 +11,10 @@ const App = () => (
     <header>
       <Route path='/' component={HeaderContainer} />
     </header>
-    {/* <main>
-        <ProductIndex/>
+    <main>
+      <Route path='/' component={ProductIndexContainer} />
     </main>
-    <footer>
+    {/* <footer>
         <FooterLinks/>
     </footer> */}
   </div>

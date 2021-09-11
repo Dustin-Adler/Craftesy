@@ -1,0 +1,27 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@500&display=swap');
+
+.product-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .product-index-img {
+        width: 10em;
+        height: auto;
+    }
+
+    .product-index-name {
+        font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+        font-size: 14px;
+    }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
