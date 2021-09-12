@@ -81,9 +81,9 @@ class SignInOrSignUp extends React.Component {
                 return <UserLoginForm 
                     user={this.state} 
                     login={this.props.login} 
-                    closeModal={this.props.closeModal}
-                    errors={this.props.errors}
-                    clearErrors={this.props.clearErrors}
+                    closeModal={this.props.closeModal} 
+                    errors={this.props.errors} 
+                    clearErrors={this.props.clearErrors} 
                     formType='Login'/>
                     
                 break;

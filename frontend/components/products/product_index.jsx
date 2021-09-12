@@ -17,8 +17,7 @@ class ProductIndex extends React.Component {
                     <div className='product-index-name'>{product.name}</div>
                 </li>
             )
-
-        console.log(products);
+            
         return(
             <ul className='product-index'>
                 {products}

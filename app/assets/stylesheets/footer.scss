@@ -1,0 +1,58 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #2F466C;
+    
+
+    div {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 20px
+    }
+
+    .project-descriptors {
+        color: white;
+        font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+        line-height: 20px;
+        margin-bottom: 4px;
+
+
+        .top-of-list {
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+    
+    
+    
+        li {
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        margin: 1.5em;
+    }
+}
+
+.heel {
+    background-color: #232347;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.location {
+    font-size: 10;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.terms-privacy-ads{
+    font-size: 8;
+    font-weight: 200;
+    color: #ffffff;
+}
