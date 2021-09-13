@@ -23,7 +23,7 @@ product1 = Product.create({
     price: 3.00,
     seller_id: 1,
 })
-img1 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/deku-stick.png')
+img1 = URI.open("https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/deku-stick.png")
 product1.images.attach(io: img1, filename: 'deku-stick.png')
 
 product2 = Product.create({
@@ -32,7 +32,7 @@ product2 = Product.create({
     price: 6.00,
     seller_id: 1,
 })
-img2 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/fire-arrow.png')
+img2 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/fire-arrow.png')
 product2.images.attach(io: img2, filename: 'fire-arrow.png')
 
 product3 = Product.create({
@@ -41,7 +41,7 @@ product3 = Product.create({
     price: 7.00,
     seller_id: 1,
 })
-img3 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/hylianshield.jpg')
+img3 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/hylianshield.jpg')
 product3.images.attach(io: img3, filename: 'hylianshield.jpg')
 
 product4 = Product.create({
@@ -50,7 +50,7 @@ product4 = Product.create({
     price: 8.00,
     seller_id: 1,
 })
-img4 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/kWWUepAMRFycKakBGYyqQ39A')
+img4 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/zelda-heart-container.jpg')
 product4.images.attach(io: img4, filename: 'kWWUepAMRFycKakBGYyqQ39A')
 
 product5 = Product.create({
@@ -59,7 +59,7 @@ product5 = Product.create({
     price: 6.00,
     seller_id: 1,
 })
-img5 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/mario-star.jpg')
+img5 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/mario-star.jpg')
 product5.images.attach(io: img5, filename: 'mario-star.jpg')
 
 product6 = Product.create({
@@ -68,7 +68,7 @@ product6 = Product.create({
     price: 20.00,
     seller_id: 1,
 })
-img6 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/ocarina.png')
+img6 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/ocarina.png')
 product6.images.attach(io: img6, filename: 'ocarina.png')
 
 product7 = Product.create({
@@ -77,7 +77,7 @@ product7 = Product.create({
     price: 3.00,
     seller_id: 1,
 })
-img7 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/mario-mushroom.jpg')
+img7 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/mario-mushroom.jpg')
 product7.images.attach(io: img7, filename: 'mario-mushroom.jpg')
 
 product8 = Product.create({
@@ -86,7 +86,7 @@ product8 = Product.create({
     price: 7.00,
     seller_id: 1,
 })
-img8 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/fireflower.png')
+img8 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/fireflower.png')
 product8.images.attach(io: img8, filename: 'fireflower.png')
 
 product9 = Product.create({
@@ -95,7 +95,7 @@ product9 = Product.create({
     price: 20.00,
     seller_id: 1,
 })
-img9 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/super-mario-bros-warp-whistle.jpg')
+img9 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/super-mario-bros-warp-whistle.jpg')
 product9.images.attach(io: img9, filename: 'super-mario-bros-warp-whistle.jpg')
 
 product10 = Product.create({
@@ -104,7 +104,7 @@ product10 = Product.create({
     price: 8.00,
     seller_id: 1,
 })
-img10 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/frog-suit.jpg')
+img10 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/frog-suit.jpg')
 product10.images.attach(io: img10, filename: 'frog-suit.jpg')
 
 product11 = Product.create({
@@ -113,9 +113,9 @@ product11 = Product.create({
     price: 6.00,
     seller_id: 1,
 })
-img11a = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/pheonix-down1.png')
-img11b = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/phoenix-down2.jpg')
-img11c = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/phoenix-down3.png')
+img11a = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/pheonix-down1.png')
+img11b = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/phoenix-down2.jpg')
+img11c = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/phoenix-down3.png')
 product11.images.attach(io: img11a, filename: 'pheonix-down1.png')
 product11.images.attach(io: img11b, filename: 'pheonix-down2.png')
 product11.images.attach(io: img11c, filename: 'pheonix-down3.png')
@@ -126,7 +126,7 @@ product12 = Product.create({
     price: 8.00,
     seller_id: 1,
 })
-img12 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/clouds-buster-sword.png')
+img12 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/clouds-buster-sword.png')
 product12.images.attach(io: img12, filename: 'clouds-buster-sword.png')
 
 product13 = Product.create({
@@ -135,7 +135,7 @@ product13 = Product.create({
     price: 10.00,
     seller_id: 1,
 })
-img13 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/ffvii-ultima.png')
+img13 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/ffvii-ultima.png')
 product13.images.attach(io: img13, filename: 'ffvii-ultima.png')
 
 product14 = Product.create({
@@ -144,7 +144,7 @@ product14 = Product.create({
     price: 20.00,
     seller_id: 1,
 })
-img14 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/knights-of-the-round-ffvii.png')
+img14 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/knights-of-the-round-ffvii.png')
 product14.images.attach(io: img14, filename: 'knights-of-the-round-ffvii.png')
 
 product15 = Product.create({
@@ -153,7 +153,7 @@ product15 = Product.create({
     price: 3.00,
     seller_id: 1,
 })
-img15 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/chocobo.png')
+img15 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/chocobo.png')
 product15.images.attach(io: img15, filename: 'chocobo.png')
 
 product16 = Product.create({
@@ -162,7 +162,7 @@ product16 = Product.create({
     price: 20.00,
     seller_id: 1,
 })
-img16 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/masterball.png')
+img16 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/masterball.png')
 product16.images.attach(io: img16, filename: 'masterball.png')
 
 product17 = Product.create({
@@ -171,7 +171,7 @@ product17 = Product.create({
     price: 7.00,
     seller_id: 1,
 })
-img17 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/magikarp.png')
+img17 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/magikarp.png')
 product17.images.attach(io: img17, filename: 'magikarp.png')
 
 product18 = Product.create({
@@ -180,7 +180,7 @@ product18 = Product.create({
     price: 3.00,
     seller_id: 1,
 })
-img18 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/potion.jpg')
+img18 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/potion.jpg')
 product18.images.attach(io: img18, filename: 'potion.jpg')
 
 product19 = Product.create({
@@ -189,8 +189,8 @@ product19 = Product.create({
     price: 8.00,
     seller_id: 1,
 })
-img19a = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/thunderstone1.png')
-img19b = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/thunderstone2.png')
+img19a = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/thunderstone1.png')
+img19b = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/thunderstone2.png')
 product19.images.attach(io: img19a, filename: 'thunderstone1.png')
 product19.images.attach(io: img19b, filename: 'thunderstone2.png')
 
@@ -200,7 +200,7 @@ product20 = Product.create({
     price: 6.00,
     seller_id: 1,
 })
-img20 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/pikachu.jpg')
+img20 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/pikachu.jpg')
 product20.images.attach(io: img20, filename: 'pikachu.jpg')
 
 product21 = Product.create({
@@ -209,7 +209,7 @@ product21 = Product.create({
     price: 5.00,
     seller_id: 1,
 })
-img21 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/tri-force.png')
+img21 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/tri-force.png')
 product21.images.attach(io: img21, filename: 'tri-force.png')
 
 product22 = Product.create({
@@ -218,8 +218,8 @@ product22 = Product.create({
     price: 5.00,
     seller_id: 1,
 })
-img22a = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/super-cape-feather-mario.png')
-img22b = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/cape-feather-mario.jpg')
+img22a = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/super-cape-feather-mario.png')
+img22b = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/cape-feather-mario.jpg')
 product22.images.attach(io: img22a, filename: 'super-cape-feather-mario.png')
 product22.images.attach(io: img22b, filename: 'cape-feather-mario.jpg')
 
@@ -229,7 +229,7 @@ product23 = Product.create({
     price: 20.00,
     seller_id: 1,
 })
-img23 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/heart-of-gold.jpg')
+img23 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/heart-of-gold.jpg')
 product23.images.attach(io: img23, filename: 'heart-of-gold.jpg')
 
 product24 = Product.create({
@@ -238,7 +238,7 @@ product24 = Product.create({
     price: 7.00,
     seller_id: 1,
 })
-img24 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/kraken-slayer.png')
+img24 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/kraken-slayer.png')
 product24.images.attach(io: img24, filename: 'kraken-slayer.png')
 
 product25 = Product.create({
@@ -247,7 +247,7 @@ product25 = Product.create({
     price: 8.00,
     seller_id: 1,
 })
-img25 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/bloodthirster.jpg')
+img25 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/bloodthirster.jpg')
 product25.images.attach(io: img25, filename: 'bloodthirster.jpg')
 
 product26 = Product.create({
@@ -256,7 +256,7 @@ product26 = Product.create({
     price: 10.00,
     seller_id: 1,
 })
-img26 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/rabadons-deathcap.png')
+img26 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/rabadons-deathcap.png')
 product26.images.attach(io: img26, filename: 'rabadons-deathcap.png')
 
 product27 = Product.create({
@@ -265,7 +265,7 @@ product27 = Product.create({
     price: 6.00,
     seller_id: 1,
 })
-img27 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/woodland-creatures.jpg')
+img27 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/woodland-creatures.jpg')
 product27.images.attach(io: img27, filename: 'woodland-creatures.jpg')
 
 product28 = Product.create({
@@ -274,7 +274,7 @@ product28 = Product.create({
     price: 7.00,
     seller_id: 1,
 })
-img28 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/lightning-bubble.jpg')
+img28 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/lightning-bubble.jpg')
 product28.images.attach(io: img28, filename: 'lightning-bubble.jpg')
 
 
@@ -284,7 +284,7 @@ product29 = Product.create({
     price: 3.00,
     seller_id: 1,
 })
-img29 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/sonicrings.jpg')
+img29 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/sonicrings.jpg')
 product29.images.attach(io: img29, filename: 'sonicrings.jpg')
 
 product30 = Product.create({
@@ -293,7 +293,7 @@ product30 = Product.create({
     price: 20.00,
     seller_id: 1,
 })
-img30 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/chaos-emerald.jpg')
+img30 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/chaos-emerald.jpg')
 product30.images.attach(io: img30, filename: 'chaos-emerald.jpg')
 
 product31 = Product.create({
@@ -302,7 +302,7 @@ product31 = Product.create({
     price: 10.00,
     seller_id: 1,
 })
-img31 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/super-speed-shoes.png')
+img31 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/super-speed-shoes.png')
 product31.images.attach(io: img31, filename: 'super-speed-shoes.png')
 
 product32 = Product.create({
@@ -311,9 +311,9 @@ product32 = Product.create({
     price: 10.00,
     seller_id: 1,
 })
-img32a = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/grown-yoshis.jpg')
-img32b = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/super-mario-world-baby-yoshis.png')
-img32c = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/yoshi-eggs.png')
+img32a = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/grown-yoshis.jpg')
+img32b = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/super-mario-world-baby-yoshis.png')
+img32c = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/yoshi-eggs.png')
 product32.images.attach(io: img32a, filename: 'grown-yoshis.jpg')
 product32.images.attach(io: img32b, filename: 'super-mario-world-baby-yoshis.png')
 product32.images.attach(io: img32c, filename: 'yoshi-eggs.png')
@@ -324,7 +324,7 @@ product33 = Product.create({
     price: 20.00,
     seller_id: 1,
 })
-img33 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/infinity-blade-fortnite.png')
+img33 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/infinity-blade-fortnite.png')
 product33.images.attach(io: img33, filename: 'infinity-blade-fortnite.png')
 
 product34 = Product.create({
@@ -333,7 +333,7 @@ product34 = Product.create({
     price: 7.00,
     seller_id: 1,
 })
-img34 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/fortnite-llama-pinata.png')
+img34 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/fortnite-llama-pinata.png')
 product34.images.attach(io: img34, filename: 'fortnite-llama-pinata.png')
 
 product35 = Product.create({
@@ -342,7 +342,7 @@ product35 = Product.create({
     price: 8.00,
     seller_id: 1,
 })
-img35 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/fortnite-rocket-launcher.jpg')
+img35 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/fortnite-rocket-launcher.jpg')
 product35.images.attach(io: img35, filename: 'fortnite-rocket-launcher.jpg')
 
 product36 = Product.create({
@@ -351,7 +351,7 @@ product36 = Product.create({
     price: 3.00,
     seller_id: 1,
 })
-img36 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/fortniteballoons.jpg')
+img36 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/fortniteballoons.jpg')
 product36.images.attach(io: img36, filename: 'fortniteballoons.jpg')
 
 product37 = Product.create({
@@ -360,5 +360,5 @@ product37 = Product.create({
     price: 6.00,
     seller_id: 1,
 })
-img37 = URI.open('https://craftesy-dev.s3.us-east-2.amazonaws.com/fortnite-present.png')
+img37 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/fortnite-present.png')
 product37.images.attach(io: img37, filename: 'fortnite-present.png')
