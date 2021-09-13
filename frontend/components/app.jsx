@@ -6,6 +6,7 @@ import HeaderContainer from './header/header_container';
 import ProductIndexContainer from './products/product_index_container'
 import Footer from './footer/footer'
 import AboutCraftesy from './about/what_is_craftesy';
+import GameBubblesContainer from './products/game_bubbles_container';
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
       <Route path='/' component={HeaderContainer} />
     </header>
     <main>
+      <Route path='/' component={GameBubblesContainer} />
       <Route path='/' component={ProductIndexContainer} />
       <Route path='/' component={AboutCraftesy} />
     </main>

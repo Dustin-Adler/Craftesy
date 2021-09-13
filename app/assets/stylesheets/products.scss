@@ -12,6 +12,9 @@
     .product-index-img {
         width: 10em;
         height: auto;
+        max-height: 10em;
+        object-fit: cover;
+        object-position: top;
     }
 
     .product-index-name {
