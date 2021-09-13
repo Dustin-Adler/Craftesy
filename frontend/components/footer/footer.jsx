@@ -1,12 +1,13 @@
 import React from 'react';
 import { ExternalLink } from 'react-external-link';
-// import logo from '../../../app/assets/images/Github-Logo/GitHub-Mark-64px.png';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const Footer = () => {
 
     return(
         <div className='footer'>
-            <div>
+            <div className='group-of-descriptors'>
                 <ul className='project-descriptors'>
                     <h3 className='top-of-list'>Technologies</h3>
                     <li>Javascript</li>
@@ -20,7 +21,7 @@ const Footer = () => {
                     <li>Heroku</li>
                 </ul>
                 <ul className='project-descriptors'>
-                    <h3 className='top-of-list'>Intrests</h3>
+                    <h3 className='top-of-list'>Interests</h3>
                     <li>Engineering</li>
                     <li>Technology</li>
                     <li>Organization</li>
@@ -44,8 +45,8 @@ const Footer = () => {
                 </ul>
             </div>
             <nav className='professional-links'>
-                <ExternalLink href='https://github.com/Dustin-Adler'>GitHub</ExternalLink>
-                <ExternalLink href='https://www.linkedin.com/in/dustin-adler-software-engineer-web-developer'>LinkedIn</ExternalLink>
+                <ExternalLink href='https://github.com/Dustin-Adler'> <GitHubIcon className='icon'></GitHubIcon>  </ExternalLink>
+                <ExternalLink href='https://www.linkedin.com/in/dustin-adler-software-engineer-web-developer'> <LinkedInIcon className='icon'></LinkedInIcon> </ExternalLink>
                 <h4>Personal Site: Coming Soon</h4>
             </nav>
             <div className='heel'>
@@ -53,7 +54,10 @@ const Footer = () => {
                     <p>UnitedStates | English | {"$(USD)"}</p>
                 </div>
                 <div className='terms-privacy-ads'>
-                    © 2021 Craftesy, Inc.Terms of Use Privacy Interest-based ads
+                    <p>© 2021 Craftesy, Inc.</p>
+                    <p className='underline'>No Terms of use</p>
+                    <p className='underline'>Open to the public</p>
+                    <p className='underline'>Ad free</p> 
                 </div>
             </div>
         </div>

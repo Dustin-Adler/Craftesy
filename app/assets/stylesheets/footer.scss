@@ -2,17 +2,16 @@
     display: flex;
     flex-direction: column;
     background-color: #2F466C;
-    
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    color: white;
 
-    div {
+    .group-of-descriptors {
         display: flex;
         justify-content: space-evenly;
         padding: 20px
     }
 
     .project-descriptors {
-        color: white;
-        font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
         line-height: 20px;
         margin-bottom: 4px;
 
@@ -35,24 +34,44 @@
         display: flex;
         justify-content: space-around;
         margin: 1.5em;
+        font-size: 8px;
+
+        .icon {
+            color: white;
+        }
+    }
+
+    .heel {
+        background-color: #232347;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // padding: 1.5em 0em;
+
+        div {
+            margin: 1.5em
+        }
+    
+        .location {
+            font-size: 10px;
+            font-weight: 700;
+        }
+        
+        .terms-privacy-ads{
+            display: flex;
+            justify-content: space-around;
+            font-size: 11px;
+            
+            p {
+                margin: .25em;
+            }
+
+            .underline {
+                text-decoration: underline;
+            }
+        }
     }
 }
 
-.heel {
-    background-color: #232347;
-    display: flex;
-    justify-content: space-between;
 
-}
 
-.location {
-    font-size: 10;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.terms-privacy-ads{
-    font-size: 8;
-    font-weight: 200;
-    color: #ffffff;
-}
