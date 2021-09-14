@@ -8,7 +8,7 @@
 
     .background-style {
         display: flex;
-        height: 120px;
+        height: 196px;
         background: linear-gradient(315deg, rgba(22,20,54,1) 10%, rgba(28,28,160,1) 91%);
         border-radius: 24px;
         border: 10px solid black;
@@ -19,7 +19,7 @@
         h2 {
             margin-top: 15px;
             color: whitesmoke;
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 700;
             text-shadow: 2px 2px black;
         }
@@ -53,9 +53,9 @@
 
     .circle-splash {
         background-color: whitesmoke;
-        width: 80px;
-        height: 80px;
-        margin-top: -50px;
+        width: 114px;
+        height: 114px;
+        margin-top: -65px;
         border-radius: 50%;
         object-fit: cover;
         object-position: top;

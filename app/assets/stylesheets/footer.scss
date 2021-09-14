@@ -18,14 +18,14 @@
 
         .top-of-list {
             font-weight: 700;
-            font-size: 12px;
+            font-size: 16px;
             margin-bottom: 12px;
         }
     
     
     
         li {
-            font-size: 10px;
+            font-size: 13px;
             margin-bottom: 5px;
         }
     }
@@ -34,10 +34,12 @@
         display: flex;
         justify-content: space-around;
         margin: 1.5em;
-        font-size: 8px;
+        font-size: 10px;
 
         .icon {
             color: white;
+            height: 36px;
+            width: 36px;
         }
     }
 
@@ -53,14 +55,14 @@
         }
     
         .location {
-            font-size: 10px;
+            font-size: 13px;
             font-weight: 700;
         }
         
         .terms-privacy-ads{
             display: flex;
             justify-content: space-around;
-            font-size: 11px;
+            font-size: 13px;
             
             p {
                 margin: .25em;

@@ -9,7 +9,7 @@ import AboutCraftesy from './about/what_is_craftesy';
 import GameBubblesContainer from './products/game_bubbles_container';
 
 const App = () => (
-  <div>
+  <div className='master-layout'>
     <Modal/>
     <header>
       <Route path='/' component={HeaderContainer} />
