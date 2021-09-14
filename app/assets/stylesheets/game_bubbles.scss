@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.game-bubbles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+
+    .background-style {
+        display: flex;
+        height: 196px;
+        background: linear-gradient(315deg, rgba(22,20,54,1) 10%, rgba(28,28,160,1) 91%);
+        border-radius: 24px;
+        border: 10px solid black;
+        border-style: double;
+        width: 99%;
+        justify-content: center;
+
+        h2 {
+            margin-top: 15px;
+            color: whitesmoke;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 2px 2px black;
+        }
+    }
+
+    .game-art-bubbles {
+        display: flex;
+        align-items: center;
+        width: 99%;
+        padding: 0em .5em;
+        // align-content: space-between;
+        justify-content: space-evenly;
+        color: black;
+        font-size: 10px;
+        text-shadow: 1px 1px lightgray;
+        
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 80px;
+        }
+
+        h5 {
+            margin: 12px 0px;
+            text-align: center;
+        }
+
+    }
+
+    .circle-splash {
+        background-color: whitesmoke;
+        width: 114px;
+        height: 114px;
+        margin-top: -65px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: top;
+        border: 1px solid grey;
+
+        .llama {
+            object-position: 0% 0%;
+        }
+
+        .sword {
+            object-position: 50% 100%;
+        }
+    }
+
+
+}

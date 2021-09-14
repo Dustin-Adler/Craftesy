@@ -4,6 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import * as UserActions from './actions/user_actions'
 import * as SessionActions from './actions/session_actions'
+import * as ProductActions from './actions/product_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -26,5 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.store = store
   window.UserActions = UserActions
   window.SessionActions = SessionActions
-
+  window.ProductActions = ProductActions 
+  
 });
