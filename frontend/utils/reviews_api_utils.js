@@ -1,6 +1,6 @@
 export const getProductReviews = (productId) => (
     $.ajax({
-        url: `api/products/${productId}`,
+        url: `api/products/${productId}/reviews`,
         method: 'get'
     })
 )

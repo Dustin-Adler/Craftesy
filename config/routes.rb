@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create, :destroy]
     resources :products, only: [:create, :update, :destroy, :show, :index] do 
-      resources :reviews, only: [:index]
+      resources :reviews, only: [:index, :create, :update]
     end
-    resources :reviews, only: [:create, :update, :destroy, :show]
+    resources :reviews, only: [:destroy]
   end
-  
+
   root "static_pages#root"
   
 end

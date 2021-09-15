@@ -1,8 +1,7 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        # @reviews = Review.find_by(id: )
-
+        @reviews = Product.find_by(id: params[:product_id]).reviews
     end
 
     def show
@@ -10,7 +9,16 @@ class Api::ReviewsController < ApplicationController
     end
 
     def create
+
+        @review = Review.new(review_params)
+        @review.user_id = current_user.id
+        @review.product_id = params[product_id]
         
+        if @review.save
+            render "api/product/#{params[product_id]}"
+        else 
+            render json: @review.errors.full_messages, status: 422
+        end
     end
 
     def update
@@ -24,6 +32,6 @@ class Api::ReviewsController < ApplicationController
     private
 
     def review_params
-        params.require(:review).permit(:rating, :body )
+        params.require(:review).permit(:rating, :body)
     end
 end

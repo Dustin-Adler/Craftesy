@@ -9,7 +9,7 @@ function Modal({modal, closeModal}) {
   }
   let component;
   switch (modal) {
-    case 'true':
+    case 'login':
       component = <UserLogin />;
       break;
     default:
