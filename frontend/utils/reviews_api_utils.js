@@ -5,9 +5,9 @@ export const getProductReviews = (productId) => (
     })
 )
 
-export const createProductReview = (review) => (
+export const createProductReview = (productId, review) => (
     $.ajax({
-        url: `api/reviews`,
+        url: `api/products/${productId}/reviews`,
         method: 'post',
         data: {review}
     })

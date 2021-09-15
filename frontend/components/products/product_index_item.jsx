@@ -1,5 +1,6 @@
 import React from 'react'
-import CreateProductReviewContainer from '../reviews/create_review_container'
+import CreateReviewContainer from '../reviews/create_review_container'
+import CreateReview from '../reviews/create_review'
 
 class ProductIndexItem extends React.Component {
     constructor(props){
@@ -10,29 +11,29 @@ class ProductIndexItem extends React.Component {
         this.props.getProduct()
     }
 
-    signInButton(){
-        if (this.props.currentUser){
-            return (<button
-                className="sign-in-button"
-                onClick={()=> this.props.logout()}
-                >Sign Out
-            </button>)
-        } else {
-            return (<button
-                className="sign-in-button"
-                onClick={() => this.props.openModal("true")}
-                >Sign In
-            </button>)
-        }
-    }
+    
 
-    signedIn(){
+    createReview(){
+        // debugger
         if(this.props.session){
-            return this.props.openModal('CreateReview')
+            return (
+
+                <CreateReview product={this.props.product} createReview={this.props.createReview}/>
+
+                // <button 
+                //     onClick={() => {return <CreateReviewContainer/>}}
+                //     className='create-review-button'>    
+                //     Create Review
+                // </button>
+            )
         } else {
             return (
-                this.signInButton()
-            ) 
+                <button
+                    className="create-review-button"
+                    onClick={() => this.props.openModal("login")}>
+                    Sign in to review a product
+                </button>
+            )
         }
     }
 
@@ -49,11 +50,8 @@ class ProductIndexItem extends React.Component {
                         <img 
                             className='product-index-img' 
                             src={product.images[0].url} 
-                            alt={product.name}/>
-                        <button 
-                            onClick={this.signedIn()}
-                            className='create-review-button'
-                            >Create Review</button>
+                            alt={product.name}/> <br />
+                        {this.createReview()}
                     </div>
                     <div className='product-info'>
                         <div>placeholder for seller name</div>

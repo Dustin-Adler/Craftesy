@@ -10,7 +10,7 @@ function Modal({modal, closeModal}) {
   let component;
   switch (modal) {
     case 'login':
-      component = <UserLogin />;
+      component = <UserLogin/>;
       break;
     default:
       return null;
@@ -25,8 +25,9 @@ function Modal({modal, closeModal}) {
 }
 
 const mapStateToProps = state => {
+
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
   };
 };
 

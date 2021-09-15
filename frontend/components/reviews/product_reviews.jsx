@@ -1,5 +1,5 @@
 import React from 'react'
-import UpdateReview from './update_product_review_form'
+import UpdateReview from './update_review'
 
 class ProductReviews extends React.Component {
     constructor(props){

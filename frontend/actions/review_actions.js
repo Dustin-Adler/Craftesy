@@ -25,8 +25,8 @@ export const getProductReviews = (productId) => (dispatch) => (
     )
 )
 
-export const createProductReview = (review) => (dispatch) => (
-    ReviewApiUtil.createProductReview(review)
+export const createProductReview = (productId, review) => (dispatch) => (
+    ReviewApiUtil.createProductReview(productId, review)
     .then(
         (recReview) => dispatch(recieveReview(recReview))
     )
