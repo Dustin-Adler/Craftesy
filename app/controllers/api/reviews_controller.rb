@@ -4,27 +4,26 @@ class Api::ReviewsController < ApplicationController
         @reviews = Product.find_by(id: params[:product_id]).reviews
     end
 
-    def show
-
-    end
-
     def create
-        
         @review = Review.new(review_params)
         @review.author_id = current_user.id
         @review.product_id = params[:product_id]
         @product = Product.find_by(id: params[:product_id])
-        debugger
         if @review.save
-            debugger
-            render "api/products/show"
+            render "api/reviews/show"
         else 
             render json: @review.errors.full_messages, status: 422
         end
     end
 
     def update
+        @review = Review.find_by(id: params[:id])
         
+        if @review.update(review_params)
+            render "api/reviews/show"
+        else 
+            render json: @review.errors.full_messages, status: 422
+        end
     end
 
     def delete

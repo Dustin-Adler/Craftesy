@@ -6,7 +6,7 @@ class GameBubbles extends React.Component {
     }
 
     render() {
-        // debugger
+      
         if (this.props.products === {}){
             return null
         } else { 

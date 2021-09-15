@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create, :destroy]
     resources :products, only: [:create, :update, :destroy, :show, :index] do 
-      resources :reviews, only: [:index, :create, :update]
+      resources :reviews, only: [:index, :create]
     end
-    resources :reviews, only: [:destroy]
+    resources :reviews, only: [:destroy, :update]
   end
 
   root "static_pages#root"

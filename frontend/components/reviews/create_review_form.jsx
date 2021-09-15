@@ -16,27 +16,26 @@ class CreateReview extends React.Component {
     handleChange(field){
         return (e) => {
             this.setState({[field]: e.target.value})
-            // debugger
         }
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createReview(this.props.product.id, this.state);
+        this.props.createReview(this.props.productId, this.state)
+        .then(() => this.props.closeModal())
       }
 
     render(){
-        // debugger
         return(
             <div className='create-review'>
                 <form className='create-review-form' onSubmit={this.handleSubmit}>
                     <label  className='review-rating'>Rating
-                        <div onChange={() => this.handleChange('rating')}>
-                            <input onChange={() => this.handleChange('rating')} type="radio" name='rating' value={1} />
-                            <input onChange={() => this.handleChange('rating')} type="radio" name='rating' value={2} />
-                            <input onChange={() => this.handleChange('rating')} type="radio" name='rating' value={3} />
-                            <input onChange={() => this.handleChange('rating')} type="radio" name='rating' value={4} />
-                            <input onChange={() => this.handleChange('rating')} type="radio" name='rating' value={5} />
+                        <div onChange={this.handleChange('rating')}>
+                            <input type="radio" name='rating' value={1} />
+                            <input type="radio" name='rating' value={2} />
+                            <input type="radio" name='rating' value={3} />
+                            <input type="radio" name='rating' value={4} />
+                            <input type="radio" name='rating' value={5} />
                         </div>
                     </label>
                     <label>

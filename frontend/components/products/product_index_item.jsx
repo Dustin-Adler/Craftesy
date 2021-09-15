@@ -1,6 +1,6 @@
 import React from 'react'
-import CreateReviewContainer from '../reviews/create_review_container'
-import CreateReview from '../reviews/create_review'
+// import CreateReviewContainer from '../reviews/create_review_container'
+import CreateReview from '../reviews/create_review_form'
 
 class ProductIndexItem extends React.Component {
     constructor(props){
@@ -14,17 +14,13 @@ class ProductIndexItem extends React.Component {
     
 
     createReview(){
-        // debugger
         if(this.props.session){
             return (
-
-                <CreateReview product={this.props.product} createReview={this.props.createReview}/>
-
-                // <button 
-                //     onClick={() => {return <CreateReviewContainer/>}}
-                //     className='create-review-button'>    
-                //     Create Review
-                // </button>
+                <button 
+                    onClick={() => this.props.openRevModal('CreateReview')}
+                    className='create-review-button'>    
+                    Create Review
+                </button>
             )
         } else {
             return (
