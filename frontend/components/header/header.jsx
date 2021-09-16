@@ -30,7 +30,7 @@ class Header extends React.Component {
         return(
             <div className='header'>
                 <div className='search-sign-in-and-cart'>
-                    <div className="logo">Craftesy</div> 
+                    <Link to='/'><div className="logo">Craftesy</div></Link>
                         <input 
                             type="search"
                             className='main-search-field'

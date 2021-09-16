@@ -13,7 +13,7 @@ class ProductIndex extends React.Component {
     render(){
         const products = this.props.products.map(
             product =>  
-                <li key={product.name + (Math.floor(product.id * (Math.random()*100)))}>
+                <li key={ product.name + (Math.floor(product.id * (Math.random()*100)))}>
                     <Link to={`/products/${product.id}`}>
                         <img 
                             className='product-index-img' 
