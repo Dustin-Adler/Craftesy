@@ -21,7 +21,7 @@ const App = () => (
       <Route path='/products/:id' component={ProductIndexItemContainer} />
       <Route path='/products/:id' component={product_reviews_container}/>
       <Route exact path='/products/:id' component={ReviewModal}/>
-      <Route path='/products/:id/review/reviewId' component={ReviewModal}/>
+      <Route path='/products/:id/reviews/:reviewId' component={ReviewModal}/>
       <Route exact path='/' component={ProductIndexContainer} />
       <Route exact path='/' component={AboutCraftesy} />
       

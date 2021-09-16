@@ -5,7 +5,7 @@ import CreateReview from '../reviews/create_review_form'
 import UpdateReviewForm from '../reviews/update_review_form'
 import * as ReviewActions from '../../actions/review_actions'
 
-function ReviewModal({ revModal, closeModal, productId, createReview, review }) {
+function ReviewModal({ revModal, closeModal, productId, createReview, review, updateReview, deleteReview}) {
   if (!revModal) {
     return null;
   }
@@ -19,11 +19,13 @@ function ReviewModal({ revModal, closeModal, productId, createReview, review }) 
                       closeModal={closeModal} />;
       break;
     case 'UpdateReview':
-      // debugger
+      debugger
       component = <UpdateReviewForm
                       productId={productId}
                       closeModal={closeModal}
-                      review={review} />;
+                      review={review}
+                      updateReview={updateReview}
+                      deleteReview={deleteReview} />;
       break;
     default:
       return null;
@@ -50,7 +52,8 @@ const mDTP = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
     createReview: (prodId, state) => dispatch(ReviewActions.createProductReview(prodId, state)),
-    updateReview: (review) => dispatch(ReviewActions.updateProductReview(review))
+    updateReview: (review) => dispatch(ReviewActions.updateProductReview(review)), 
+    deleteReview: (id) => dispatch(ReviewActions.deleteReview(id))
   };
 };
 

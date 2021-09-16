@@ -28,23 +28,29 @@ class UpdateReview extends React.Component {
                 <form className='create-review-form' onSubmit={this.handleSubmit}>
                     <label  className='review-rating'>Rating
                         <div onChange={this.handleChange('rating')}>
-                            <input checked={this.state.radio === 1} type="radio" name='rating' value={1} />
-                            <input checked={this.state.radio === 2} type="radio" name='rating' value={2} />
-                            <input checked={this.state.radio === 3} type="radio" name='rating' value={3} />
-                            <input checked={this.state.radio === 4} type="radio" name='rating' value={4} />
-                            <input checked={this.state.radio === 5} type="radio" name='rating' value={5} />
+                            <input defaultChecked={this.state.radio === 1} type="radio" name='rating' value={1} />
+                            <input defaultChecked={this.state.radio === 2} type="radio" name='rating' value={2} />
+                            <input defaultChecked={this.state.radio === 3} type="radio" name='rating' value={3} />
+                            <input defaultChecked={this.state.radio === 4} type="radio" name='rating' value={4} />
+                            <input defaultChecked={this.state.radio === 5} type="radio" name='rating' value={5} />
                         </div>
                     </label>
                     <label>
                         <textarea 
                             onChange={this.handleChange('body')}
                             className='review-body'
-                            placeholder="Your review here">
-                            {this.state.body}
+                            placeholder="Your review here"
+                            value={this.state.body}>
                         </textarea>
-                    </label>
-                    <button className='review-button'>Create Review</button>
+                    </label> <br />
+                    <button className='review-button'>Update Review</button>
                 </form>
+                <button 
+                    className='review-button'
+                    onClick={()=> this.props.deleteReview(this.state.id)
+                        .then(()=>this.props.closeModal())}>
+                    Delete Review
+                </button>
             </div>
         )
     }

@@ -18,7 +18,7 @@ class Api::ReviewsController < ApplicationController
 
     def update
         @review = Review.find_by(id: params[:id])
-        
+
         if @review.update(review_params)
             render "api/reviews/show"
         else 
@@ -26,7 +26,14 @@ class Api::ReviewsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
+        @review = Review.find_by(id: params[:id])
+
+        if @review 
+            @review.delete
+        else  
+            render json: @review.errors.full_messages, status: 404
+        end
         
     end
 

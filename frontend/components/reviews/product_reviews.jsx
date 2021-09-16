@@ -1,45 +1,24 @@
 import React from 'react'
-import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import ReviewModal from '../modal/review_modal'
 
 class ProductReviews extends React.Component {
     constructor(props){
         super(props)
 
-        this.state = {
-            
-        }
     }
 
     componentDidMount(){
         this.props.getProductReviews()
     }
 
-    addReviewIdToState(review){
-        return(
-            // <div>
-            //     <Redirect
-            //         to={{
-            //             pathname: `/products/${this.props.productId}`,
-            //             state: { review: review }
-            //         }}     
-            //     />
-            //     {this.props.openRevModal('UpdateReview')}
-            //  </div>
-            <div>
-                <ReviewModal review={review}/>
-                {this.props.openRevModal('UpdateReview')}
-            </div>
-            
-            
-        )
-    }
-
     updateReview(review){
         if (review.author_id === this.props.session){
             return (
-                <button onClick={() => this.addReviewIdToState(review)}>
-                    Update Review
+                <button onClick={() => this.props.openRevModal('UpdateReview')}>
+                    <Link to={`/products/${review.product_id}/reviews/${review.id}`}>
+                        Update Review
+                    </Link>
                 </button>
             )
         } else {
