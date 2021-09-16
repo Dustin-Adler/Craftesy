@@ -24,7 +24,6 @@ const App = () => (
       <Route path='/products/:id/reviews/:reviewId' component={ReviewModal}/>
       <Route exact path='/' component={ProductIndexContainer} />
       <Route exact path='/' component={AboutCraftesy} />
-      
     </main>
     <footer>
       <Route path='/' component={Footer} />

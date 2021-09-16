@@ -48,9 +48,13 @@ class ProductIndexItem extends React.Component {
                         {this.createReview()}
                     </div>
                     <div className='product-info'>
-                        <div>placeholder for seller name</div>
-                        <div>placeholder for sales and review info</div>
-                        <p>{product.name}</p>
+                        <div className='product-show-seller-shop-name'>Super Totally Awesome Seller</div>
+                        <div className='product-show-sales-info'>
+                            {Math.random()*10000} sales 
+                            <div className='opaque-grey-vertical-border'/>
+                            <div className='review-stars'></div>
+                        </div>
+                        <h2 className='product-name-show'>{product.name}</h2>
                         <div className='price-and-stock'>
                             <div className='product-price'>${product.price.toFixed(2)}</div>
                             <div className='in-stock?'>placeholder check: In Stock</div>

@@ -7,9 +7,9 @@ class GameBubbles extends React.Component {
 
     render() {
       
-        if (this.props.products === {}){
-            return null
-        } else { 
+        // if (this.props.products === {}){
+        //     return null
+        // } else { 
             return (
                 <div className='game-bubbles'>
                     <div className='background-style'>
@@ -43,7 +43,7 @@ class GameBubbles extends React.Component {
                     </div>
                 </div>
             )
-        }
+        // }
     }
 }
 

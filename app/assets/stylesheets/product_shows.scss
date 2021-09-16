@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@500&display=swap');
+.product-show {
+    align-self: center;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 1400px;
+    font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    color: black;
+}
+
+.product-index-img {
+    border-radius: 5px;
+}
+
+.product-show-seller-shop-name {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.product-show-sales-info {
+    display: flex;
+
+}
+
+.opaque-grey-vertical-border {
+    border-left: 1px solid;
+    border-color: rgba($color: #000000, $alpha: 6.0);
+}
