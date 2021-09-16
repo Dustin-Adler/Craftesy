@@ -9,7 +9,6 @@ function ReviewModal({ revModal, closeModal, productId, createReview, review, up
   if (!revModal) {
     return null;
   }
-  debugger
   let component;
   switch (revModal) {
     case 'CreateReview':
@@ -19,7 +18,6 @@ function ReviewModal({ revModal, closeModal, productId, createReview, review, up
                       closeModal={closeModal} />;
       break;
     case 'UpdateReview':
-      debugger
       component = <UpdateReviewForm
                       productId={productId}
                       closeModal={closeModal}
@@ -40,7 +38,6 @@ function ReviewModal({ revModal, closeModal, productId, createReview, review, up
 }
 
 const mSTP = (state, ownProps) => {
-  // debugger
   return {
     revModal: state.ui.modal,
     productId: ownProps.match.params.id,

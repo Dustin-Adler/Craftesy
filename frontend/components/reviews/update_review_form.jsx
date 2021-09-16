@@ -3,7 +3,6 @@ import React from 'react'
 class UpdateReview extends React.Component {
     constructor(props){
         super(props)
-        debugger
         this.state = this.props.review
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)

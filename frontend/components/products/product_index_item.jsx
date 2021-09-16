@@ -34,11 +34,9 @@ class ProductIndexItem extends React.Component {
     }
 
     render(){
-        // debugger
         if (this.props.product == undefined){
             return null
         } else {
-            // debugger
             const product = this.props.product
             return(
                 <div className='product-show'>
