@@ -1,24 +1,28 @@
-# README
+![image](https://user-images.githubusercontent.com/72500278/133801979-42ec1250-03b1-4ab8-ba32-aca733587ec4.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Installation instructions
+Clone the repo using the command git clone https://github.com/dustin-adler/craftesy.git
+Run the command npm install
+Run the command bundle install
+Run the command sudo service postgresql start
+Run the command rails db:create
+Run the command rails db:setup
+Run the command npm start
+Run the command rails s
 
-Things you may want to cover:
+### Technologies used
+Javascript
+React
+Redux
+Ruby
+Rails
+Jquery
+SCSS/CSS
+AWS
+Heroku
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Features
+User Authentication and errors
+Write and save a review for one of the 30+ nastalgic game related images
+update or delete any review you change your mind about
+connection to AWS for image storage
