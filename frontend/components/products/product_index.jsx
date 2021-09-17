@@ -15,8 +15,8 @@ class ProductIndex extends React.Component {
             return null
         }
         const products = this.props.products.map(
-            product =>  
-                <li key={product.name + product.id}>
+            (product, i) =>  
+                <li key={i}>
                     <Link to={`/products/${product.id}`}>
                         <img 
                             className='product-index-img' 

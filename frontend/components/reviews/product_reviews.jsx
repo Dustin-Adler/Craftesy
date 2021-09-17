@@ -27,6 +27,25 @@ class ProductReviews extends React.Component {
     }
 
     render(){
+        
+        const rating = [...Array(5)].map( (el, i) => {
+            if(this.props.review < i+1){
+                return (< >
+                    <input className='review-star' type="radio" name='rating' value={i+1} id={`rating-${i+1}`}/>
+                    <label htmlFor={`rating-${i+1}`}>
+                        <i className="fas fa-star"></i>
+                    </label>
+                </>)
+            } else {
+                return (<>
+                    <input className='review-star' type="radio" name='rating' value={i+1} id={`rating-${i+1}`}/>
+                    <label htmlFor={`rating-${i+1}`}>
+                        <i className="far fa-star"></i>
+                    </label>
+                </>)
+            }
+        })
+
         const productReviews = this.props.reviews.map(
             review =>
                 <li key={review.body+review.id}className='review-rating-and-body'>
@@ -34,7 +53,7 @@ class ProductReviews extends React.Component {
                         {/* <div>{review.author_id}</div> */}
                         {/* <div>placeholder for timestamp</div> */}
                     </div>
-                    {/* <div>{review.rating}</div> */}
+                    {rating}
                     <p>{review.body}</p>
                     {/* <img className='review-image' src="" alt="Reviewer's Photo" /> */}
                     {/* <div>placeholder for helpful button</div> */}

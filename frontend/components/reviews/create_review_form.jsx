@@ -27,21 +27,22 @@ class CreateReview extends React.Component {
 
     render(){
         const review = [...Array(5)].map( (el, i) => {
-            debugger
-            if(this.state.review < i+1){
-                return (<>
+            if(this.state.rating >= i+1){
+                return (
+                <li key={i}>
                     <input className='review-star' type="radio" name='rating' value={i+1} id={`rating-${i+1}`}/>
                     <label htmlFor={`rating-${i+1}`}>
-                        <i className="fas fa-star"></i>
+                        <i aria-hidden="true" className="fas fa-star"></i>
                     </label>
-                </>)
+                </li>)
             } else {
-                return (<>
+                return (
+                <li key={i}>
                     <input className='review-star' type="radio" name='rating' value={i+1} id={`rating-${i+1}`}/>
                     <label htmlFor={`rating-${i+1}`}>
-                        <i className="far fa-star"></i>
+                        <i aria-hidden="true" className="far fa-star"></i>
                     </label>
-                </>)
+                </li>)
             }
             
         })

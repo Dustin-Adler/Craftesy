@@ -88,8 +88,7 @@ class ProductIndexItem extends React.Component {
                         <form className='show-page-form'>
                             <label className='show-page-form-labels' htmlFor=""> Make your item unique?
                                 <select className='show-page-select' name="" id="" >
-                                    <option 
-                                        selected='selected'>
+                                    <option defaultValue>
                                         There are no additional options
                                     </option>
                                 </select>
