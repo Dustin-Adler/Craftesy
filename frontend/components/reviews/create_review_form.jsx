@@ -26,16 +26,32 @@ class CreateReview extends React.Component {
       }
 
     render(){
-        return(
+        const review = [...Array(5)].map( (el, i) => {
+            debugger
+            if(this.state.review < i+1){
+                return (<>
+                    <input className='review-star' type="radio" name='rating' value={i+1} id={`rating-${i+1}`}/>
+                    <label htmlFor={`rating-${i+1}`}>
+                        <i className="fas fa-star"></i>
+                    </label>
+                </>)
+            } else {
+                return (<>
+                    <input className='review-star' type="radio" name='rating' value={i+1} id={`rating-${i+1}`}/>
+                    <label htmlFor={`rating-${i+1}`}>
+                        <i className="far fa-star"></i>
+                    </label>
+                </>)
+            }
+            
+        })
+        
+            return(
             <div className='create-review'>
                 <form className='create-review-form' onSubmit={this.handleSubmit}>
                     <label  className='review-rating'>Rating
                         <div onChange={this.handleChange('rating')}>
-                            <input type="radio" name='rating' value={1} />
-                            <input type="radio" name='rating' value={2} />
-                            <input type="radio" name='rating' value={3} />
-                            <input type="radio" name='rating' value={4} />
-                            <input type="radio" name='rating' value={5} />
+                            {review}
                         </div>
                     </label>
                     <label>
