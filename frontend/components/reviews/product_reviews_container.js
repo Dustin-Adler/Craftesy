@@ -1,4 +1,5 @@
 import { connect} from "react-redux";
+import { withRouter } from "react-router";
 import * as reviewActions from '../../actions/review_actions'
 import { openRevModal } from "../../actions/modal_actions";
 import ProductReviews from "./product_reviews";
@@ -14,4 +15,4 @@ const mDTP = (dispatch, ownProps) => ({
     openRevModal: (key) => dispatch(openRevModal(key))
 })
 
-export default connect(mSTP, mDTP)(ProductReviews)
+export default withRouter(connect(mSTP, mDTP)(ProductReviews))

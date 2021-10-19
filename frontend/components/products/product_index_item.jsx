@@ -1,6 +1,7 @@
 import React from 'react'
 // import CreateReviewContainer from '../reviews/create_review_container'
 import CreateReview from '../reviews/create_review_form'
+import ProductReview from '../reviews/product_reviews_container';
 
 class ProductIndexItem extends React.Component {
     constructor(props){
@@ -56,7 +57,7 @@ class ProductIndexItem extends React.Component {
         }
     }
 
-    render(){
+    render() {
         if (this.props.product == undefined){
             return null
         } else {
@@ -70,6 +71,7 @@ class ProductIndexItem extends React.Component {
                             src={product.images[0].url} 
                             alt={product.name}/> <br />
                         {this.createReview()}
+                        < ProductReview />
                     </div>
                     <div className='product-info'>
                         <div className='product-show-seller-shop-name'>Super Totally Awesome Seller</div>
@@ -82,8 +84,8 @@ class ProductIndexItem extends React.Component {
                         </div>
                         <h2 className='product-name-show'>{product.name}</h2>
                         <div className='price-and-stock'>
-                            <div className='product-price'>${product.price.toFixed(2)}</div>
-                            <div>Pay in 4 installments of ${(product.price/ 4).toFixed(2)}</div>
+                            <div className='product-price'>$ {product.price.toFixed(2)}</div>
+                            <div>Pay in 4 installments of $ {(product.price/ 4).toFixed(2)}</div>
                         </div>
                         <form className='show-page-form'>
                             <label className='show-page-form-labels' htmlFor=""> Make your item unique?

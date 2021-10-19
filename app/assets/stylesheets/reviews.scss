@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.create-review{
+.create-review {
     display: flex;
     min-height: 300px;
     font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
@@ -87,6 +87,7 @@
         height: 3em;
         margin: 10px 0px;
     }
+
     .review-body {
         box-shadow: 0 1px 6px 0 rgba(#f5f5f5, 0.15);
         font-size: 13px;
@@ -99,4 +100,8 @@
         border-width: 6px;
     }
     
+}
+
+.reviews-container {
+    width: 800px;
 }
