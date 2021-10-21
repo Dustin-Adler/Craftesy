@@ -1,7 +1,7 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        @reviews = Product.find_by(id: params[:product_id]).reviews
+        @reviews = Product.find_by(id: params[:product_id]).reviews.includes(:author)
     end
 
     def create

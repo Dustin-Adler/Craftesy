@@ -1,1 +1,2 @@
-json.extract! review, :id, :rating, :body, :author_id, :product_id
+json.extract! review, :id, :rating, :body, :author_id, :product_id, :created_at
+json.author review.author.first_name

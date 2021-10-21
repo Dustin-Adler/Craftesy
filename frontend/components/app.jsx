@@ -8,7 +8,6 @@ import Footer from './footer/footer'
 import AboutCraftesy from './about/what_is_craftesy';
 import GameBubblesContainer from './products/game_bubbles_container';
 import ProductIndexItemContainer from './products/product_index_item_container';
-// import product_reviews_container from './reviews/product_reviews_container';
 
 const App = () => (
   <div className='master-layout'>
@@ -19,7 +18,6 @@ const App = () => (
     <main>
       <Route exact path='/' component={GameBubblesContainer} />
       <Route path='/products/:id' component={ProductIndexItemContainer} />
-      {/* <Route path='/products/:id' component={product_reviews_container}/> */}
       <Route exact path='/products/:id' component={ReviewModal}/>
       <Route path='/products/:id/reviews/:reviewId' component={ReviewModal}/>
       <Route exact path='/' component={ProductIndexContainer} />

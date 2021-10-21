@@ -12,7 +12,7 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch, ownProps) => ({
     getProductReviews: () => dispatch(reviewActions.getProductReviews(ownProps.match.params.id)),
-    openRevModal: (key) => dispatch(openRevModal(key))
+    openRevModal: (key) => dispatch(openRevModal(key)),
 })
 
 export default withRouter(connect(mSTP, mDTP)(ProductReviews))

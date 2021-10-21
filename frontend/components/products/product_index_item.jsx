@@ -40,19 +40,23 @@ class ProductIndexItem extends React.Component {
     createReview(){
         if(this.props.session){
             return (
-                <button 
-                    onClick={() => this.props.openRevModal('CreateReview')}
-                    className='add-to-cart-button'>    
-                    Create Review
-                </button>
+                <div className='size-review-button'>
+                    <button 
+                        onClick={() => this.props.openRevModal('CreateReview')}
+                        className='add-to-cart-button'>    
+                        Create Review
+                    </button>
+                </div>
             )
         } else {
             return (
-                <button
-                    className="add-to-cart-button"
-                    onClick={() => this.props.openModal("login")}>
-                    Sign in to review a product
-                </button>
+                <div className='size-review-button'>
+                    <button
+                        className="add-to-cart-button"
+                        onClick={() => this.props.openModal("login")}>
+                        Sign in to review a product
+                    </button>
+                </div>
             )
         }
     }
@@ -65,12 +69,14 @@ class ProductIndexItem extends React.Component {
             const review = [...Array(5)].map( (el, i) => <i key={i} className="fas fa-star"></i>) // actual review calc coming soon
             return(
                 <div className='product-show'>
-                    <div>
-                        <img 
-                            className='product-index-item-img' 
-                            src={product.images[0].url} 
-                            alt={product.name}/> <br />
-                        {this.createReview()}
+                    <div className='img-review'>
+                        <div className='img-create-review-button' >
+                            <img 
+                                className='product-index-item-img' 
+                                src={product.images[0].url} 
+                                alt={product.name}/> <br />
+                            {this.createReview()}
+                        </div>
                         < ProductReview />
                     </div>
                     <div className='product-info'>
