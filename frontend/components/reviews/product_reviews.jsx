@@ -1,6 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ReviewModal from '../modal/review_modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import{ 
+    faSkullCrossbones,
+    faDiceD20,
+    faDragon,
+    faGamepad,
+    faGhost, 
+ } from '@fortawesome/free-solid-svg-icons'
 
 class ProductReviews extends React.Component {
     constructor(props){
@@ -15,8 +23,10 @@ class ProductReviews extends React.Component {
     updateReview(review){
         if (review.author_id === this.props.session){
             return (
-                <button onClick={() => this.props.openRevModal('UpdateReview')}>
-                    <Link to={`/products/${review.product_id}/reviews/${review.id}`}>
+                <button className="update-review-button" onClick={() => this.props.openRevModal('UpdateReview')}>
+                    <Link 
+                        className="rev-link"
+                        to={`/products/${review.product_id}/reviews/${review.id}`}>
                         Update Review
                     </Link>
                 </button>
@@ -54,12 +64,67 @@ class ProductReviews extends React.Component {
         return (`${month} ${day}, ${year}`)
     }
 
+    randomUserIcon(){
+        let icon = Math.floor(Math.random() * 5)
+        switch (icon) {
+            case 0:
+                icon = (<FontAwesomeIcon icon={faSkullCrossbones} className='review-icon' />)
+                break;
+            case 1:
+                icon = (<FontAwesomeIcon icon={faDragon} className='review-icon'/>)
+                break;
+            case 2:
+                icon = (<FontAwesomeIcon icon={faDiceD20} className='review-icon'/>)
+                break;
+            case 3:
+                icon = (<FontAwesomeIcon icon={faGamepad} className='review-icon'/>)
+                break;
+            case 4:
+                icon = (<FontAwesomeIcon icon={faGhost} className='review-icon'/>)
+                break;
+            default:
+                break;
+        }
+
+        const color = Math.floor(Math.random() * 5)
+        switch (color) {
+            case 0:
+                return (<div className='user-icon blue-icon'>
+                            {icon}
+                        </div>)
+                break;
+            case 1:
+                return (<div className='user-icon purple-icon'>
+                            {icon}
+                        </div>)
+                break;
+            case 2:
+                return (<div className='user-icon red-icon'>
+                            {icon}
+                        </div>)
+                break;
+            case 3:
+                return (<div className='user-icon green-icon'>
+                            {icon}
+                        </div>)
+                break;
+            case 4:
+                return (<div className='user-icon grey-icon'>
+                            {icon}
+                        </div>)
+                break;
+            default:
+                break;
+        }
+    }
+
     render(){
         const productReviews = this.props.reviews.map(
             (review, i) =>
                 <li 
-                    className='review-li-container'
+                    className='review-container'
                     key = { review.id + i } >
+                        {this.randomUserIcon()}
                         <div className = 'review-rating-and-body'>
                             <div className='review-author-date'>
                                 <div className='author'>{review.author}</div>
@@ -82,7 +147,7 @@ class ProductReviews extends React.Component {
                 <div className='reviews-header'>
                     <h5>{this.props.reviews.length} reviews {this.rating(reviewAverage)}</h5>
                     <div>
-                        <i class="fas fa-comment-dots"></i>
+                        <i className="fas fa-comment-dots"></i>
                         <p>Be one of the first to review this item!</p>
                     </div>
                     <h6>Reviews for this item</h6>

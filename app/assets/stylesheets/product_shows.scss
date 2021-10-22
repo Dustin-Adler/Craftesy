@@ -11,12 +11,10 @@
     font-size: 13px;
     line-height: 18px;
     font-weight: 400;
-    margin: 5px;
-    border: thick solid yellowgreen;
+    margin: 0 1.5rem;
 
     .img-review {
         width: 65%;
-        border: thick solid orangered;
     }
 
     .img-create-review-button {
@@ -42,7 +40,6 @@
         flex-direction: column;
         padding: 0px 15px;
         width: 35%;
-        border: thick solid blueviolet;
     }
     
     .product-show-seller-shop-name {

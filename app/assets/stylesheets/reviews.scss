@@ -102,20 +102,84 @@
     
 }
 
+.review-container {
+    margin-bottom: 4vh;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.user-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 .5em;
+
+}
+
+.blue-icon {
+    background-color: rgb(185, 248, 248);
+    color: rgb(27, 175, 175);
+}
+
+.purple-icon {
+    background-color: rgb(236, 130, 236);
+    color: rgb(47, 7, 47);
+}
+
+.red-icon {
+    background-color: rgb(246, 113, 113);
+    color: rgb(161, 23, 23);
+}
+
+.green-icon {
+    background-color: rgb(73, 236, 73);
+    color: rgb(18, 61, 18);
+}
+
+.grey-icon {
+    background-color: rgb(144, 144, 144);
+    color: rgb(92, 92, 92);
+}
+
 .review-rating-and-body{
+    margin-top: .5em;
 
     .far, .fas {
         font-size: 1.2rem;
+        margin: 1rem 0 .5rem 0;
+    }
+
+    .update-review-button{
+        text-align: center;
+        color: #222222;
+        border: thin solid #222222;
+        cursor: pointer;
+        font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+        border-radius: 24px;
+        font-size: .75rem;
+        vertical-align: middle;
+        width: fit-content;
+        height: 1.75em;
+        margin: 10px 0px;
+        margin-left: 2%;
+
+        .rev-link {
+            text-decoration: none;
+            color: #222222;
+        }
     }
 }
 
 
 
 .reviews-container {
-    border: thick solid turquoise;
 
     .reviews-header {
-        border: thick solid blue;
+        margin-bottom: 3rem;
 
         div {
             display: flex;
@@ -144,7 +208,6 @@
 
     .review-author-date {
         display: flex;
-        border: thin solid black;
 
         .author {
             text-decoration: underline;

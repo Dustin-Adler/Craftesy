@@ -24,10 +24,10 @@ class ProductIndex extends React.Component {
                             alt={product.name}/>
                     </Link>
                         <div className='price-container'>
-                            <div className='product-index-price'>${product.price.toFixed(2)}</div>
+                            <div className='product-index-price'>$ {product.price.toFixed(2)}</div>
                         </div>
                 </li>
-            )
+        )
             
         return(
             <div className='center-product-index'>
