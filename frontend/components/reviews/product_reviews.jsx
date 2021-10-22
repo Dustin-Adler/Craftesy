@@ -62,8 +62,8 @@ class ProductReviews extends React.Component {
                     key = { review.id + i } >
                         <div className = 'review-rating-and-body'>
                             <div className='review-author-date'>
-                                <div>{review.author}</div>
-                                <div>{this.reviewDate(review.created_at)}</div>
+                                <div className='author'>{review.author}</div>
+                                <div className="date">{this.reviewDate(review.created_at)}</div>
                             </div>
                             {this.rating(review.rating)}
                             <p>{review.body}</p>
@@ -76,13 +76,15 @@ class ProductReviews extends React.Component {
         this.props.reviews.forEach((review) => {
             reviewAverage += review.rating
         })
-
         reviewAverage = Math.floor(reviewAverage / this.props.reviews.length)
         return (
             <div className='reviews-container'>
                 <div className='reviews-header'>
                     <h5>{this.props.reviews.length} reviews {this.rating(reviewAverage)}</h5>
-                    <p>Be one of the first to review this item!</p>
+                    <div>
+                        <i class="fas fa-comment-dots"></i>
+                        <p>Be one of the first to review this item!</p>
+                    </div>
                     <h6>Reviews for this item</h6>
                 </div>
                 <ul className='list-container'>

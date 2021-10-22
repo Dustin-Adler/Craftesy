@@ -102,18 +102,58 @@
     
 }
 
-// .review-author-date {
+.review-rating-and-body{
 
-// }
+    .far, .fas {
+        font-size: 1.2rem;
+    }
+}
+
+
 
 .reviews-container {
     border: thick solid turquoise;
 
+    .reviews-header {
+        border: thick solid blue;
+
+        div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        p {
+            font-size: 1rem;
+            margin: 1.25em 1em;
+        }
+    }
+
+    i {
+        font-size: 1rem;
+        margin: 1.25em 0
+    }
+    
     h5 {
         font-size: 1.5rem;
     }
 
     h6 {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
+    }
+
+    .review-author-date {
+        display: flex;
+        border: thin solid black;
+
+        .author {
+            text-decoration: underline;
+            opacity: .8;
+        }
+
+        .date {
+            margin-left: .5em;
+            opacity: .9
+        }
     }
 }
