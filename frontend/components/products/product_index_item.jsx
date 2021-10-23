@@ -94,8 +94,8 @@ class ProductIndexItem extends React.Component {
                             <div>Pay in 4 installments of $ {(product.price/ 4).toFixed(2)}</div>
                         </div>
                         <form className='show-page-form'>
-                            <label className='show-page-form-labels' htmlFor=""> Make your item unique?
-                                <select className='show-page-select' name="" id="" >
+                            <label className='show-page-form-labels'> Make your item unique?
+                                <select className='show-page-select'>
                                     <option defaultValue>
                                         There are no additional options
                                     </option>

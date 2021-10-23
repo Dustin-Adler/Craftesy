@@ -11,7 +11,7 @@
     font-size: 13px;
     line-height: 18px;
     font-weight: 400;
-    margin: 0 1.5rem;
+    margin: 1.75rem;
 
     .img-review {
         width: 65%;
@@ -22,6 +22,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-bottom: 2.5rem;
     }
 
     .product-index-item-img {
@@ -45,12 +46,12 @@
     .product-show-seller-shop-name {
         font-size: 16px;
         font-weight: 500;
+        line-height: 1.75rem;
     }
     
     .product-show-sales-info {
         display: flex;
         align-items: center;
-        margin: 0px 5px;
     }
     
     .opaque-grey-vertical-border {
@@ -63,18 +64,22 @@
     }
     
     .product-name-show {
-        font-size: 28px;
+        font-size: 1.5rem;
         line-height: 36px;
         font-family: 'Press Start 2P', cursive;
-        margin: 0px 10px;
+        margin: 1.5rem 0px;
     }
 
     .product-price {
         font-weight: 700;
-        font-size: 28px;
+        font-size: 1.5rem;
         line-height: 36px;
         font-family: 'Press Start 2P', cursive;
         text-shadow: 1px 1px grey;
+    }
+
+    .show-page-form {
+        margin: 1.5rem 0;
     }
 
     .show-page-select{
@@ -90,6 +95,7 @@
         border-width: 1px;
         text-overflow: "";
         cursor: pointer;
+        margin: 5px 0;
     }
 
     .product-show-additional-info-button {
@@ -144,7 +150,6 @@
         position: absolute;
         width: 100%;
         height: 140px;
-        // border: thin solid black;
         background:
             linear-gradient(180deg, 
             rgba(255,255,255,0.01) 10%, 
