@@ -1,4 +1,4 @@
-class CartsController < ApplicationController
+class Api::CartsController < ApplicationController
 
     def show
         # debugger
@@ -15,7 +15,8 @@ class CartsController < ApplicationController
         @cart_item  = Cart.new(cart_params)
         @cart_item.shopper_id = current_user.id
         @cart_item.product_id = params[:product_id]
-
+        @cart = current_user.items_in_cart
+        
         if @cart_item.save
             render "api/cart/show"
         else 
