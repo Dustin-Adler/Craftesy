@@ -6,12 +6,18 @@ import {
 } from '../../actions/cart_actions'
 
 const mSTP = (state) => {
-    cart = state.entities.cart
+
+    return {
+        cart: Object.values(state.entities.cart)
+    }
 }
 
 const mDTP = (dispatch) => {
-    getCartItems = () => dispatch(getCartItems()),
-    deleteCartItem = (id) => dispatch(deleteCartItem(id))
+
+    return {
+        getCartItems: () => dispatch(getCartItems()),
+        deleteCartItem: (id) => dispatch(deleteCartItem(id))
+    }
 }
 
 export default connect(mSTP, mDTP)(Cart)

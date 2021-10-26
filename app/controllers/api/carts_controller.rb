@@ -1,24 +1,26 @@
 class Api::CartsController < ApplicationController
 
-    def show
+    def index
         # debugger
         @cart = current_user.items_in_cart
 
         if @cart 
-            render "api/cart/show"
+            render "api/carts/show"
         else 
-            render json: @cart.errors.full_messages, status 422 
+            render json: @cart.errors.full_messages
         end
     end
 
     def create
-        @cart_item  = Cart.new(cart_params)
+        # debugger
+        @cart_item  = Cart.new()
         @cart_item.shopper_id = current_user.id
-        @cart_item.product_id = params[:product_id]
-        @cart = current_user.items_in_cart
-        
+        @cart_item.product_id = params[:cart][:product_id]
+        # debugger
         if @cart_item.save
-            render "api/cart/show"
+            @cart = current_user.items_in_cart
+            # debugger
+            render "api/carts/show"
         else 
             render json: @cart_item.errors.full_messages, status: 422
         end
@@ -36,7 +38,7 @@ class Api::CartsController < ApplicationController
 
     private
 
-    def cart_params
-        params.require(:cart)
-    end
+    # def cart_params
+    #     params.require(:cart).permit( :product_id )
+    # end
 end
