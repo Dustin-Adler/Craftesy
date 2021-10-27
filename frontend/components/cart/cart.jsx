@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
+    faCaretDown,
     faHandshake, 
     faShippingFast, 
     faStore, 
@@ -29,7 +30,7 @@ class Cart extends React.Component {
                 // debugger
                 return (
                     <div 
-                        className='cart-item-container'
+                        className='cart-item-column-container'
                         key={i}>
                         <div className='cart-item-row-container'>
                             <div className='cart-item-row-container center' >
@@ -66,35 +67,58 @@ class Cart extends React.Component {
                                 </div>
                             </div>
                             <div className='cart-item-column-container column-right'>
-                                <div className='cart-item-row-container'>
-                                    <input type="number"/>
-                                    <div className='price'>
-                                        <h5>Total Price</h5>
-                                        <p>(Price: each)</p>
+                                <div className='cart-item-row-container width-bump'>
+                                    <div className='relative'>
+                                        <select className='item-quantity'>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                        <FontAwesomeIcon 
+                                            icon={faCaretDown} 
+                                            className='fa-caret-down'/>
+                                    </div>
+                                    <div className='left'>
+                                        <h3>$ {cartItem.price.toFixed(2)}</h3>
+                                        <p>($ {cartItem.price.toFixed(2)} each)</p>
                                     </div>
                                 </div>
-                                <div>
+                                <div className='popularity'>
                                     XX people have this in their cart
                                 </div>
                             </div>
                         </div>
                         <div className='cart-item-row-container'>
-                            <div className='cart-item-column-container'>
-                                <div className='gift'>
-                                    <h6>This order is a gift</h6>
-                                    <p>Prices will not be shown on packing slip</p>
-                                </div>
-                                <textarea 
-                                    placeholder="Add a note to shopName (optional)" 
-                                    cols="30" rows="10">
-                                </textarea>
-                            </div>
-                            <div className='cart-item-column-container'>
-                                <div>Apply shop coupon codes</div>
+                            <div className='cart-item-row-container start'>
+                                <input
+                                    className='checkbox' 
+                                    type="checkbox" />
                                 <div className='cart-item-column-container'>
-                                    <p>Estimated delivery: Delivery-Date</p>
-                                    <p>where this is being delivered from</p>
+                                    <h6>Would you like this as a gift?</h6>
+                                    <p className='greyed-out'>
+                                        Prices aren't real this is a demo
+                                    </p>
                                 </div>
+                            </div>
+                            <button className='coupon center'>
+                                <FontAwesomeIcon icon={faTag} className='flip center'/>
+                                Apply shop coupon codes
+                            </button>
+                        </div>
+                        <div className='cart-item-row-container'>
+                            <textarea 
+                                placeholder="Add a note to Craftesy (optional)">
+                            </textarea>
+                            <div className='cart-item-column-container'>
+                                <p>Estimated delivery: Delivery-Date</p>
+                                <p>where this is being delivered from</p>
                             </div>
                         </div>
                     </div>
@@ -116,7 +140,7 @@ class Cart extends React.Component {
                         <Link
                             className='text-link' 
                             to='/'>
-                            Keep shopping
+                            <h3 className='column-right shopping'>Keep shopping</h3>
                         </Link>
                         <div className='payment-info'>
                             <div className='cart-item-column-container'>
