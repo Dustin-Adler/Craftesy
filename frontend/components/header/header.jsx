@@ -6,9 +6,9 @@ class Header extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
+    // componentDidMount() {
 
-    }
+    // }
 
     signInButton(){
         if (this.props.currentUser){
@@ -40,7 +40,11 @@ class Header extends React.Component {
                     {this.signInButton()}
 
                     <button
-                        className='cart-icon'>🛒︁
+                        className='cart-icon'>
+                            <Link
+                                to='/cart'>
+                                🛒
+                            </Link>
                     </button>
                 </div>
                 <div className='categories-list'>

@@ -101,7 +101,13 @@ class ProductIndexItem extends React.Component {
                                     </option>
                                 </select>
                             </label>
-                            <button className='add-to-cart-button'>Add to cart</button>
+                            <button 
+                                className='add-to-cart-button'
+                                onClick={() => this.props.createCartItem(
+                                    {product_id: product.id}
+                                    )}>
+                                Add to cart
+                            </button>
                         </form>
                         <button 
                             className='product-show-additional-info-button'

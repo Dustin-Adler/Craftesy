@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import * as ProductActions from "../../actions/product_actions"
 import ProductIndexItem from './product_index_item'
 import {openModal, openRevModal} from '../../actions/modal_actions'
+import {createCartItem} from '../../actions/cart_actions'
 
 const mSTP = (state, ownProps) => {
 
@@ -17,6 +18,7 @@ const mDTP = (dispatch, ownProps) => {
         getProduct: () => dispatch(ProductActions.getProduct(ownProps.match.params.id)),
         openModal: (key) => dispatch(openModal(key)),
         openRevModal: (key) => dispatch(openRevModal(key)),
+        createCartItem: (cart) => dispatch(createCartItem(cart)),
     }
 } 
 
