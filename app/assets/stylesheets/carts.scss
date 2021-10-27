@@ -1,3 +1,39 @@
-// Place all the styles related to the carts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.cart-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0px;
+    border: thick solid red;
+}
+
+.cart {
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
+    border: thick solid green;
+}
+
+.cart-items {
+    width: 60%;
+    border: thick solid teal;
+
+    .item-count-header{
+        font-size: 2.5rem;
+    }
+}
+
+.money-stuff {
+    width: 40%;
+    border: thick solid fuchsia;
+}
+
+.shop-icon {
+    background-color: rgb(172, 171, 171);
+    color: rgb(71, 71, 71);
+    border-radius: 3px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
