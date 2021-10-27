@@ -31,31 +31,42 @@ class Cart extends React.Component {
                     <div 
                         className='cart-item-container'
                         key={i}>
-                        <div className='cart-item-column-container'>
-                            <div className='cart-item-row-container'>
+                        <div className='cart-item-row-container'>
+                            <div className='cart-item-row-container center' >
                                 <div className='shop-icon'><FontAwesomeIcon icon={faStore}/></div>
-                                <div>Thank you for using Craftesy</div>
+                                <h3>Thank you for using Craftesy</h3>
                             </div>
-                            <div>Link peronal page here</div>
+                            <div className='center'>Link peronal page here</div>
                         </div>
                         <div className='cart-item-row-container'>
-                            <div className='cart-item-column-container'>
-                                <img 
-                                    className='cart-item-img' 
-                                    src={cartItem.images[0].url} 
-                                    alt={cartItem.name}/>
-                                <div>
-                                    <div>{cartItem.name}</div>
-                                    <div className='cart-item-options'></div>
-                                </div>
-                                <div>
-                                    <button>
-                                        Remove
-                                    </button>
+                            <div className='cart-item-row-container left'>
+                                <Link
+                                    className='link' 
+                                    to={`/products/${cartItem.id}`}>
+                                    <img 
+                                        className='cart-item-img' 
+                                        src={cartItem.images[0].url} 
+                                        alt={cartItem.name}/>
+                                </Link>
+                                <div className='cart-item-column-container padding-left'>
+                                    <div className='cart-item-column-container '>
+                                        <Link
+                                            className='text-link'
+                                            to={`/products/${cartItem.id}`}>
+                                            <div>{cartItem.name}</div>
+                                        </Link>
+                                        <div className='cart-item-options'></div>
+                                    </div>
+                                    <div className='sr-buttons'>
+                                        <button
+                                            className='plainify-button'>
+                                            Remove
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div className='cart-item-column-container'>
-                                <div className='quantity-price'>
+                            <div className='cart-item-column-container column-right'>
+                                <div className='cart-item-row-container'>
                                     <input type="number"/>
                                     <div className='price'>
                                         <h5>Total Price</h5>
@@ -102,7 +113,11 @@ class Cart extends React.Component {
                         {cartItems}
                     </div>
                     <div className='cart-item-column-container money-stuff'>
-                        <Link to='/'>Keep shopping</Link>
+                        <Link
+                            className='text-link' 
+                            to='/'>
+                            Keep shopping
+                        </Link>
                         <div className='payment-info'>
                             <div className='cart-item-column-container'>
                                 <h3>How you'll pay</h3>

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     margin: 2rem 0px;
-    border: thick solid red;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
 }
 
 .cart {
@@ -13,16 +13,35 @@
 }
 
 .cart-items {
-    width: 60%;
-    border: thick solid teal;
+    width: 100%;
+    border: thick solid aqua;
 
     .item-count-header{
-        font-size: 2.5rem;
+        font-size: 2.25rem;
+        font-weight: 100;
+        margin-bottom: 2rem;
+    }
+
+    .link{
+        cursor: pointer;
+        width: 205px;
+        height: 175px;
+        overflow: hidden;
+        border-radius: 6px;
     }
 }
 
+.text-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-link:hover{
+    text-decoration: underline;
+}
+
 .money-stuff {
-    width: 40%;
+    width: 45%;
     border: thick solid fuchsia;
 }
 
@@ -36,4 +55,78 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cart-item-row-container{
+    display: flex;
+    justify-content: space-between;
+    border: thin solid orange;
+
+    h3 {
+        font-weight: 600;
+    }
+}
+
+.cart-item-column-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-img{
+    max-width: 100%;
+    object-fit: contain;
+    object-position: top;
+}
+
+.padding-left {
+    padding-left: 1rem;
+}
+
+.padding-right {
+    padding-right: 1rem;
+}
+
+.left {
+    border: thin solid blueviolet;
+}
+
+.center {
+    align-items: center;
+    align-self: center;
+}
+
+.column-right {
+    align-items: flex-end;
+    text-align: end;
+}
+
+.plainify-button{
+    border: none;
+    background-color: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    font-weight: 700;
+}
+
+.plainify-button::after {
+    content: '';
+    width: 100%;
+    height: 3em;
+    border-radius: 24px;
+    display: block;
+    position: absolute;
+    transform: scale(0);
+    background-color: rgba($color: #323232, $alpha: 0.10);
+    bottom: -.9em;
+    left: 0;
+    transition: transform 400ms;
+}
+
+.plainify-button:hover::after{
+    transform: scale(1);
+}
+
+.sr-buttons {
+    padding: 1em 0;
 }
