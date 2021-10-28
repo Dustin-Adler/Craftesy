@@ -44,7 +44,7 @@
 
     .delivery-info {
         opacity: 0.75;
-        padding-top: 1rem;
+        padding-top: 2rem;
 
         p {
             font-family: Arial, Helvetica, sans-serif;
@@ -52,8 +52,8 @@
         }
 
         span {
-            text-decoration-style: dotted;
-            // text-decoration: underline;
+            text-decoration-style: dashed;
+            text-decoration-line: underline;
         }
     }
 
@@ -63,7 +63,6 @@
     }
 
     .item-quantity {
-        // transition: border-color 200ms ease-out,box-shadow 200ms ease-out;
         appearance: none;
         font-size: 1rem;
         border-width: 1px;
@@ -96,12 +95,14 @@
     display: flex;
     justify-content: center;
     max-width: 1400px;
-    border: thick solid green;
+    // border: thick solid green;
 }
 
 .cart-items {
     width: 100%;
-    border: thick solid aqua;
+    margin: 0 2.25rem;
+    border-bottom:1px solid rgba($color: #323232, $alpha: 0.10);
+    // border: thick solid aqua;
 
     .item-count-header{
         font-size: 2.25rem;
@@ -129,7 +130,15 @@
 
 .money-stuff {
     width: 45%;
-    border: thick solid fuchsia;
+    // border: thick solid fuchsia;
+}
+
+.payment-info {
+    border-radius: 14px;
+    box-shadow: 0 0 16px 1px rgba(122, 122, 122, 0.3);
+    padding: 1rem;
+    // width: 40ch;
+    margin-bottom: 1.5rem;
 }
 
 .shop-icon {
@@ -142,12 +151,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 1rem;
+    margin-bottom: .75rem;
 }
 
 .cart-item-row-container{
     display: flex;
     justify-content: space-between;
-    border: thin solid orange;
+    // border: thin solid orange;
         
     .start{
         justify-content: flex-start;
@@ -155,6 +166,10 @@
 
     .width-bump {
         width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .cart-item-info {
         margin-bottom: 1.5rem;
     }
 }
@@ -178,11 +193,6 @@
     padding-right: 1rem;
 }
 
-.left {
-    // width: 100%;
-    border: thin solid blueviolet;
-}
-
 .center {
     align-items: center;
     align-self: center;
@@ -192,7 +202,7 @@
     align-items: flex-end;
     text-align: end;
     width: 30%;
-    border: thin solid red;
+    // border: thin solid red;
 }
 
 .plainify-button{
@@ -230,3 +240,9 @@
     opacity: 0.9;
 }
 
+.handshake-icon {
+    font-size: 4rem;
+    background-color: rgb(184, 184, 184);
+    border-radius: 25% 5px 25% 5px;
+    transform: rotateX('45')
+}

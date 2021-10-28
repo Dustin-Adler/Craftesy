@@ -40,7 +40,7 @@ class Cart extends React.Component {
                             <div className='center'>Link peronal page here</div>
                         </div>
                         <div className='cart-item-row-container'>
-                            <div className='cart-item-row-container'>
+                            <div className='cart-item-row-container cart-item-info'>
                                 <Link
                                     className='link' 
                                     to={`/products/${cartItem.id}`}>
@@ -117,7 +117,8 @@ class Cart extends React.Component {
                                 placeholder="Add a note to Craftesy (optional)">
                             </textarea>
                             <div className='cart-item-column-container column-right delivery-info'>
-                                <p>Estimated delivery: 
+                                <p>
+                                    Estimated delivery: 
                                     <span>{currentDate}</span>
                                 </p>
                                 <p>from: The Interweb</p>
@@ -139,11 +140,15 @@ class Cart extends React.Component {
                         {cartItems}
                     </div>
                     <div className='cart-item-column-container money-stuff'>
-                        <Link
-                            className='text-link' 
-                            to='/'>
-                            <h3 className='column-right shopping'>Keep shopping</h3>
-                        </Link>
+                        <div className='cart-item-row-container'>
+                            <span></span>
+                            <Link
+                                className='text-link' 
+                                to='/'>
+                                <h3 className='shopping'>Keep shopping</h3>
+                            </Link>
+                        </div>
+
                         <div className='payment-info'>
                             <div className='cart-item-column-container'>
                                 <h3>How you'll pay</h3>
@@ -184,15 +189,15 @@ class Cart extends React.Component {
                             <div> <FontAwesomeIcon icon={faTag}/> Apply Etsy coupon code </div>
                             <p>* additional duties and taxes _may apply_</p>
                         </div>
-                        <div className='contact-me'>
+                        <div className='contact-me cart-item-row-container'>
                             <p> 
-                                Thank you so much for taking the time to traverse my
-                                Craftesy website demo. It was a pleasure to work on
+                                Thank you so much for taking the time to traverse
+                                Craftesy, my Etsy clone. It was a pleasure to work on,
                                 and I hope that you liked what you saw enough to
                                 contact me with any opportunities or inquieries you
                                 might have.
                             </p>
-                            <FontAwesomeIcon icon={faHandshake}/>
+                            <FontAwesomeIcon icon={faHandshake} className='handshake-icon'/>
                         </div>
                     </div>
                 </div>
