@@ -24,7 +24,7 @@ class Cart extends React.Component {
         if (!this.props.cart) {
             return (null)
         } 
-
+        const currentDate = new Date().toDateString()
         const cartItems = this.props.cart.map(
             (cartItem, i) => {
                 // debugger
@@ -40,7 +40,7 @@ class Cart extends React.Component {
                             <div className='center'>Link peronal page here</div>
                         </div>
                         <div className='cart-item-row-container'>
-                            <div className='cart-item-row-container left'>
+                            <div className='cart-item-row-container'>
                                 <Link
                                     className='link' 
                                     to={`/products/${cartItem.id}`}>
@@ -85,7 +85,7 @@ class Cart extends React.Component {
                                             icon={faCaretDown} 
                                             className='fa-caret-down'/>
                                     </div>
-                                    <div className='left'>
+                                    <div>
                                         <h3>$ {cartItem.price.toFixed(2)}</h3>
                                         <p>($ {cartItem.price.toFixed(2)} each)</p>
                                     </div>
@@ -107,8 +107,8 @@ class Cart extends React.Component {
                                     </p>
                                 </div>
                             </div>
-                            <button className='coupon center'>
-                                <FontAwesomeIcon icon={faTag} className='flip center'/>
+                            <button className='plainify-button center'>
+                                <FontAwesomeIcon icon={faTag} className='coupon-tag center'/>
                                 Apply shop coupon codes
                             </button>
                         </div>
@@ -116,9 +116,11 @@ class Cart extends React.Component {
                             <textarea 
                                 placeholder="Add a note to Craftesy (optional)">
                             </textarea>
-                            <div className='cart-item-column-container'>
-                                <p>Estimated delivery: Delivery-Date</p>
-                                <p>where this is being delivered from</p>
+                            <div className='cart-item-column-container column-right delivery-info'>
+                                <p>Estimated delivery: 
+                                    <span>{currentDate}</span>
+                                </p>
+                                <p>from: The Interweb</p>
                             </div>
                         </div>
                     </div>
@@ -132,7 +134,7 @@ class Cart extends React.Component {
                     <div className='cart-items'>
                         <h2 
                             className='item-count-header'>
-                            {cartItems.length} {cartItems.length === 1 ? "item" : "items"} in your 
+                            {cartItems.length} {cartItems.length === 1 ? "item" : "items"} in your cart
                         </h2>
                         {cartItems}
                     </div>

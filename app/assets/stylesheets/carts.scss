@@ -42,15 +42,24 @@
         box-shadow: 0 0 15px 1px inset rgba($color: #323232, $alpha: 0.10);
     }
 
-    .coupon {
-        font-weight: 600;
-        font-size: .8rem;
-        color:rgba(0, 0, 0, 0.9);
+    .delivery-info {
+        opacity: 0.75;
+        padding-top: 1rem;
 
-        .flip {
-            font-size: 1rem;
-            margin-right: .5rem;
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85rem;
         }
+
+        span {
+            text-decoration-style: dotted;
+            // text-decoration: underline;
+        }
+    }
+
+    .coupon-tag {
+        font-size: 1rem;
+        margin-right: .5rem;
     }
 
     .item-quantity {
@@ -195,7 +204,7 @@
     font-weight: 700;
 }
 
-.plainify-button::after, .coupon::after {
+.plainify-button::after {
     content: '';
     width: 100%;
     height: 3em;
@@ -209,7 +218,7 @@
     transition: transform 400ms;
 }
 
-.plainify-button:hover::after, .coupon:hover::after {
+.plainify-button:hover::after{
     transform: scale(1);
 }
 
@@ -220,3 +229,4 @@
 .greyed-out{
     opacity: 0.9;
 }
+
