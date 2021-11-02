@@ -30,7 +30,7 @@ class Cart extends React.Component {
                 // debugger
                 return (
                     <div 
-                        className='cart-item-column-container'
+                        className='cart-item-column-container item-seperator'
                         key={i}>
                         <div className='cart-item-row-container'>
                             <div className='cart-item-row-container center' >
@@ -67,7 +67,7 @@ class Cart extends React.Component {
                                 </div>
                             </div>
                             <div className='cart-item-column-container column-right'>
-                                <div className='cart-item-row-container width-bump'>
+                                <div className='cart-item-row-container width cart-item-info '>
                                     <div className='relative'>
                                         <select className='item-quantity'>
                                             <option value="1">1</option>
@@ -151,40 +151,53 @@ class Cart extends React.Component {
 
                         <div className='payment-info'>
                             <div className='cart-item-column-container'>
-                                <h3>How you'll pay</h3>
+                                <h3 className='payment-spacing'>How you'll pay</h3>
                                 <label htmlFor="">
-                                    <select name="" id="">
-                                        <option value="">
-                                            MasterCard, Visa, AmericanExpress, Discover
-                                        </option>
-                                        <option value="">
-                                            PayPal
-                                        </option>
-                                        <option value="">
-                                            Klarmna, 4 interest-free installments
-                                        </option>
-                                    </select>
+                                    <div className='radio-buttons'>
+                                        <div className='cart-item-row-container start center'>
+                                            <input type="radio" name="payment-option" />
+                                            <div className='cart-item-row-container start width'>
+                                                <i class="fab fa-cc-mastercard"></i> 
+                                                <i class="fab fa-cc-visa"></i> 
+                                                <i class="fab fa-cc-amex"></i> 
+                                                <i class="fab fa-cc-discover"></i>
+                                            </div>
+                                        </div>
+                                        <div className='cart-item-row-container start center'>
+                                            <input type="radio" name="payment-option" />
+                                            <div className='cart-item-row-container start width center'>
+                                                <i class="fab fa-cc-paypal"></i>
+                                            </div>
+                                        </div>
+                                        <div className='cart-item-row-container start center'>
+                                            <input type="radio" name="payment-option"/>
+                                            <div className='cart-item-row-container start width center'>
+                                                <i class="far fa-credit-card"></i> 
+                                                <p>Klarna, 4 interest-free installments</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </label>
-                                <p>Pay in 4 installments of Math. Klarna. Learn Klarna</p>
+                                <p className='klarna-info'>Pay in 4 installments of Math. Klarna. Learn Klarna</p>
                             </div>
                             <div className='cart-total'>
-                                <div className='cart-total-items'>
+                                <div className='cart-item-row-container'>
                                     <h3>Item(s) total</h3>
                                     <div>Cart Total Price</div>
                                 </div>
-                                <div className='cart-total-items'>
+                                <div className='cart-item-row-container payment-spacing divider'>
                                     <h3>Shop discount</h3>
                                     <div>Accumulated Discounts</div>
                                 </div>
-                                <div className='cart-total-items'>
-                                    <h4>Subtotal</h4>
+                                <div className='cart-item-row-container sub-total'>
+                                    <div>Subtotal</div>
                                     <div>Total Price after Discounts</div>
                                 </div>
                             </div>
-                            <div>
+                            <button className='cart-item-row-container start shipping'> {/*open modal for shipping information */}
                                 <FontAwesomeIcon icon={faShippingFast}/>
-                                Get shipping cost
-                            </div>
+                                <p className='mg-l width'>Get shipping cost</p>
+                            </button>
                             <button>Proceed to checkout</button>
                             <div> <FontAwesomeIcon icon={faTag}/> Apply Etsy coupon code </div>
                             <p>* additional duties and taxes _may apply_</p>
