@@ -157,22 +157,22 @@ class Cart extends React.Component {
                                         <div className='cart-item-row-container start center'>
                                             <input type="radio" name="payment-option" />
                                             <div className='cart-item-row-container start width'>
-                                                <i class="fab fa-cc-mastercard"></i> 
-                                                <i class="fab fa-cc-visa"></i> 
-                                                <i class="fab fa-cc-amex"></i> 
-                                                <i class="fab fa-cc-discover"></i>
+                                                <i className="fab fa-cc-mastercard"></i> 
+                                                <i className="fab fa-cc-visa"></i> 
+                                                <i className="fab fa-cc-amex"></i> 
+                                                <i className="fab fa-cc-discover"></i>
                                             </div>
                                         </div>
                                         <div className='cart-item-row-container start center'>
                                             <input type="radio" name="payment-option" />
                                             <div className='cart-item-row-container start width center'>
-                                                <i class="fab fa-cc-paypal"></i>
+                                                <i className="fab fa-cc-paypal"></i>
                                             </div>
                                         </div>
                                         <div className='cart-item-row-container start center'>
                                             <input type="radio" name="payment-option"/>
                                             <div className='cart-item-row-container start width center'>
-                                                <i class="far fa-credit-card"></i> 
+                                                <i className="far fa-credit-card"></i> 
                                                 <p>Klarna, 4 interest-free installments</p>
                                             </div>
                                         </div>
@@ -198,9 +198,19 @@ class Cart extends React.Component {
                                 <FontAwesomeIcon icon={faShippingFast}/>
                                 <p className='mg-l width'>Get shipping cost</p>
                             </button>
-                            <button>Proceed to checkout</button>
-                            <div> <FontAwesomeIcon icon={faTag}/> Apply Etsy coupon code </div>
-                            <p>* additional duties and taxes _may apply_</p>
+                            <button className="checkout-button">Proceed to checkout</button>
+                            <div className='
+                                    cart-item-row-container
+                                    craftesy-coupon-container 
+                                    center'>
+                                <div className='coupon-icon-bg'>
+                                    <FontAwesomeIcon 
+                                        icon={faTag} 
+                                        className='coupon-icon'/>
+                                </div>
+                                <p className='width'>Apply Craftesy coupon code</p>
+                            </div>
+                            <p className='tax-info'>* No additional taxes or duties!</p>
                         </div>
                         <div className='contact-me cart-item-row-container'>
                             <p> 

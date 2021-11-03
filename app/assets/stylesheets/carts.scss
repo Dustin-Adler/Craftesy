@@ -5,7 +5,7 @@
     font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
     
     h3 {
-        font-weight: 550;
+        font-weight: 600;
     }
 
     .shopping {
@@ -140,6 +140,14 @@
     box-shadow: 0 0 16px 1px rgba(122, 122, 122, 0.3);
     padding: 1rem;
     margin-bottom: 1.5rem;
+
+    .tax-info{
+        font-size: .9rem;
+        font-weight: 200;
+        opacity: .7;
+        text-align: center;
+        margin-top: 1rem;
+    }
 }
 
 .shop-icon {
@@ -167,6 +175,7 @@
     }
 
     i {
+        color: rgb(123,123, 206);
         font-size: 2.25rem;
         margin: 0 .2rem;
     }
@@ -183,11 +192,6 @@
     .start{
         justify-content: flex-start;
     }
-
-    // .spaced {
-    //     justify-content: space-evenly;
-    //     width: 100%;
-    // }
 
     .width{
         width: 100%;
@@ -261,7 +265,6 @@
     align-items: flex-end;
     text-align: end;
     width: 30%;
-    // border: thin solid red;
 }
 
 .plainify-button{
@@ -300,16 +303,86 @@
 }
 
 .contact-me {
+
+    p {
+        font-size: .9rem;
+        line-height: 1.2em;
+    }
+}
+
+.blue{
+    color: rgb(123,123, 206);
 }
 
 .handshake-icon {
-    border: 5px solid black;
+    color: rgb(123, 123, 206);
+    border-color: rgb(123,123, 206);
+    border: 5px solid;
     border-style: double;
     font-size: 4rem;
-    background-color: rgb(184, 184, 184);
+    background: 
+        linear-gradient(315deg,
+         rgba(22,20,54,1) 10%,
+         rgba(28,28,160,1) 91%);
     border-radius: 25px;
     transform: rotate(-30deg);
+    margin: 0 .75rem;
 }
+
+.checkout-button{
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #222222;
+    border: none;
+    cursor: pointer;
+    font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    border-radius: 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    height: 3em;
+    margin: 10px 0px;
+    transition: transform .2s, background-color .2s;
+}
+
+.checkout-button:hover {
+    transform-origin: 50% 50%;
+    transform: scale(1.02);
+    background-color: #222222 .9;
+}
+
+.craftesy-coupon-container{
+
+    .coupon-icon-bg{
+        background-color: blue;
+        min-width: 25px;
+        min-height: 25px;
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .coupon-icon {
+        color: whitesmoke;
+        font-size: .8rem;
+        transform: rotateY(180deg);
+        margin-top: 2px;
+    }
+
+    p{
+        margin-left: .5rem;
+        font-size: .8rem;
+        font-weight: 600;
+        opacity: .95;
+    }
+}
+
+
 
 .rb{
     border: thin solid red;
