@@ -8,6 +8,7 @@ class ProductIndexItem extends React.Component {
         super(props)
 
         this.state= {
+            quantity: 1,
             description: false,
         }
     }
@@ -62,10 +63,16 @@ class ProductIndexItem extends React.Component {
     }
 
     render() {
-        if (this.props.product == undefined){
+        if (!this.props.product){
             return null
         } else {
+            // debugger
             const product = this.props.product
+            const quantityOptions = [...Array(10)].map( 
+                (el, i) => i === 0 ? 
+                <option key={i} value={i+1} defaultValue> {i+1} </option>
+                :
+                <option key={i} value={i+1}> {i+1} </option>)
             const review = [...Array(5)].map( (el, i) => <i key={i} className="fas fa-star"></i>) // actual review calc coming soon
             return(
                 <div className='product-show'>
@@ -94,18 +101,25 @@ class ProductIndexItem extends React.Component {
                             <div>Pay in 4 installments of $ {(product.price/ 4).toFixed(2)}</div>
                         </div>
                         <form className='show-page-form'>
-                            <label className='show-page-form-labels'> Make your item unique?
-                                <select className='show-page-select'>
-                                    <option defaultValue>
-                                        There are no additional options
-                                    </option>
+                            <label className='show-page-form-labels'> Quantity
+                                <select 
+                                    className='show-page-select'
+                                    onChange={(e) => {
+                                        this.setState({
+                                            quantity: e.target.value
+                                        })
+                                    }}>
+                                   {quantityOptions}
                                 </select>
                             </label>
                             <button 
                                 className='add-to-cart-button'
                                 onClick={() => this.props.createCartItem(
-                                    {product_id: product.id}
-                                    )}>
+                                    {
+                                    product_id: product.id,
+                                    quantity: this.state.quantity
+                                    }
+                                )}>
                                 Add to cart
                             </button>
                         </form>
