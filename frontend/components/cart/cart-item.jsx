@@ -12,6 +12,36 @@ class CartItem extends React.Component {
     constructor(props) {
         super(props)
 
+        if (this.props.cartItem){
+            
+            this.state = {
+                quantity: this.props.cartItem.quantity, 
+                gift: false, 
+                coupon: false
+            }
+        }
+        // debugger
+    }
+
+    handleQuantity() {
+
+        const options = [...Array(10)].map( (el, i) => {
+            return <option key={i} value={i+1}>{i+1}</option>
+        })
+
+        // debugger
+        return (
+            <select 
+                onChange={(e) => {
+                    this.setState({
+                        quantity: e.value
+                    })
+                }}
+                value={this.state.quantity} 
+                className='item-quantity'>
+                {options}
+            </select>
+        )
     }
 
     render(){
@@ -61,18 +91,7 @@ class CartItem extends React.Component {
                     <div className='cart-item-column-container column-right'>
                         <div className='cart-item-row-container width cart-item-info '>
                             <div className='relative'>
-                                <select className='item-quantity'>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
+                                {this.handleQuantity()}
                                 <FontAwesomeIcon 
                                     icon={faCaretDown} 
                                     className='fa-caret-down'/>

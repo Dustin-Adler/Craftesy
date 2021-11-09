@@ -20,6 +20,7 @@ class Api::UsersController < ApplicationController
     else 
       @user = {id: nil, email: params[:email]}
       render 'api/users/getAccountFromEmail'
+      # render json: "Please enter valid email", status: 422
     end
   end
 

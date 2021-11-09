@@ -1,8 +1,8 @@
 class Api::CartsController < ApplicationController
 
     def index
-        # debugger
-        @cart = current_user.items_in_cart
+
+        @cart = current_user.cart_items.includes(:product, :images)
 
         if @cart 
             render "api/carts/show"
@@ -20,6 +20,10 @@ class Api::CartsController < ApplicationController
         else 
             render json: @cart_item.errors.full_messages, status: 422
         end
+    end
+
+    def update
+        
     end
 
     def delete
