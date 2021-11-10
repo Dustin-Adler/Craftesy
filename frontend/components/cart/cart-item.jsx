@@ -7,6 +7,7 @@ import {
     faTag 
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import * as cartActions from '../../actions/cart_actions';
 
 class CartItem extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class CartItem extends React.Component {
         // debugger
     }
 
-    handleQuantity() {
+    handleQuantity(cartItem) {
 
         const options = [...Array(10)].map( (el, i) => {
             return <option key={i} value={i+1}>{i+1}</option>
@@ -33,8 +34,10 @@ class CartItem extends React.Component {
         return (
             <select 
                 onChange={(e) => {
-                    this.setState({
-                        quantity: e.value
+                    debugger
+                    this.props.updateCartItem({
+                        quantity: e.target.value,
+                        id: cartItem.id,
                     })
                 }}
                 value={this.state.quantity} 
@@ -91,7 +94,7 @@ class CartItem extends React.Component {
                     <div className='cart-item-column-container column-right'>
                         <div className='cart-item-row-container width cart-item-info '>
                             <div className='relative'>
-                                {this.handleQuantity()}
+                                {this.handleQuantity(cartItem)}
                                 <FontAwesomeIcon 
                                     icon={faCaretDown} 
                                     className='fa-caret-down'/>
@@ -140,17 +143,18 @@ class CartItem extends React.Component {
     }
 }
 
-export default CartItem;
+// export default CartItem;
+
 // const mSTP = (state) => {
     
 // }
 
-// const mDTP = (dispatch) => {
+const mDTP = (dispatch) => {
 
-//     return {
-//         getCartItems: () => dispatch(getCartItems()),
-//         deleteCartItem: (id) => dispatch(deleteCartItem(id))
-//     }
-// }
+    return {
+        updateCartItem: (cart) => dispatch(cartActions.updateCartItem(cart)),
+        deleteCartItem: (id) => dispatch(cartActions.deleteCartItem(id))
+    }
+}
 
-// export default connect(mSTP, mDTP)(CartItem)
+export default connect( null , mDTP)(CartItem)

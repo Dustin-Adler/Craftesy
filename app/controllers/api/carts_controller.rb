@@ -5,7 +5,7 @@ class Api::CartsController < ApplicationController
         @cart = current_user.cart_items.includes(:product, :images)
 
         if @cart 
-            render "api/carts/show"
+            render "api/carts/index"
         else 
             render json: @cart.errors.full_messages
         end
@@ -23,7 +23,13 @@ class Api::CartsController < ApplicationController
     end
 
     def update
-        
+        @cart_item = Cart.find_by(id: params[:id])
+
+        if @cart_item.update(cart_params)
+            render "api/carts/show"
+        else
+            render json: @cart_item.errors.full_messages, status: 422
+        end
     end
 
     def delete
