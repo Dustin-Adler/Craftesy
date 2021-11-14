@@ -25,7 +25,7 @@ class Cart extends React.Component {
         } 
         const cartItems = this.props.cart.map(
             (cartItem, i) => {
-                debugger
+                // debugger
                 return (
                     <CartItem 
                         key={i}

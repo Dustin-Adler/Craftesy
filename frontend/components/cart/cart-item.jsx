@@ -25,7 +25,6 @@ class CartItem extends React.Component {
     }
 
     handleQuantity(cartItem) {
-
         const options = [...Array(10)].map( (el, i) => {
             return <option key={i} value={i+1}>{i+1}</option>
         })
@@ -34,10 +33,15 @@ class CartItem extends React.Component {
         return (
             <select 
                 onChange={(e) => {
-                    debugger
+                    // debugger
                     this.props.updateCartItem({
                         quantity: e.target.value,
                         id: cartItem.id,
+                    })
+                    .then((res) => {
+                        this.setState({
+                            quantity: res.cartItem.quantity
+                        })
                     })
                 }}
                 value={this.state.quantity} 
@@ -72,7 +76,8 @@ class CartItem extends React.Component {
                             <img 
                                 className='cart-item-img' 
                                 src={cartItem.images[0].url} 
-                                alt={cartItem.name}/>
+                                alt={cartItem.name}
+                                />
                         </Link>
                         <div className='cart-item-column-container padding-left'>
                             <div className='cart-item-column-container '>
@@ -100,8 +105,10 @@ class CartItem extends React.Component {
                                     className='fa-caret-down'/>
                             </div>
                             <div>
-                                <h3>$ {cartItem.price.toFixed(2)}</h3>
+                                <h3>$ {(cartItem.price * this.state.quantity).toFixed(2) }</h3>
+                                {this.state.quantity > 1 ? 
                                 <p>($ {cartItem.price.toFixed(2)} each)</p>
+                                : null}
                             </div>
                         </div>
                         <div className='popularity'>
@@ -142,12 +149,6 @@ class CartItem extends React.Component {
         )
     }
 }
-
-// export default CartItem;
-
-// const mSTP = (state) => {
-    
-// }
 
 const mDTP = (dispatch) => {
 
