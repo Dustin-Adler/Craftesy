@@ -32,9 +32,10 @@ class Api::CartsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
+        
         @cart_item = Cart.find_by(id: params[:id])
-
+        
         if @cart_item 
             @cart_item.delete
         else  

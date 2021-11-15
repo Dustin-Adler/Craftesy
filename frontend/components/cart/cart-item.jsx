@@ -14,14 +14,14 @@ class CartItem extends React.Component {
         super(props)
 
         if (this.props.cartItem){
-            
             this.state = {
                 quantity: this.props.cartItem.quantity, 
                 gift: false, 
-                coupon: false
+                giftMessage: false,
+                coupon: false, 
+                code: ''
             }
         }
-        // debugger
     }
 
     handleQuantity(cartItem) {
@@ -29,11 +29,9 @@ class CartItem extends React.Component {
             return <option key={i} value={i+1}>{i+1}</option>
         })
 
-        // debugger
         return (
             <select 
                 onChange={(e) => {
-                    // debugger
                     this.props.updateCartItem({
                         quantity: e.target.value,
                         id: cartItem.id,
@@ -45,10 +43,113 @@ class CartItem extends React.Component {
                     })
                 }}
                 value={this.state.quantity} 
-                className='item-quantity'>
+                className='item-quantity border-transition'>
                 {options}
             </select>
         )
+    }
+
+    handleCheckbox(boxName) {
+        let checkbox;
+        switch (boxName) {
+            case 'gift':
+                checkbox = this.state.gift
+                break;
+            case 'giftMessage':
+                checkbox = this.state.giftMessage
+                break;
+            case 'coupon':
+                checkbox = this.state.coupon
+                break;
+            default:
+                break;
+        }
+        
+        if(!checkbox){
+            this.setState({
+                [boxName]: true
+            })
+        } else {
+            this.setState({
+                [boxName]: false
+            })
+        }
+    }
+
+    giftMessage() {
+        if (!this.state.gift){
+            return null
+        }
+
+        const textBox = this.state.giftMessage ? 
+            <div className='giftMessage'>
+                <textarea 
+                    className='border-transition'
+                    placeholder="Enter your message. 
+                    Make sure to mention your 'to' and 'from' names">
+
+                </textarea>
+                <p
+                    className='greyed-out'>
+                    Use the space above to enter your gift message.
+                </p>
+            </div>
+            :
+            null
+
+        return (
+            <>
+                <label>
+                    <input
+                        className='checkbox' 
+                        type="checkbox"
+                        defaultChecked={this.state.giftMessage}
+                        onClick={ () => this.handleCheckbox("giftMessage")}/>
+                Add a message for your gift?
+                </label>
+                {textBox}
+            </>
+        )
+    }
+
+    couponCode(){
+        if(!this.state.coupon){
+            return null
+        }
+
+        return (
+            <div className='cart-item-row-container tbb-container jc-fe'>
+                <input 
+                    className='text-box-button tbb-text border-transition'
+                    type="text"
+                    placeholder='Enter coupon code'
+                    value={this.state.code}
+                    onChange={(e) => this.setState({
+                        code: e.target.value
+                    })}/>
+                <button
+                    onClick={() => this.handleCode()}
+                    className='text-box-button tbb-button'>
+                    Apply
+                </button>
+            </div>
+            
+        )
+    }
+
+    handleCode() {
+
+        switch (this.state.code) {
+            case this.props.cartItem:
+                    // discount named item
+                break;
+            case 'Craftesy':
+                    // discount all items in cart
+                break;
+        
+            default:
+                break;
+        }
     }
 
     render(){
@@ -76,8 +177,7 @@ class CartItem extends React.Component {
                             <img 
                                 className='cart-item-img' 
                                 src={cartItem.images[0].url} 
-                                alt={cartItem.name}
-                                />
+                                alt={cartItem.name}/>
                         </Link>
                         <div className='cart-item-column-container padding-left'>
                             <div className='cart-item-column-container '>
@@ -90,7 +190,10 @@ class CartItem extends React.Component {
                             </div>
                             <div className='sr-buttons'>
                                 <button
-                                    className='plainify-button'>
+                                    className='plainify-button'
+                                    onClick={() => {
+                                        this.props.deleteCartItem(cartItem.id)
+                                    }}>
                                     Remove
                                 </button>
                             </div>
@@ -117,24 +220,35 @@ class CartItem extends React.Component {
                     </div>
                 </div>
                 <div className='cart-item-row-container'>
-                    <div className='cart-item-row-container start'>
-                        <input
-                            className='checkbox' 
-                            type="checkbox" />
-                        <div className='cart-item-column-container'>
-                            <h6>Would you like this as a gift?</h6>
-                            <p className='greyed-out'>
-                                Prices aren't real this is a demo
-                            </p>
+                    <div className='cart-item-column'>
+                        <div className='cart-item-row-container start g-r'>
+                            <input
+                                className='checkbox' 
+                                type="checkbox"
+                                defaultChecked={this.state.gift}
+                                onClick={ () => this.handleCheckbox("gift")}/>
+                            <div className='cart-item-column-container'>
+                                <h6>Would you like this as a gift?</h6>
+                                <p className='greyed-out'>
+                                    Prices aren't real this is a demo
+                                </p>
+                            </div>
                         </div>
+                        {this.giftMessage()}
                     </div>
-                    <button className='plainify-button center'>
-                        <FontAwesomeIcon icon={faTag} className='coupon-tag center'/>
-                        Apply shop coupon codes
-                    </button>
+                    <div className='cart-item-column-container width'>
+                        <button 
+                            className='plainify-button shop-coupon'
+                            onClick={()=>{this.handleCheckbox('coupon')}}>
+                            <FontAwesomeIcon icon={faTag} className='coupon-tag'/>
+                            Apply shop coupon codes
+                        </button>
+                        {this.couponCode()}
+                    </div>
                 </div>
                 <div className='cart-item-row-container'>
                     <textarea 
+                        className='border-transition'
                         placeholder="Add a note to Craftesy (optional)">
                     </textarea>
                     <div className='cart-item-column-container column-right delivery-info'>

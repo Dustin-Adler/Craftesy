@@ -39,7 +39,13 @@
         margin: 1.5rem 0;
         padding: .5rem;
         border-radius: 6px;
+        border-color: rgb(180, 180, 180);
         box-shadow: 0 0 15px 1px inset rgba($color: #323232, $alpha: 0.10);
+    }
+
+    .shop-coupon {
+        min-width: 30ch;
+        align-self: flex-end;
     }
 
     .delivery-info {
@@ -89,18 +95,32 @@
         top: 50%;
         transform: translateY(-50%);
     }
+
+    .border-transition {
+        transition: border-color .5s;
+    }
+
+    .border-transition:hover {
+        border-color:rgb(46, 46, 46)
+    }
+
+    input:focus, 
+    select:focus, 
+    textarea:focus, 
+    button:focus {
+        outline: none;
+    }
 }
 
 .cart {
     display: flex;
     justify-content: center;
     max-width: 1400px;
-    // border: thick solid green;
 }
 
 .cart-items {
     width: 100%;
-    margin: 0 2.25rem;    // border: thick solid aqua;
+    margin: 0 2.25rem;
 
     .item-count-header{
         font-size: 2.25rem;
@@ -193,13 +213,24 @@
         justify-content: flex-start;
     }
 
+    .jc-fe {
+        justify-content: flex-end;
+    }
+
     .width{
         width: 100%;
+    }
+
+    .g-r {
+        min-width: 30ch;
+        margin-bottom: .75rem;
     }
 
     .cart-item-info {
         margin-bottom: 1.5rem;
     }
+
+
 }
 
 .shipping{
@@ -232,6 +263,41 @@
     }
 }
 
+.tbb-container {
+    width: 100%;
+    margin-top: .5rem;
+
+    .text-box-button {
+        box-sizing: border-box;
+        border: thin solid black;
+        background-color: none;
+        background: none;
+        height: 3rem;
+        padding: 0 1rem;
+        font-size: 1.05rem;
+    }
+    
+    .tbb-text {
+        border-radius: 24px 0 0 24px;
+        border-color: rgb(180, 180, 180);
+        box-shadow: 0 0 15px 1px inset rgba($color: #323232, $alpha: 0.10);
+        letter-spacing: 0.05rem;
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .tbb-button {
+        color: whitesmoke;
+        background: 
+            linear-gradient(315deg,
+            rgba(22,20,54,1) 10%,
+            rgba(28,28,160,1) 91%);
+        cursor: pointer;
+        border-radius: 0 24px 24px 0;
+        font-weight: 700;
+    }
+}
+
 .cart-item-column-container{
     display: flex;
     flex-direction: column;
@@ -239,6 +305,10 @@
     .klarna-info {
         font-size: 0.9rem;
         margin: .5rem 0rem 2rem 2rem;
+    }
+
+    .greyed-out {
+        font-size: .8rem;
     }
 }
 
@@ -274,6 +344,7 @@
     cursor: pointer;
     position: relative;
     font-weight: 700;
+    margin: 1em 0;
 }
 
 .plainify-button::after {
@@ -299,7 +370,16 @@
 }
 
 .greyed-out{
-    opacity: 0.9;
+    opacity: 0.75;
+    letter-spacing: .1ch;
+    font-size: .8rem;
+}
+
+.giftMessage{
+
+    .greyed-out{
+        margin-top: -1.25rem;
+    }
 }
 
 .contact-me {
