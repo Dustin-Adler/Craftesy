@@ -7,8 +7,12 @@ class Product < ApplicationRecord
         foreign_key: :product_id, 
         class_name: :Review
 
-    has_many :buyers, 
+    has_many :carts, 
         foreign_key: :product_id, 
         class_name: :Cart
+    
+    has_many :buyers,
+        through: :carts, 
+        source: :shopper
         
 end

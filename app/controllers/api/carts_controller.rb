@@ -2,7 +2,8 @@ class Api::CartsController < ApplicationController
 
     def index
 
-        @cart = current_user.cart_items.includes(:product, :images)
+        @cart = current_user.cart_items.includes( { product: [:carts] }, :images)
+        # debugger
 
         if @cart 
             render "api/carts/index"
@@ -33,7 +34,7 @@ class Api::CartsController < ApplicationController
     end
 
     def destroy
-        
+
         @cart_item = Cart.find_by(id: params[:id])
         
         if @cart_item 
@@ -46,6 +47,6 @@ class Api::CartsController < ApplicationController
     private
 
     def cart_params
-        params.require(:cart).permit( :product_id, :quantity )
+        params.require(:cart).permit( :product_id, :quantity, :discount )
     end
 end

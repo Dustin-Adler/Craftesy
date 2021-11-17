@@ -122,7 +122,7 @@ class CartItem extends React.Component {
                 <input 
                     className='text-box-button tbb-text border-transition'
                     type="text"
-                    placeholder='Enter coupon code'
+                    placeholder='(hint) The name of this item!'
                     value={this.state.code}
                     onChange={(e) => this.setState({
                         code: e.target.value
@@ -132,6 +132,7 @@ class CartItem extends React.Component {
                     className='text-box-button tbb-button'>
                     Apply
                 </button>
+
             </div>
             
         )
@@ -139,16 +140,14 @@ class CartItem extends React.Component {
 
     handleCode() {
 
-        switch (this.state.code) {
-            case this.props.cartItem:
-                    // discount named item
-                break;
-            case 'Craftesy':
-                    // discount all items in cart
-                break;
-        
-            default:
-                break;
+        const cartItem = this.props.cartItem
+
+        if(this.state.code.toUpperCase() === cartItem.name.toUpperCase()
+            && cartItem.discount){
+            this.props.updateCartItem({
+                discount: 0.80, 
+                id: cartItem.id
+            })
         }
     }
 
@@ -208,15 +207,33 @@ class CartItem extends React.Component {
                                     className='fa-caret-down'/>
                             </div>
                             <div>
-                                <h3>$ {(cartItem.price * this.state.quantity).toFixed(2) }</h3>
-                                {this.state.quantity > 1 ? 
-                                <p>($ {cartItem.price.toFixed(2)} each)</p>
+                                <h3>
+                                    $ {(cartItem.price * cartItem.quantity * cartItem.discount).toFixed(2) } {/*total price of items after discount*/}
+                                </h3>
+
+                                {cartItem.quantity > 1 ? 
+                                <p>
+                                    ($ {(cartItem.price * cartItem.discount).toFixed(2)} each) {/* price per item after discount if quantity greater than 1 */}
+                                </p>
+                                : null}
+
+                                {cartItem.discount < 1 ?
+                                <p className='discount'>
+                                    $ {(cartItem.price * cartItem.quantity * (1 - cartItem.discount)).toFixed(2) } saved! {/*amount saved if discount applied*/}
+                                </p>
                                 : null}
                             </div>
                         </div>
-                        <div className='popularity'>
-                            XX people have this in their cart
-                        </div>
+                        {cartItem.popularity > 0 ?
+                            <div className='popularity'>
+                                {cartItem.popularity} other {cartItem.popularity > 1  ? 
+                                "people have" 
+                                : "person has"} 
+                                this in their cart
+                            </div>
+                        : null
+                        }
+
                     </div>
                 </div>
                 <div className='cart-item-row-container'>

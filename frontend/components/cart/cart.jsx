@@ -12,10 +12,109 @@ class Cart extends React.Component {
     constructor(props){
         super(props)
 
+        this.state = {
+            shipping: false,
+            coupon: false,
+            code: '',
+        }
     }
 
     componentDidMount() {
         this.props.getCartItems();
+    }
+
+    shippingModal(){
+        if(!this.state.shipping){
+            return null
+        }
+
+        return (
+        <div className='modal-background'>
+            <div className='shippingModal cart-item-column-container'>
+                <h2>All items are digital! No Shipping!</h2>
+                <label 
+                    className="shipping-modal-label">
+                        What do you think about that? 
+                        <br />
+                    <select
+                        className='item-quantity border-transition'>
+                        <option value="">Hip Hip, Hooray!</option>
+                        <option value="">Wow, really!</option>
+                        <option value="">Awesome!</option>
+                        <option value="">Boo! I love paying for shipping.</option>
+                    </select>
+                </label>
+
+                <label 
+                    className="shipping-modal-label ">
+                        Zip / Postal Code 
+                        <br />
+                    <input 
+                        className='border-transition'
+                        type="text"
+                        placeholder="No Zip / Postal code needed" />
+                </label>
+                <div
+                    className="cart-item-row-container">
+                    <button
+                        className='plainify-button'
+                        onClick={()=>this.setState({shipping: false})}>
+                            Cancel
+                    </button>
+                    <button
+                        className='checkout-button'
+                        onClick={()=>this.setState({shipping: false})}>
+                            Update
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        )
+    }
+
+    handleCodeModal() {
+        
+        if(!this.state.coupon){
+            this.setState({
+                coupon: true
+            })
+        } else {
+            this.setState({
+                coupon: false
+            })
+        }
+    }
+
+    handleCoupon(){
+        if(!this.state.coupon){
+            return null
+        }
+
+        return(
+            <div className='cart-item-row-container tbb-container jc-fe'>
+                <input 
+                    className='text-box-button tbb-text border-transition'
+                    type="text"
+                    placeholder='(hint) The name website!'
+                    value={this.state.code}
+                    onChange={(e) => this.setState({
+                        code: e.target.value
+                    })}/>
+                <button
+                    onClick={() => this.handleCode()}
+                    className='text-box-button tbb-button'>
+                    Apply
+                </button>
+
+            </div>
+        )
+    }
+
+    handleCode(){
+
+        
+
     }
 
     render() {
@@ -36,6 +135,7 @@ class Cart extends React.Component {
 
         return (
             <div className='cart-container'>
+                {this.shippingModal()}
                 <div className='cart'>
                     <div className='cart-items'>
                         <h2 
@@ -45,13 +145,15 @@ class Cart extends React.Component {
                         {cartItems}
                     </div>
                     <div className='cart-item-column-container money-stuff'>
-                        <div className='cart-item-row-container'>
+                        <div className='cart-item-row-container keep-shopping'>
                             <span></span>
-                            <Link
-                                className='text-link' 
-                                to='/'>
-                                <h3 className='shopping'>Keep shopping</h3>
-                            </Link>
+                            <button className='plainify-button'>
+                                <Link
+                                    className='plainify-link' 
+                                    to='/'>
+                                    <h3 className='shopping'>Keep shopping</h3>
+                                </Link>
+                            </button>
                         </div>
 
                         <div className='payment-info'>
@@ -99,12 +201,17 @@ class Cart extends React.Component {
                                     <div>Total Price after Discounts</div>
                                 </div>
                             </div>
-                            <button className='cart-item-row-container start shipping'> {/*open modal for shipping information */}
+                            <button 
+                                className='cart-item-row-container start shipping'
+                                onClick={ () => this.setState({shipping: true})}> {/*open modal for shipping information */}
                                 <FontAwesomeIcon icon={faShippingFast}/>
                                 <p className='mg-l width'>Get shipping cost</p>
                             </button>
                             <button className="checkout-button">Proceed to checkout</button>
-                            <div className='
+                            <button
+                                onClick={() => {this.handleCodeModal()}} 
+                                className='
+                                    plainify-button
                                     cart-item-row-container
                                     craftesy-coupon-container 
                                     center'>
@@ -114,7 +221,8 @@ class Cart extends React.Component {
                                         className='coupon-icon'/>
                                 </div>
                                 <p className='width'>Apply Craftesy coupon code</p>
-                            </div>
+                            </button>
+                            {this.handleCoupon()}
                             <p className='tax-info'>* No additional taxes or duties!</p>
                         </div>
                         <div className='contact-me cart-item-row-container'>
