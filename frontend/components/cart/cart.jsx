@@ -102,7 +102,7 @@ class Cart extends React.Component {
                         code: e.target.value
                     })}/>
                 <button
-                    onClick={() => this.handleCode()}
+                    onClick={() => this.handleCode(this.state.code)}
                     className='text-box-button tbb-button'>
                     Apply
                 </button>
@@ -111,10 +111,19 @@ class Cart extends React.Component {
         )
     }
 
-    handleCode(){
-
-        
-
+    handleCode(code){
+        // debugger
+        if (code.toUpperCase() === 'CRAFTESY'){
+            this.props.cart.forEach((item) => {
+                if (item.discount <= 0.75){
+                    return item
+                } else {
+                    item.discount -= .1
+                    this.props.updateCartItem(item)
+                }
+            })
+            
+        } 
     }
 
     render() {
@@ -124,7 +133,7 @@ class Cart extends React.Component {
         } 
         const cartItems = this.props.cart.map(
             (cartItem, i) => {
-                // debugger
+                debugger
                 return (
                     <CartItem 
                         key={i}
@@ -132,6 +141,13 @@ class Cart extends React.Component {
                 )
             }
         )
+
+        let totalPrice = 0, totalDiscount = 0, subtotal = 0
+        this.props.cart.forEach((item) => {
+            totalPrice += (item.price * item.quantity), 
+            totalDiscount += (item.price * item.quantity) * (1 - item.discount),
+            subtotal += (item.price * item.quantity) * item.discount
+        })
 
         return (
             <div className='cart-container'>
@@ -162,7 +178,7 @@ class Cart extends React.Component {
                                 <label htmlFor="">
                                     <div className='radio-buttons'>
                                         <div className='cart-item-row-container start center'>
-                                            <input type="radio" name="payment-option" />
+                                            <input type="radio" name="payment-option" defaultChecked />
                                             <div className='cart-item-row-container start width'>
                                                 <i className="fab fa-cc-mastercard"></i> 
                                                 <i className="fab fa-cc-visa"></i> 
@@ -190,15 +206,15 @@ class Cart extends React.Component {
                             <div className='cart-total'>
                                 <div className='cart-item-row-container'>
                                     <h3>Item(s) total</h3>
-                                    <div>Cart Total Price</div>
+                                    <div>$ {totalPrice.toFixed(2)}</div>
                                 </div>
                                 <div className='cart-item-row-container payment-spacing divider'>
                                     <h3>Shop discount</h3>
-                                    <div>Accumulated Discounts</div>
+                                    <div>-$ {totalDiscount.toFixed(2)}</div>
                                 </div>
                                 <div className='cart-item-row-container sub-total'>
                                     <div>Subtotal</div>
-                                    <div>Total Price after Discounts</div>
+                                    <div>$ {subtotal.toFixed(2)}</div>
                                 </div>
                             </div>
                             <button 

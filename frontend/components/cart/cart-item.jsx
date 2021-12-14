@@ -143,9 +143,9 @@ class CartItem extends React.Component {
         const cartItem = this.props.cartItem
 
         if(this.state.code.toUpperCase() === cartItem.name.toUpperCase()
-            && cartItem.discount){
+            && cartItem.discount >= 0.9){
             this.props.updateCartItem({
-                discount: 0.80, 
+                discount: cartItem.discount -= .2, 
                 id: cartItem.id
             })
         }
@@ -157,6 +157,7 @@ class CartItem extends React.Component {
         } 
         const currentDate = new Date().toDateString()
         const cartItem = this.props.cartItem
+        debugger
         return(
             <div 
                 className='cart-item-column-container item-seperator'>
@@ -166,7 +167,7 @@ class CartItem extends React.Component {
                         <div className='shop-icon'><FontAwesomeIcon icon={faStore}/></div>
                         <h3>Thank you for using Craftesy</h3>
                     </div>
-                    <div className='center'>Link peronal page here</div>
+                    <div className='center'>Link personal page here</div>
                 </div>
                 <div className='cart-item-row-container'>
                     <div className='cart-item-row-container cart-item-info'>

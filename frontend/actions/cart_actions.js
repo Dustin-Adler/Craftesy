@@ -26,15 +26,15 @@ export const getCartItems = () => (dispatch) => (
 
 export const createCartItem = (cart) => (dispatch) => (
     CartAPIUtil.createCartItem(cart)
-    .then(recCartItems => dispatch(receiveCartItems(recCartItems)))
-)
-
-export const deleteCartItem = (id) => (dispatch) => (
-    CartAPIUtil.deleteCartItem(id)
-    .then(() => dispatch(removeCartItem(id)))
+    .then(recCartItem => dispatch(receiveCartItem(recCartItem)))
 )
 
 export const updateCartItem = (cart) => (dispatch) => (
     CartAPIUtil.updateCartItem(cart)
     .then(recCartItems => dispatch(receiveCartItem(recCartItems)))
+)
+
+export const deleteCartItem = (id) => (dispatch) => (
+    CartAPIUtil.deleteCartItem(id)
+    .then(() => dispatch(removeCartItem(id)))
 )
