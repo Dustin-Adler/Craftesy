@@ -133,7 +133,6 @@ class Cart extends React.Component {
         } 
         const cartItems = this.props.cart.map(
             (cartItem, i) => {
-                debugger
                 return (
                     <CartItem 
                         key={i}
@@ -223,7 +222,11 @@ class Cart extends React.Component {
                                 <FontAwesomeIcon icon={faShippingFast}/>
                                 <p className='mg-l width'>Get shipping cost</p>
                             </button>
-                            <button className="checkout-button">Proceed to checkout</button>
+                            <button 
+                                className="checkout-button"
+                                onClick={() => this.props.openModal('thank-you')}>
+                                    Proceed to checkout
+                            </button>
                             <button
                                 onClick={() => {this.handleCodeModal()}} 
                                 className='

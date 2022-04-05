@@ -5,6 +5,7 @@ import {
     deleteCartItem, 
     updateCartItem
 } from '../../actions/cart_actions'
+import { openModal } from '../../actions/modal_actions'
 
 const mSTP = (state) => {
     // debugger
@@ -16,6 +17,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
 
     return {
+        openModal: (value) => dispatch(openModal(value)),
         updateCartItem: (item) => dispatch(updateCartItem(item)),
         getCartItems: () => dispatch(getCartItems()),
         deleteCartItem: (id) => dispatch(deleteCartItem(id))
