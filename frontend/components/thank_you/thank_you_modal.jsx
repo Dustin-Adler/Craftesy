@@ -26,10 +26,24 @@ class ThankYou extends React.Component {
                     <button>Clear Cart & Start Over</button>
                 </div>
                 <div className='links'>
-                    <div>LinkedIn</div>
-                    <div>GitHub</div>
-                    <div>AngelsList</div>
-                    <div>Personal Website</div>
+                    <a 
+                        target="_blank" 
+                        rel="noreferrer noopener" 
+                        href="https://www.linkedin.com/in/dustin-adler-software-eng-web-dev/">
+                        <i className="fab fa-linkedin"></i>
+                    </a>
+                    <a 
+                        target="_blank" 
+                        rel="noreferrer noopener" 
+                        href="https://angel.co/u/dustin-adler">
+                        <i className="fab fa-angellist"></i>
+                    </a>
+                    <a 
+                        target="_blank" 
+                        rel="noreferrer noopener" 
+                        href="https://github.com/Dustin-Adler">
+                        <i className="fab fa-github-square"></i>
+                    </a>
                 </div>
             </div>
         )
