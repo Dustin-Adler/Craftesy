@@ -16,14 +16,13 @@ class ThankYou extends React.Component {
                     Craftesy, my Etsy clone. It was a pleasure to work on,
                     and I hope that you liked what you saw enough to
                     contact me with any opportunities or inquieries you
-                    might have.
+                    might have using the links below.
                 </p>
                 <div className='buttons-container'>
                     <button 
                         onClick={() => this.props.closeModal()}>
                             Cancel & Keep Shopping!
                     </button>
-                    <button>Clear Cart & Start Over</button>
                 </div>
                 <div className='links'>
                     <a 
