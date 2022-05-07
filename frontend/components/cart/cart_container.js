@@ -8,7 +8,6 @@ import {
 import { openModal } from '../../actions/modal_actions'
 
 const mSTP = (state) => {
-    // debugger
     return {
         cart: Object.values(state.entities.cart)
     }

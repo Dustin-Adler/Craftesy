@@ -3,7 +3,6 @@ class Api::CartsController < ApplicationController
     def index
 
         @cart = current_user.cart_items.includes( { product: [:carts] }, :images)
-        # debugger
 
         if @cart 
             render "api/carts/index"

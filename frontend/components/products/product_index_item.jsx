@@ -66,7 +66,6 @@ class ProductIndexItem extends React.Component {
         if (!this.props.product){
             return null
         } else {
-            // debugger
             const product = this.props.product
             const quantityOptions = [...Array(10)].map( 
                 (el, i) => i === 0 ? 

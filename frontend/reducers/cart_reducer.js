@@ -10,7 +10,6 @@ const cartReducer = (state = {}, action) => {
             return action.cartItems
 
         case RECEIVE_CART_ITEM:
-            // debugger
             return {...state, [action.cartItem.id]: action.cartItem}
 
         case REMOVE_CART_ITEM:

@@ -112,7 +112,6 @@ class Cart extends React.Component {
     }
 
     handleCode(code){
-        // debugger
         if (code.toUpperCase() === 'CRAFTESY'){
             this.props.cart.forEach((item) => {
                 if (item.discount <= 0.75){
@@ -127,7 +126,6 @@ class Cart extends React.Component {
     }
 
     render() {
-        // debugger
         if (!this.props.cart) {
             return (null)
         } 
