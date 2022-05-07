@@ -18,12 +18,12 @@ class ThankYou extends React.Component {
                     contact me with any opportunities or inquieries you
                     might have.
                 </p>
-                <div className='buttons'>
+                <div className='buttons-container'>
                     <button 
                         onClick={() => this.props.closeModal()}>
-                            close modal/keep shopping
+                            Cancel & Keep Shopping!
                     </button>
-                    <button>clear cart and move to start</button>
+                    <button>Clear Cart & Start Over</button>
                 </div>
                 <div className='links'>
                     <div>LinkedIn</div>
