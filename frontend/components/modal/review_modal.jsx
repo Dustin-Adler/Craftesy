@@ -1,9 +1,9 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import CreateReview from '../reviews/create_review_form'
-import UpdateReviewForm from '../reviews/update_review_form'
-import * as ReviewActions from '../../actions/review_actions'
+import CreateReview from '../reviews/create_review_form';
+import UpdateReviewForm from '../reviews/update_review_form';
+import * as ReviewActions from '../../actions/review_actions';
 
 function ReviewModal({ revModal, closeModal, productId, createReview, review, updateReview, deleteReview}) {
   if (!revModal) {

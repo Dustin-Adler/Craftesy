@@ -157,7 +157,6 @@ class CartItem extends React.Component {
         } 
         const currentDate = new Date().toDateString()
         const cartItem = this.props.cartItem
-        debugger
         return(
             <div 
                 className='cart-item-column-container item-seperator'>
