@@ -46,7 +46,7 @@ const Footer = () => {
             </div>
             <nav className='professional-links'>
                 <ExternalLink href='https://github.com/Dustin-Adler'> <GitHubIcon className='icon'></GitHubIcon>  </ExternalLink>
-                <ExternalLink href='https://www.linkedin.com/in/dustin-adler-software-engineer-web-developer'> <LinkedInIcon className='icon'></LinkedInIcon> </ExternalLink>
+                <ExternalLink href='https://www.linkedin.com/in/dustin-adler-software-eng-web-dev/'> <LinkedInIcon className='icon'></LinkedInIcon> </ExternalLink>
                 <h4>Personal Site: Coming Soon</h4>
             </nav>
             <div className='heel'>
