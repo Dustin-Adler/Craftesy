@@ -1,3 +1,405 @@
-// Place all the styles related to the carts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.cart-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    
+    h3 {
+        font-weight: 600;
+    }
+
+    .shopping {
+        margin: .75rem 0px 2.5rem 0px;
+    }
+
+    .checkbox{
+        border-width: 10px;
+        height: 20px; 
+        width: 20px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.1rem;
+    }
+
+    .popularity {
+        color: #A61a2e
+    }
+
+    textarea {
+        width: 425px;
+        height: 60px;
+        max-width: 425px;
+        max-height: 60px;
+        min-width: 425px;
+        min-height: 60px;
+        margin: 1.5rem 0;
+        padding: .5rem;
+        border-radius: 6px;
+        box-shadow: 0 0 15px 1px inset rgba($color: #323232, $alpha: 0.10);
+    }
+
+    .delivery-info {
+        opacity: 0.75;
+        padding-top: 2rem;
+
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85rem;
+        }
+
+        span {
+            text-decoration-style: dashed;
+            text-decoration-line: underline;
+        }
+    }
+
+    .coupon-tag {
+        font-size: 1rem;
+        margin-right: .5rem;
+    }
+
+    .item-quantity {
+        appearance: none;
+        font-size: 1rem;
+        border-width: 1px;
+        border-color: rgba($color: #868686, $alpha: 0.3);
+        width: 80px;
+        height: 48px;
+        padding: .5rem;
+        border-radius: 6px;
+        box-shadow: 0px 0px 5px 3px rgba(216, 216, 216, 0.3);
+        cursor: pointer;
+    }
+
+    .relative {
+        position: relative;
+    }
+
+    .fa-caret-down {
+        content: "";
+        width: 24px;
+        height: 24px;
+        pointer-events: none;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.cart {
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
+    // border: thick solid green;
+}
+
+.cart-items {
+    width: 100%;
+    margin: 0 2.25rem;    // border: thick solid aqua;
+
+    .item-count-header{
+        font-size: 2.25rem;
+        font-weight: 100;
+        margin-bottom: 2rem;
+    }
+
+    .link{
+        cursor: pointer;
+        width: 205px;
+        height: 175px;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+
+    .item-seperator {
+        border-bottom:1px solid rgba($color: #323232, $alpha: 0.10);
+        margin-bottom: 1.2rem;
+    }
+}
+
+.text-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-link:hover{
+    text-decoration: underline;
+}
+
+.money-stuff {
+    width: 48%;
+}
+
+.payment-info {
+    border-radius: 14px;
+    box-shadow: 0 0 16px 1px rgba(122, 122, 122, 0.3);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+
+    .tax-info{
+        font-size: .9rem;
+        font-weight: 200;
+        opacity: .7;
+        text-align: center;
+        margin-top: 1rem;
+    }
+}
+
+.shop-icon {
+    background-color: rgb(172, 171, 171);
+    color: rgb(71, 71, 71);
+    border-radius: 3px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    margin-bottom: .75rem;
+}
+
+.radio-buttons{
+    input {
+        margin: .5rem 0;
+    }
+
+    input[type="radio"] {
+        transform: scale(2);
+        margin: 0 .5rem;
+    }
+
+    i {
+        color: rgb(123,123, 206);
+        font-size: 2.25rem;
+        margin: 0 .2rem;
+    }
+}
+
+.payment-spacing {
+    padding: .75rem 0;
+}
+
+.cart-item-row-container{
+    display: flex;
+    justify-content: space-between;
+
+    .start{
+        justify-content: flex-start;
+    }
+
+    .width{
+        width: 100%;
+    }
+
+    .cart-item-info {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.shipping{
+    font-size: .85rem;
+    text-decoration: underline;
+    margin-bottom: .75rem;
+    border: none;
+    background-color: none;
+    background: none;
+    cursor: pointer;
+    transition: opacity .2s;
+
+    .mg-l {
+        margin-left: .5rem;;
+    }
+}
+
+.shipping:hover {
+    opacity: .6;
+}
+
+.cart-total {
+
+    .divider{
+        border-bottom:1px solid rgba($color: #323232, $alpha: 0.10);
+    }
+
+    .sub-total{
+        margin: .75rem 0;
+    }
+}
+
+.cart-item-column-container{
+    display: flex;
+    flex-direction: column;
+
+    .klarna-info {
+        font-size: 0.9rem;
+        margin: .5rem 0rem 2rem 2rem;
+    }
+}
+
+.cart-item-img{
+    max-width: 100%;
+    object-fit: contain;
+    object-position: top;
+}
+
+.padding-left {
+    padding-left: 1rem;
+}
+
+.padding-right {
+    padding-right: 1rem;
+}
+
+.center {
+    align-items: center;
+    align-self: center;
+}
+
+.column-right {
+    align-items: flex-end;
+    text-align: end;
+    width: 30%;
+}
+
+.plainify-button{
+    border: none;
+    background-color: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    font-weight: 700;
+}
+
+.plainify-button::after {
+    content: '';
+    width: 100%;
+    height: 3em;
+    border-radius: 24px;
+    display: block;
+    position: absolute;
+    transform: scale(0);
+    background-color: rgba($color: #323232, $alpha: 0.10);
+    bottom: -.9em;
+    left: 0;
+    transition: transform 400ms;
+}
+
+.plainify-button:hover::after{
+    transform: scale(1);
+}
+
+.sr-buttons {
+    padding: 1em 0;
+}
+
+.greyed-out{
+    opacity: 0.9;
+}
+
+.contact-me {
+
+    p {
+        font-size: .9rem;
+        line-height: 1.2em;
+    }
+}
+
+.blue{
+    color: rgb(123,123, 206);
+}
+
+.handshake-icon {
+    color: rgb(123, 123, 206);
+    border-color: rgb(123,123, 206);
+    border: 5px solid;
+    border-style: double;
+    font-size: 4rem;
+    background: 
+        linear-gradient(315deg,
+         rgba(22,20,54,1) 10%,
+         rgba(28,28,160,1) 91%);
+    border-radius: 25px;
+    transform: rotate(-30deg);
+    margin: 0 .75rem;
+}
+
+.checkout-button{
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #222222;
+    border: none;
+    cursor: pointer;
+    font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    border-radius: 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    height: 3em;
+    margin: 10px 0px;
+    transition: transform .2s, background-color .2s;
+}
+
+.checkout-button:hover {
+    transform-origin: 50% 50%;
+    transform: scale(1.02);
+    background-color: #222222 .9;
+}
+
+.craftesy-coupon-container{
+
+    .coupon-icon-bg{
+        background-color: blue;
+        min-width: 25px;
+        min-height: 25px;
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .coupon-icon {
+        color: whitesmoke;
+        font-size: .8rem;
+        transform: rotateY(180deg);
+        margin-top: 2px;
+    }
+
+    p{
+        margin-left: .5rem;
+        font-size: .8rem;
+        font-weight: 600;
+        opacity: .95;
+    }
+}
+
+
+
+.rb{
+    border: thin solid red;
+}
+
+.bb{
+    border: thin solid blue;
+}
+
+.gb {
+    border: thin solid green;
+}
+
+.ob {
+    border: thin solid orange;
+}
+
+.fb {
+    border: thick solid fuchsia;
+}
