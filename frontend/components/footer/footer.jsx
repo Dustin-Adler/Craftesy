@@ -54,7 +54,7 @@ const Footer = () => {
                     <p>UnitedStates | English | {"$(USD)"}</p>
                 </div>
                 <div className='terms-privacy-ads'>
-                    <p>© 2021 Craftesy, Inc.</p>
+                    <p>© 2023 Craftesy, Inc.</p>
                     <p className='underline'>No Terms of use</p>
                     <p className='underline'>Open to the public</p>
                     <p className='underline'>Ad free</p> 
