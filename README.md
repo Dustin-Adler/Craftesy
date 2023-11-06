@@ -1,7 +1,7 @@
 ![image](https://user-images.githubusercontent.com/72500278/133801979-42ec1250-03b1-4ab8-ba32-aca733587ec4.png)
 
 My work isn't done yet but if you'd like to see what is current click the link below.
-- [Craftesy on Heroku](https://craftesy.herokuapp.com/#/)
+- [Craftesy on AWS Elastic Beanstalk](tbd)
 
 ### Installation instructions
 Clone the repo using the command git clone https://github.com/dustin-adler/craftesy.git
@@ -22,7 +22,7 @@ Rails
 Jquery
 SCSS/CSS
 AWS
-Heroku
+Elastic Beanstalk
 
 ### Features
 User Authentication and errors

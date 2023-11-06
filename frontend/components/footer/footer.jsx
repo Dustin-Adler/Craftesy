@@ -18,7 +18,7 @@ const Footer = () => {
                     <li>Jquery</li>
                     <li>SCSS/CSS</li>
                     <li>AWS</li>
-                    <li>Heroku</li>
+                    <li>AWS Elastic Beanstalk</li>
                 </ul>
                 <ul className='project-descriptors'>
                     <h3 className='top-of-list'>Interests</h3>
