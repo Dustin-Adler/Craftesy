@@ -15,7 +15,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-gem 'aws-sdk-s3'
+# removed s3 specific gem in favor of aws sdk responsible for all aws gems in preperation for moving application to aws-elastic-beanstalk
+# gem 'aws-sdk-s3'
+gem 'aws-sdk', '~> 3'
+# Use aws-sdk-rails for ruby on rails integration for current and future upgrades
+gem 'aws-sdk-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -47,10 +51,11 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.8'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '~> 4.1.1'
+  # removed spring watcher listen as it was preventing spring upgrade requirement for newer version of rails.
+  # gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
