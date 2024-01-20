@@ -8,8 +8,16 @@
 
 require 'open-uri'
 
-User.delete_all 
-Product.delete_all 
+any_users = User.first
+any_products = Product.first
+
+if any_users
+    User.delete_all
+end
+
+if any_products
+    Product.delete_all
+end
 
 DemoUser = User.create({
     email: 'demo@account.id',
