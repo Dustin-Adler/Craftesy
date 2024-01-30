@@ -226,10 +226,7 @@ class CartItem extends React.Component {
                         </div>
                         {cartItem.popularity > 0 ?
                             <div className='popularity'>
-                                {cartItem.popularity} other {cartItem.popularity > 1  ? 
-                                "people have" 
-                                : "person has"} 
-                                this in their cart
+                                {cartItem.popularity} other {cartItem.popularity > 1  ? "people have" : "person has"} this in their cart
                             </div>
                         : null
                         }
