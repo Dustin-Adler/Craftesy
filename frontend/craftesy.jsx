@@ -10,6 +10,7 @@ import * as ReviewActions from './actions/review_actions';
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   let preloadedState = undefined;
+
   if (window.currentUser) {
     preloadedState = {
       entities: {
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         id: window.currentUser.id,
       },
     };
+    delete window.currentUser;
   }
 
   store = configureStore(preloadedState)
