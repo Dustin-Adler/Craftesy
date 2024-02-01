@@ -50,3 +50,10 @@ export const deleteProduct = (id) => (dispatch) => (
         () => dispatch(removeProduct(id))
     )
 )
+
+export const searchByProductName = (search_string) => (dispatch) => (
+    ProductApiUtil.searchByProductName(search_string)
+    .then(
+        products => dispatch(receiveProducts(products))
+    )
+)

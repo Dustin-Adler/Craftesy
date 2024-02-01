@@ -1,4 +1,4 @@
-import * as ReviewApiUtil from '../utils/reviews_api_utils';
+import * as ReviewApiUtil from '../utils/reviews_api_util';
 export const RECIEVE_PRODUCT_REVIEWS = 'RECIEVE_PRODUCT_REVIEWS';
 export const RECIEVE_REVIEW = 'RECIEVE_REVIEW';
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';

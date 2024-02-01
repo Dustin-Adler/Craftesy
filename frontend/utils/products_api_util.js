@@ -34,3 +34,11 @@ export const deleteProduct = (id) => (
         method: 'delete'
     })
 )
+
+export const searchByProductName = (search_string) => (
+    $.ajax({
+        url: '/api/products/search_products_by_name',
+        method: 'get',
+        data: {search_string}
+    })
+)

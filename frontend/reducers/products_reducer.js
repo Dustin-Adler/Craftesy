@@ -2,13 +2,16 @@ import {RECEIVE_PRODUCTS, RECEIVE_PRODUCT, REMOVE_PRODUCT} from '../actions/prod
 
 
 const productReducer = (state = {}, action) => {
+    let newState
     switch (action.type) {
         case RECEIVE_PRODUCTS:
-            return action.products
+            newState = {...state, ...action.products}
+            console.log(action, newState)
+            return newState
         case RECEIVE_PRODUCT:
             return {...state, [action.product.id]: action.product}
         case REMOVE_PRODUCT:
-            const newState = {...state}
+            newState = {...state}
             delete newState[action.id]
             return newState
         default:
