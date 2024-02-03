@@ -5,7 +5,7 @@ import ProductIndex from './product_index'
 const mSTP = (state) => {
     const allProducts = Object.values(state.entities.products)
     let productSelection = []
-    if (allProducts.length){
+    if (allProducts.length >= 10){
         for (let i = 0; i < 10; i++) {
             const selected = Math.floor(Math.random() * allProducts.length)
             productSelection.push(allProducts[selected])

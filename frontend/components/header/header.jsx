@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, withRouter, history } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class Header extends React.Component {
     constructor(props){
@@ -35,12 +35,6 @@ class Header extends React.Component {
         )
     }
 
-    routeToProductSearchIndex() {
-        if(this.props.history.location.pathname !== '/products/search') {
-            return this.props.history.push('/products/search')
-        }
-    }
-
     handleSearchInput(e) {
         if (e.key === "Enter") {
             this.props.searchByProductName(this.state.searchString)
@@ -51,20 +45,27 @@ class Header extends React.Component {
         }
     }
 
+    routeToProductSearchIndex() {
+        if(this.props.history.location.pathname !== '/products/search') {
+            return this.props.history.push('/products/search')
+        }
+    }
+
     render() {
         
         return(
             <div className='header'>
                 <div className='search-sign-in-and-cart'>
-                    <Link to='/'><div className="logo">Craftesy</div></Link>
-                    <input 
+                    <Link to='/'>
+                        <div className="logo">Craftesy</div>
+                    </Link>
+                    <input
                         onKeyDown={(e) => this.handleSearchInput(e)}
                         onChange={this.update()}
                         value= {this.state.searchString}
                         type="search"
                         className='main-search-field'
-                        placeholder="It's dangerous to go alone..."
-                    />
+                        placeholder="It's dangerous to go alone..."/>
                     {this.signInButton()}
                     <button className='cart-icon'>
                         <Link to='/cart'>
