@@ -43,7 +43,6 @@ class Header extends React.Component {
 
     handleSearchInput(e) {
         if (e.key === "Enter") {
-            console.log(this.state.searchString)
             this.props.searchByProductName(this.state.searchString)
             .then(
                 this.clearSearchBar(),

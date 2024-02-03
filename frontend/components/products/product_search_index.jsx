@@ -7,7 +7,6 @@ class ProductSearchIndex extends React.Component {
     }
 
     render() {
-        console.log(this.props.products, this.props.products.size)
         const anyProducts = this.props.products.length
         if (!anyProducts){
             return (
