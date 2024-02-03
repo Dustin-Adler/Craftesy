@@ -1,16 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter, history } from 'react-router-dom'
 
 class Header extends React.Component {
     constructor(props){
         super(props)
-        this.state = this.props.searchString
-        // console.log(this.state)
+        this.state = {searchString: this.props.searchString}
     }
-
-    // componentDidMount() {
-
-    // }
 
     signInButton() {
         if (this.props.currentUser){
@@ -28,16 +23,32 @@ class Header extends React.Component {
         }
     }
 
-    update(field){
+    update() {
         return (e) => {
-            // console.log(field, this.state, e.currentTarget)
-            this.setState({[field]: e.currentTarget.value})
+            this.setState({searchString: e.currentTarget.value})
+        }
+    }
+
+    clearSearchBar() {
+        return (
+            this.setState({searchString: ''})
+        )
+    }
+
+    routeToProductSearchIndex() {
+        if(this.props.history.location.pathname !== '/products/search') {
+            return this.props.history.push('/products/search')
         }
     }
 
     handleSearchInput(e) {
         if (e.key === "Enter") {
-            this.props.searchByProductName(this.state)
+            console.log(this.state.searchString)
+            this.props.searchByProductName(this.state.searchString)
+            .then(
+                this.clearSearchBar(),
+                this.routeToProductSearchIndex()
+            )
         }
     }
 
@@ -49,15 +60,15 @@ class Header extends React.Component {
                     <Link to='/'><div className="logo">Craftesy</div></Link>
                     <input 
                         onKeyDown={(e) => this.handleSearchInput(e)}
-                        onChange={this.update('search')}
+                        onChange={this.update()}
+                        value= {this.state.searchString}
                         type="search"
                         className='main-search-field'
                         placeholder="It's dangerous to go alone..."
                     />
                     {this.signInButton()}
                     <button className='cart-icon'>
-                        <Link
-                            to='/cart'>
+                        <Link to='/cart'>
                             🛒
                         </Link>
                     </button>
@@ -78,4 +89,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

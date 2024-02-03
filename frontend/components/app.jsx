@@ -9,6 +9,7 @@ import AboutCraftesy from './about/what_is_craftesy';
 import GameBubblesContainer from './products/game_bubbles_container';
 import ProductIndexItemContainer from './products/product_index_item_container';
 import CartContainer from './cart/cart_container'
+import ProductSearchIndexContainer from './products/product_search_index_container'
 
 const App = () => (
   <div className='master-layout'>
@@ -18,7 +19,10 @@ const App = () => (
     </header>
     <main>
       <Route exact path='/' component={GameBubblesContainer} />
-      <Route path='/products/:id' component={ProductIndexItemContainer} />
+      <Switch>
+        <Route path='/products/search' component={ProductSearchIndexContainer} />
+        <Route path='/products/:id' component={ProductIndexItemContainer} />
+      </Switch>
       <Route exact path='/products/:id' component={ReviewModal}/>
       <Route path='/products/:id/reviews/:reviewId' component={ReviewModal}/>
       <Route path='/cart' component={CartContainer}/>

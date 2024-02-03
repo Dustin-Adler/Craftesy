@@ -3,7 +3,6 @@ import * as ProductActions from "../../actions/product_actions"
 import ProductIndex from './product_index'
 
 const mSTP = (state) => {
-    
     const allProducts = Object.values(state.entities.products)
     let productSelection = []
     if (allProducts.length){

@@ -6,7 +6,6 @@ const productReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PRODUCTS:
             newState = {...state, ...action.products}
-            console.log(action, newState)
             return newState
         case RECEIVE_PRODUCT:
             return {...state, [action.product.id]: action.product}
