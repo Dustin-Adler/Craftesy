@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import ProductSearchItem from '../products/product_search_item'
 
 class ProductSearchIndex extends React.Component {
     constructor(props) {
@@ -17,22 +18,17 @@ class ProductSearchIndex extends React.Component {
         }
 
         const products = this.props.products.map(
-            (product, i) =>  
-                <li key={i}>
-                    <Link to={`/products/${product.id}`}>
-                        <img 
-                            className='product-index-img' 
-                            src={product.images[0].url} 
-                            alt={product.name}/>
-                    </Link>
-                        <div className='price-container'>
-                            <div className='product-index-price'>$ {product.price.toFixed(2)}</div>
-                        </div>
-                </li>
+            (product, i) =>
+                <ProductSearchItem 
+                    key={i}
+                    product={product}
+                    createCartItem={this.props.createCartItem}>
+                </ProductSearchItem>
         )
+
         return (
             <div className='center-product-index'>
-                <ul className='product-index'>
+                <ul className='product-search-index'>
                     {products}
                 </ul>
             </div>

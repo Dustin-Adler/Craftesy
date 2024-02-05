@@ -23,9 +23,9 @@ class ProductIndex extends React.Component {
                             src={product.images[0].url} 
                             alt={product.name}/>
                     </Link>
-                        <div className='price-container'>
-                            <div className='product-index-price'>$ {product.price.toFixed(2)}</div>
-                        </div>
+                    <div className='price-container'>
+                        <div className='product-index-price'>$ {product.price.toFixed(2)}</div>
+                    </div>
                 </li>
         )
             

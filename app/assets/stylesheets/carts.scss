@@ -100,6 +100,10 @@
         border-color:rgb(46, 46, 46)
     }
 
+    .discount {
+        color: rgb(42, 170, 42);
+    }
+
     input:focus, 
     select:focus, 
     textarea:focus, 
@@ -190,6 +194,25 @@
     .plainify-button::after {
         top: -.5em;
     }
+
+    .shipping {
+        font-size: .85rem;
+        text-decoration: underline;
+        margin-bottom: .75rem;
+        border: none;
+        background-color: none;
+        background: none;
+        cursor: pointer;
+        transition: opacity .2s;
+    
+        .mg-l {
+            margin-left: .5rem;;
+        }
+    }
+
+    .shipping:hover {
+        opacity: .6;
+    }
 }
 
 .shop-icon {
@@ -253,25 +276,6 @@
     }
 
 
-}
-
-.shipping{
-    font-size: .85rem;
-    text-decoration: underline;
-    margin-bottom: .75rem;
-    border: none;
-    background-color: none;
-    background: none;
-    cursor: pointer;
-    transition: opacity .2s;
-
-    .mg-l {
-        margin-left: .5rem;;
-    }
-}
-
-.shipping:hover {
-    opacity: .6;
 }
 
 .cart-total {
@@ -414,10 +418,6 @@
 
 .blue{
     color: rgb(123,123, 206);
-}
-
-.discount {
-    color: rgb(42, 170, 42);
 }
 
 .handshake-icon {

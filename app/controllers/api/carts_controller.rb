@@ -12,6 +12,7 @@ class Api::CartsController < ApplicationController
     end
 
     def create
+        # bug - silent error if their is no current user
         @cart_item  = Cart.new(cart_params)
         @cart_item.shopper_id = current_user.id
         if @cart_item.save

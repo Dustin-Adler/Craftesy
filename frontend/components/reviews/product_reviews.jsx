@@ -137,11 +137,13 @@ class ProductReviews extends React.Component {
                         {/* {this.reviewImage(review.image)} */}
                 </li>,
         )
+
         let reviewAverage = 0
         this.props.reviews.forEach((review) => {
             reviewAverage += review.rating
         })
         reviewAverage = Math.floor(reviewAverage / this.props.reviews.length)
+        
         return (
             <div className='reviews-container'>
                 <div className='reviews-header'>

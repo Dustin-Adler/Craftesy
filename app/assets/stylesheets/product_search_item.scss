@@ -1,0 +1,91 @@
+.product-search-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+    width: 100%;
+    max-width: 1420px;
+}
+
+.product-search-item-container {
+
+    .img {
+        max-width: 400px;
+
+    }
+
+    .title {
+
+    }
+
+    .search-reviews-container {
+
+        .star-rating-container {
+
+        }
+        .average-rating {
+
+        }
+
+        .review-star {
+
+        }
+
+        .number-of-reviews {
+
+        }
+
+        .dot {
+
+        }
+
+        .star-seller-name-container {
+
+        }
+
+        .seller-star {
+
+        }
+
+        .seller-shop-name {
+
+        }
+    }
+
+    .price-container {
+
+        .price {
+
+        }
+
+        .discount {
+            // color: rgb(42, 170, 42);
+        }
+    }
+
+    .promotion-container {
+
+        .promo-info {
+
+        }
+
+        .shipping {
+
+        }
+
+        .stock {
+
+        }
+    }
+
+    .cart-search-container {
+
+        .add-to-cart {
+
+        }
+
+        .more-like-this {
+
+        }
+    }
+}
