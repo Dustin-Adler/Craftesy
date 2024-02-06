@@ -17,12 +17,16 @@ class ProductSearchItem extends React.Component {
             product.average_rating : "Be the first to review this item!"
         return(
             <li className='product-search-item-container'>
-                <Link to={`/products/${product.id}`}>
-                    <img
-                        className='img'
-                        src={product.images[0].url}
-                        alt={product.name}/>
-                </Link>
+                <div className='img-container'>
+                    <Link
+                        className='link'
+                        to={`/products/${product.id}`}>
+                        <img
+                            className='img'
+                            src={product.images[0].url}
+                            alt={product.name}/>
+                    </Link>
+                </div>
                 <h3 className='title'>{product.name}</h3>
                 <div className='search-reviews-container'>
                     <div className='star-rating-container'>
