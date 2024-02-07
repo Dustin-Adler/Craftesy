@@ -47,6 +47,7 @@
         display: flex;
         justify-content: start;
         align-items: center;
+        flex-wrap: wrap;
 
         .star-rating-container {
             display: flex;
@@ -149,6 +150,11 @@
             padding: 9px 15px;
             margin-right: 5%;
             cursor: pointer;
+            transition: 
+                perspective 150ms ease-out,
+                background-color 150ms ease-out,
+                transform 150ms ease-out,
+                box-shadow 150ms ease-out;
 
             .plus-icon {
                 font-size: 18px;
@@ -158,12 +164,20 @@
             .search-item-add-to-cart {
                 font-weight: 600;
             }
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 3px 8px 2px rgba(0, 0, 0, 0.1);
+                background-color: whitesmoke;
+                perspective: 1px;
+            }
         }
 
         .more-like-this-container {
             display: flex;
             cursor: pointer;
             position: relative;
+            margin-top: 5px;
             
             .more-text {
                 font-weight: 600;
@@ -171,7 +185,7 @@
             }
 
             .more-arrow {
-                transition: transform linear .2s;
+                transition: transform 150ms ease-out;
             }
 
             &:hover .more-arrow {
