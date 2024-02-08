@@ -1,7 +1,6 @@
 class Api::CartsController < ApplicationController
 
     def index
-
         @cart = current_user.cart_items.includes( { product: [:carts] }, :images)
 
         if @cart 
@@ -18,7 +17,7 @@ class Api::CartsController < ApplicationController
         if @cart_item.save
             @cart = current_user.items_in_cart
             render "api/carts/show"
-        else 
+        else
             render json: @cart_item.errors.full_messages, status: 422
         end
     end

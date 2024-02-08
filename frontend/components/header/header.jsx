@@ -40,7 +40,9 @@ class Header extends React.Component {
             this.props.searchByProductName(this.state.searchString)
             .then(
                 this.clearSearchBar(),
-                this.routeToProductSearchIndex()
+                setTimeout(() => {
+                    this.routeToProductSearchIndex()
+                }, 50)
             )
         }
     }
