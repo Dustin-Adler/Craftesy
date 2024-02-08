@@ -11,8 +11,8 @@ class Api::ProductsController < ApplicationController
     end
 
     def search_products_by_name
-        search_string = product_search_params.gsub(/\W/, '')
-        @products = Product.where("lower(name) LIKE (?)", "%#{search_string.downcase}%")
+        search_string = product_search_params.strip.downcase
+        @products = Product.where("lower(name) LIKE (?) OR lower(game_name) LIKE (?)", "%#{search_string}%", "%#{search_string}%")
             .with_attached_images
             .includes(:reviews)
         render "api/products/search_products_by_name"
@@ -33,7 +33,7 @@ class Api::ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:name, :description, :price)
+        params.require(:product).permit(:name, :description, :price, :game_name)
     end
 
     def product_search_params

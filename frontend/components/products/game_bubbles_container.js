@@ -36,7 +36,8 @@ const mSTP = (state) => {
 }
 
 const mDTP = (dispatch) => ({
-    getProducts: () => dispatch(ProductActions.getProducts())
+    getProducts: () => dispatch(ProductActions.getProducts()),
+    searchByProductName: (searchString) => dispatch(ProductActions.searchByProductName(searchString))
 })
 
 export default connect(mSTP, mDTP)(GameBubbles)

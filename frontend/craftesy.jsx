@@ -29,5 +29,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.SessionActions = SessionActions
   window.ProductActions = ProductActions 
   window.ReviewActions = ReviewActions
-  
+
 });
