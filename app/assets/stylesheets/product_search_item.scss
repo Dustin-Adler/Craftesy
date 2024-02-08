@@ -52,13 +52,15 @@
         .star-rating-container {
             display: flex;
             align-items: center;
+            margin-bottom: 5px;
         }
         .average-rating {
             font-weight: 550;
         }
 
-        // .review-star {
-        // }
+        .review-star {
+            margin: 0px 3px;
+        }
 
         // .number-of-reviews {
 
@@ -66,17 +68,19 @@
 
         .dot {
             font-size: 2px;
-            margin: 0px 3px;
+            padding: 0px 5px;
         }
 
         .star-seller-name-container {
             display: flex;
             align-items: center;
+            margin-bottom: 5px;
         }
 
         
         .seller-star-container {
             position: relative;
+            margin-right: 4px;
         }
 
         .seller-star-certificate-background {

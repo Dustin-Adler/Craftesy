@@ -34,7 +34,7 @@ class ProductSearchItem extends React.Component {
                     <div className='search-reviews-container'>
                         <div className='star-rating-container'>
                             <p className='average-rating'>{averageRating}</p>
-                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon className='review-star' icon={faStar} />
                             {/* todo: if navigating in any way other than search
                             loses the average rating and review count */}
                             <p className='number-of-reviews'>({product.review_count})</p>
