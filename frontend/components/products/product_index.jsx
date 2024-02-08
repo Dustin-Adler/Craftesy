@@ -7,7 +7,9 @@ class ProductIndex extends React.Component {
     }
 
     componentDidMount(){
-        this.props.getProducts()
+        if (this.props.products.length < 10) {
+            this.props.getProducts()
+        }
     }
 
     render(){
