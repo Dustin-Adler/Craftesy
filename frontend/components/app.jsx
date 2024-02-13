@@ -10,6 +10,7 @@ import GameBubblesContainer from './products/game_bubbles_container';
 import ProductIndexItemContainer from './products/product_index_item_container';
 import CartContainer from './cart/cart_container'
 import ProductSearchIndexContainer from './products/product_search_index_container'
+import ScrollingProductsContainer from './products/scrolling_products_container'
 
 const App = () => (
   <div className='master-layout'>
@@ -18,6 +19,7 @@ const App = () => (
       <Route path='/' component={HeaderContainer} />
     </header>
     <main>
+      <Route exact path='/' component={ScrollingProductsContainer} />
       <Route exact path='/' component={GameBubblesContainer} />
       <Switch>
         <Route path='/products/search' component={ProductSearchIndexContainer} />

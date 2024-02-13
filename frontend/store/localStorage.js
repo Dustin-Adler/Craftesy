@@ -10,7 +10,7 @@ export const loadState = () => {
     }
 };
 
-export const saveState = (state) => {
+export const saveState = () => {
     try {
         const serialState = JSON.stringify(state)
         localStorage.setItem('craftesyState', serialState)
