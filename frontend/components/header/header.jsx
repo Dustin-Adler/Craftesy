@@ -57,6 +57,7 @@ class Header extends React.Component {
         
         return(
             <div className='header'>
+                <div id='top-page-anchor'></div>
                 <div className='search-sign-in-and-cart'>
                     <Link to='/'>
                         <div className="logo">Craftesy</div>

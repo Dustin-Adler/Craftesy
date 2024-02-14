@@ -1,22 +1,33 @@
-
-.about-craftesy {
+.about-craftesy-background {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    min-height: 300px;
-    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
-    color: whitesmoke;
-    font-size: 10;
-    background: linear-gradient(315deg, rgba(22,20,54,1) 10%, rgba(28,28,160,1) 91%);
+    background: linear-gradient(315deg, rgba(12, 5, 99,1) 10%, rgba(28,28,160,1) 91%);
     border-radius: 24px;
     border: 10px solid black;
-    border-style: double;
-    text-align: center;
+    border-style: double;        
+    min-height: 585px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    color: whitesmoke;
     text-shadow: 1px 1px black;
+    text-align: center;
+    font-size: 16px;
+    line-height: 2.0;
+
+    .about-craftesy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1420px;
+    }
+
+    .github-link {
+        color: whitesmoke
+    }
 
     h2 {
         font-family: 'Press Start 2P', cursive;
-        font-size: 24;
+        font-size: 32px;
         font-weight: 700;
         margin: 8px;
         text-shadow: 2px 2px black;
@@ -24,7 +35,7 @@
 
     h3 {
         font-family: 'Press Start 2P', cursive;
-        font-size: 20;
+        font-size: 26px;
         font-weight: 600;
         margin: 10px;
         text-shadow: 2px 2px black;
@@ -32,7 +43,7 @@
 
     h4 {
         font-family: 'Press Start 2P', cursive;
-        font-size: 12px;
+        font-size: 20px;
         font-weight: 500;
         margin: 10px;
         text-shadow: 2px 2px black;
@@ -65,6 +76,16 @@
         flex-direction: column;
         align-items: center;
         margin: 14px;
+        text-decoration: none;
+        color: whitesmoke;
+
+        .link {
+            width: 100%;
+        }
+
+        .to-top-link {
+            width: 100%;
+        }
 
         button {
             text-align: center;
@@ -82,5 +103,4 @@
             box-shadow: 2px 2px 2px 0px #000000, inset 2px 2px 10px 0px #000000;
         }
     }
-
 }

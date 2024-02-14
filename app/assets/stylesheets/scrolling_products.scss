@@ -17,11 +17,13 @@ $blue: rgba(163, 206, 241, 0.875);
     .scrolling-products-background {
         display: flex;
         justify-content: space-around;
-        width: 80%;
-        height: 80%;
-        background: linear-gradient(315deg, rgb(12, 5, 99) 10%, rgba(28,28,160,1) 91%);
+        width: 90%;
+        height: 85%;
+        max-width: 1420px;
+        background: linear-gradient(315deg, rgba(12, 5, 99,1) 10%, rgba(28,28,160,1) 91%);
         border-radius: 15px;
-        border: thin solid grey;
+        border: 10px solid black;
+        border-style: double;
     }
 
     .text-and-buttons-container {
@@ -35,7 +37,7 @@ $blue: rgba(163, 206, 241, 0.875);
             font-family: 'Press Start 2P', cursive;
             font-weight: 700;
             text-shadow: 2px 2px black;
-            margin-bottom: 20px;
+            margin-bottom: 10%;
         }
 
         .shop-button {
@@ -64,7 +66,7 @@ $blue: rgba(163, 206, 241, 0.875);
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 10%;
         padding: 4px 8px;
         background: rgba(241, 100,30, 1);
         border-radius: 12px;
@@ -188,7 +190,7 @@ $blue: rgba(163, 206, 241, 0.875);
         .track {
             animation: 
                 scroll-track
-                40s
+                60s
                 cubic-bezier(.08,0,.92,1)
                 infinite;
         }
@@ -197,7 +199,7 @@ $blue: rgba(163, 206, 241, 0.875);
             margin-top: -2200px;
             animation:
                 reverse-scroll
-                40s
+                60s
                 cubic-bezier(.08,0,.92,1)
                 infinite;
         }

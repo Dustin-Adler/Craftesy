@@ -36,8 +36,6 @@ class ScrollingProducts extends React.Component {
         let carouselContainer = document.getElementsByClassName('scrolling-products-carousel-container')[0]
         let playButton = document.getElementById('play-button')
         let pauseButton = document.getElementById('pause-button')
-
-        console.log(playButton, pauseButton)
         const playState = carouselContainer.getAttribute('data-play-state')
         if (playState === 'play') {
             carouselContainer.setAttribute('data-play-state', "pause" )
