@@ -138,18 +138,24 @@ $blue: rgba(163, 206, 241, 0.875);
         }
 
         .carousel-product-container {
+            overflow: hidden;
             height: 200px;
             width: 135px;
-            background-color: limegreen;
             border-radius: 16px;
             margin: 10px 0px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            background-color: limegreen;
             border: 3px solid limegreen;
-            overflow: hidden;
             transition: transform 150ms ease-out;
+
+            .link {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                color: whitesmoke;
+                text-decoration: none;
+            }
 
             &:hover {
                 cursor: pointer;

@@ -1,6 +1,6 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Carousel extends React.Component {
     constructor(props) {
@@ -11,14 +11,16 @@ class Carousel extends React.Component {
         const productListItems = []
         const colors = ['pink', 'green', 'orange', 'yellow', 'brown', 'blue']
         for (let i = 0; i < products.length; i++) {
-            const color = colors[(i % colors.length)-1];
+            const color = colors[(i % colors.length)];
             const product = products[i];
             const listItem = 
                 <li key={i} className="carousel-product-container" data-color={color}>
-                    <p className="carousel-name">{product.name}</p>
-                    <div className="img-frame">
-                        <img className="carousel-img" src={product.images[0].url} alt={product.name} />
-                    </div>
+                    <Link to={`/products/${product.id}`} className="link">
+                        <p className="carousel-name">{product.name}</p>
+                        <div className="img-frame">
+                            <img className="carousel-img" src={product.images[0].url} alt={product.name} />
+                        </div>
+                    </Link>
                 </li>
             productListItems.push(listItem);
         }
