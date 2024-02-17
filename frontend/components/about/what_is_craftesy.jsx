@@ -17,6 +17,7 @@ class AboutCraftesy extends React.Component {
                     <div className='about-craftesy-head'>
                         <h2>What is Craftesy?</h2>
                         <a className='github-link'
+                            target="_blank"
                             href="https://github.com/Dustin-Adler/Craftesy">
                                 Want to know more about Craftesy? Check out the github!
                         </a>
