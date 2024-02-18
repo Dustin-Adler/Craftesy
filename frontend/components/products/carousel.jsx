@@ -8,10 +8,11 @@ class Carousel extends React.Component {
     }
 
     createProductsList(products) {
-        const productListItems = []
-        const colors = ['pink', 'green', 'orange', 'yellow', 'brown', 'blue']
+        const productListItems = [];
+        const offSet = this.props.colorOffset;
+        const colors = ['pink', 'green', 'orange', 'yellow', 'brown', 'blue'];
         for (let i = 0; i < products.length; i++) {
-            const color = colors[(i % colors.length)];
+            const color = colors[( i + offSet) % colors.length ];
             const product = products[i];
             const listItem = 
                 <li key={i} className="carousel-product-container" data-color={color}>
@@ -42,7 +43,8 @@ class Carousel extends React.Component {
 const mSTP = (state, ownProps) => {
     return {
         products: ownProps.products,
-        direction: ownProps.direction
+        direction: ownProps.direction,
+        colorOffset: ownProps.colorOffset
     };
 };
 

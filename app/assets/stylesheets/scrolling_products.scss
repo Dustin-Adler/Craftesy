@@ -200,7 +200,7 @@ $blue: rgba(163, 206, 241, 0.875);
         .track {
             animation: 
                 scroll-track
-                60s
+                90s
                 cubic-bezier(.08,0,.92,1)
                 infinite;
         }
@@ -209,7 +209,7 @@ $blue: rgba(163, 206, 241, 0.875);
             margin-top: -2200px;
             animation:
                 reverse-scroll
-                60s
+                90s
                 cubic-bezier(.08,0,.92,1)
                 infinite;
         }
@@ -251,7 +251,7 @@ $blue: rgba(163, 206, 241, 0.875);
     }
 
     @keyframes scroll-track {
-        0%{ 
+        0% { 
             transform: translateY(0%);
         }
         50% {
@@ -263,7 +263,7 @@ $blue: rgba(163, 206, 241, 0.875);
     }
 
     @keyframes reverse-scroll {
-        0%{ 
+        0% { 
             transform: translateY(0%);
         }
         50% {

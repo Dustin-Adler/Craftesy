@@ -41,7 +41,7 @@ class Cart extends React.Component {
                         <option value="">Hip Hip, Hooray!</option>
                         <option value="">Wow, really!</option>
                         <option value="">Awesome!</option>
-                        <option value="">Boo! I love paying for shipping.</option>
+                        <option value="">Boo! I love to pay for shipping.</option>
                     </select>
                 </label>
 

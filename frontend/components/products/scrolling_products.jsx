@@ -15,11 +15,12 @@ class ScrollingProducts extends React.Component {
         let start = 0;
         let end = increment;
         for (let i = 0; i < numberOfCarousels; i++) {
-            const direction = i === 1 ? "reverse" : "forwards"
+            const direction = (i % 2 === 0) ? "reverse" : "forwards"
             const carouselProducts = prodArr.slice(start, end)
             carousels.push(
                     <Carousel 
                         key={i}
+                        colorOffset={i*2}
                         products={carouselProducts}
                         direction={direction}>
                     </Carousel>
@@ -27,7 +28,7 @@ class ScrollingProducts extends React.Component {
             start += increment
             end += increment
         }
-        return(
+        return (
             carousels
         )
     }

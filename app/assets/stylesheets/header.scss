@@ -1,56 +1,208 @@
-
-
-.categories-list {
-    display: flex;
-    justify-content: space-evenly;
-    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 18px;
-    margin: 1% 0 1% 0;
-}
-
-.sign-in-button {
-    font-size: 13px;
-    line-height: 1.4;
-    min-height: 36px;
-    min-width: 36px;
-    padding-top: 9px;
-    margin: 1px;
-
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;  
-}
+$bright-blue: rgba(28,28,160,1);
+$dark-blue: rgba(22,20,54,1);
+$game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%);
 
 .header {
     display: flex;
     flex-direction: column;
-    border-bottom: 2px solid rgba(168, 168, 168, 0.5);
-}
-
-.logo {
-    font-family: 'Merriweather', serif;
-    color: navy;
-    margin-right: 1em;
-}
-
-.search-sign-in-and-cart {
-    display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-}
+    border-bottom: 2px solid rgba(168, 168, 168, 0.5);
+    position: relative;
+    height: 105px;
+    
+    .search-sign-in-and-cart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1420px;
+    }
 
-.main-search-field {
-    flex: 1;
-    padding: 1em 1em;
-    margin: 1em 0;
-    border-radius: 40px;
-    max-height: 3em;
-    min-height: 3em;
-    max-width: 700px;
-    background-color:#f4f4f4;
+    .professional-links {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        width: 100%;
+        max-width: 1420px;
+        line-height: 18px;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .header-links {
+        text-decoration: none;
+        color:$dark-blue;
+        padding: 10px;
+        margin: 0px 20px;
+        transition: color 150ms ease-out;
+
+        &:hover {
+            color: $bright-blue;
+        }
+    }
+
+    .button-transition {
+        position: relative;
+
+        &:hover::after {
+            transform: scale(1);
+        }
+    }
+
+    .button-transition::after {
+        content: '';
+        width: 100%;
+        height: 3em;
+        border-radius: 24px;
+        display: block;
+        position: absolute;
+        transform: scale(0);
+        background-color: rgba($color: #323232, $alpha: 0.10);
+        bottom: 0;
+        left: 0;
+        transition: transform 150ms ease-out;
+    }
+
+    .logo-link {
+        text-decoration: none;
+    }
+
+    .logo {
+        font-family: 'Merriweather', serif;
+        font-size: 38px;
+        font-weight: 600;
+        color: $bright-blue;
+        margin-right: 1em;
+        letter-spacing: -1px;
+    }
+
+    .cart {
+        color: black;
+        padding: 10px;
+        margin: 0 10px;
+
+        &::after {
+            height: 100%;
+            background-color: rgba($color: $bright-blue, $alpha: 0.10);
+        }
+    }
+
+    .hamburger-icon {
+        padding-right: 10px;
+    }
+
+    .category-select-container {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: 0px 20px;
+    
+        &::after {
+            bottom: -5px;
+        }
+    }
+
+    #grey-screen-cover {
+        display: none;
+        position: fixed;
+        top: 105px;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    .category-select {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: -20px;
+        top: 50px;
+        background: $game-menu-background;
+        border: 10px solid black;
+        border-style: double;
+        border-radius: 10px;
+        padding: 20px;
+        color: whitesmoke;
+        z-index: 10;
+    }
+
+    .category-option {
+        padding: 5px;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        padding: 10px 0px;
+        font-family: 'Press Start 2P', cursive;
+        // height: 48px;
+
+        .option-name {
+            text-wrap: nowrap;
+            margin-left: 12px;
+            text-shadow: 2px 2px black;
+        }
+
+        .select-hand {
+            font-size: 20px;
+            transform: rotate(90deg);
+            display: none;
+        }
+
+        .select-hand-container {
+            width: 20px;
+            height: 20px;
+        }
+
+        &:hover .select-hand {
+            display: block;
+            animation: oscillate-left-to-right 1s ease-out;
+        }
+
+        &:hover .option-name {
+            border-bottom: 2px solid whitesmoke;
+        }
+    }
+    
+    .main-search-field {
+        flex: 1;
+        padding: 1em 1em;
+        border-radius: 40px;
+        height: 48px;
+        width: 100%;
+        max-width: 870px;
+        background-color:#f4f4f4;
+    }
+    
+    .sign-in-button {
+        font-size: 13px;
+        line-height: 1.4;
+        min-height: 36px;
+        min-width: 36px;
+        padding: 10px;
+        margin: 0px 20px;
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;  
+    }
+
+    .nav-icon {
+        padding-right: 5px;
+    }
+
+    @keyframes oscillate-left-to-right {
+        50% {
+            transform: rotate(90deg) translateY(-5px);
+        }
+        100% {
+            transform: rotate(90deg) translateY(0px);
+        }
+    }
 }
