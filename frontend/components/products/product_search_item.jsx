@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import ProductSearchAddToCartModal from "./product_search_add_to_cart_modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCertificate, faStar, faCircle, faPlus, faArrowRight} from '@fortawesome/free-solid-svg-icons';
 
@@ -9,8 +10,27 @@ class ProductSearchItem extends React.Component {
         super(props)
         this.state = {
             product_id: this.props.product.id,
-            quantity: 1
+            quantity: 1,
+            confirmationModal: false
         }
+    }
+
+    cartConfirmationModal() {
+        const modal = this.state.confirmationModal ? 
+            <ProductSearchAddToCartModal 
+                display={this.state.confirmationModal}
+                product={this.props.product}/>
+            : null
+
+        console.log(modal)
+        return modal
+    }
+
+    handleAddItemToCart() {
+        this.props.createCartItem(this.state)
+        .then(
+            () => this.setState({confirmationModal: true})
+        )
     }
 
     render() {
@@ -19,6 +39,7 @@ class ProductSearchItem extends React.Component {
             product.average_rating : "No reviews"
         return(
             <li className='product-search-item-container'>
+                {this.cartConfirmationModal()}
                 <div className='product-search-details-container'>
                     <div className='img-container'>
                         <Link
@@ -70,7 +91,7 @@ class ProductSearchItem extends React.Component {
                 <div className='cart-search-container'>
                     <div 
                         className='add-to-cart'
-                        onClick={() => this.props.createCartItem(this.state)}>
+                        onClick={() => this.handleAddItemToCart()}>
                             <FontAwesomeIcon className='plus-icon' icon={faPlus}/>
                             <p className='search-item-add-to-cart'>Add to Cart</p>
                     </div>
@@ -88,7 +109,7 @@ class ProductSearchItem extends React.Component {
 
 const mSTP = (state, ownProps) => {
     return {
-        product: ownProps.product
+        product: ownProps.product,
     };
 };
 

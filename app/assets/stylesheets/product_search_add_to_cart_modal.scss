@@ -1,0 +1,32 @@
+.add-to-cart-modal-container {
+    position: fixed;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    width: 480px;
+    z-index: 10;
+    background: 
+    linear-gradient(315deg,
+     rgba(22,20,54,1) 10%,
+     rgba(28,28,160,1) 91%);
+    border: 5px solid black;
+    border-style: double;
+
+    .grey-screen {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: calc(100vw - 480px);
+        z-index: 10;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .confirm-added-to-cart-container {
+        color: #18f98d;
+    }
+
+    .check {
+
+    }
+
+}

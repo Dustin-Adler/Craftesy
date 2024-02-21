@@ -27,11 +27,13 @@ class ProductSearchIndex extends React.Component {
         )
 
         return (
-            <div className='center-product-index'>
-                <ul className='product-search-index'>
-                    {products}
-                </ul>
-            </div>
+            <>
+                <div className='center-product-index'>
+                    <ul className='product-search-index'>
+                        {products}
+                    </ul>
+                </div>
+            </>
         )
     }
 }

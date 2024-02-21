@@ -161,7 +161,7 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
 
         &:hover .select-hand {
             display: block;
-            animation: oscillate-left-to-right 1s ease-out;
+            animation: oscillate-left-to-right 1s ease-out infinite;
         }
 
         &:hover .option-name {

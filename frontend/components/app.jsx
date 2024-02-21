@@ -21,6 +21,7 @@ const App = () => (
     <main>
       <Route exact path='/' component={GameBubblesContainer} />
       <Route exact path='/' component={ScrollingProductsContainer} />
+      <Route exact path='/products/search' component={GameBubblesContainer} />
       <Switch>
         <Route path='/products/search' component={ProductSearchIndexContainer} />
         <Route path='/products/:id' component={ProductIndexItemContainer} />
