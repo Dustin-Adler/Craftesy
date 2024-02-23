@@ -15,9 +15,8 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 
     closeModal() {
-        this.setState({
-            display: false
-        })
+        this.setState({display: false})
+        this.props.modalState(false)
     }
 
     moreLikeThis(game_name) {

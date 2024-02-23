@@ -11,25 +11,29 @@ class ProductSearchItem extends React.Component {
         this.state = {
             confirmationModal: false
         }
+        this.getStateOfConfirmationModal = this.getStateOfConfirmationModal.bind(this)
+    }
+
+    getStateOfConfirmationModal(activeModal) {
+        this.setState({confirmationModal: activeModal})
     }
 
     cartConfirmationModal() {
         const modal = this.state.confirmationModal ? 
-            <ProductSearchAddToCartModal 
+            <ProductSearchAddToCartModal
+                modalState={this.getStateOfConfirmationModal}
                 display={this.state.confirmationModal}
                 product={this.props.product}/>
             : null
         return modal
     }
 
-    handleAddItemToCart() {
+    addItemToCart() {
         this.props.createCartItem({
             product_id: this.props.product.id,
             quantity: 1
         })
-        .then(
-            () => this.setState({confirmationModal: true})
-        )
+        .then(() => this.setState({confirmationModal: true}))
     }
 
     render() {
@@ -90,7 +94,7 @@ class ProductSearchItem extends React.Component {
                 <div className='cart-search-container'>
                     <div 
                         className='add-to-cart'
-                        onClick={() => this.handleAddItemToCart()}>
+                        onClick={() => this.addItemToCart()}>
                             <FontAwesomeIcon className='plus-icon' icon={faPlus}/>
                             <p className='search-item-add-to-cart'>Add to Cart</p>
                     </div>
