@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :products, only: [:create, :update, :destroy, :show, :index] do
       collection do
         get 'search_products_by_name'
+        get 'get_game_images'
       end
       resources :reviews, only: [:index, :create]
     end

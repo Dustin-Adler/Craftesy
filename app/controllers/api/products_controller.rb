@@ -22,16 +22,10 @@ class Api::ProductsController < ApplicationController
         render "api/products/search_products_by_name"
     end
 
-    def create
-        
-    end
-
-    def update
-        
-    end
-
-    def delete
-        
+    def get_game_images
+        product_names = ["Cape Feather", "Cloud's Buster Sword", "Speed Boots", "Heart Container", "Llama Pinata", 'Trinity Force']
+        @products = Product.where(name: product_names).with_attached_images
+        render "api/products/get_game_images"
     end
 
     private

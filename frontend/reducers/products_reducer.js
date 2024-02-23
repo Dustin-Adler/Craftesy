@@ -1,6 +1,5 @@
 import {RECEIVE_PRODUCTS, RECEIVE_PRODUCT, REMOVE_PRODUCT} from '../actions/product_actions'
 
-
 const productReducer = (state = {}, action) => {
     let newState
     switch (action.type) {

@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import * as ProductActions from "../../actions/product_actions"
+import { getImages } from "../../actions/image_actions";
 import GameBubbles from "./game_bubbles";
 
 const mSTP = (state) => {
-    const products = Object.values(state.entities.products)
+    const productImages = Object.values(state.entities.images)
     const imgs = {}
-    for (let i = 0; i < products.length; i++) {
-        const product = products[i];
+    for (let i = 0; i < productImages.length; i++) {
+        const product = productImages[i];
         switch (product.name) {
             case "Cape Feather":
                 imgs['mario'] = product.images[1].url
@@ -36,8 +37,8 @@ const mSTP = (state) => {
 }
 
 const mDTP = (dispatch) => ({
-    getProducts: () => dispatch(ProductActions.getProducts()),
-    searchByProductName: (searchString) => dispatch(ProductActions.searchByProductName(searchString))
+    searchByProductName: (searchString) => dispatch(ProductActions.searchByProductName(searchString)),
+    getImages: () => dispatch(getImages())
 })
 
 export default connect(mSTP, mDTP)(GameBubbles)
