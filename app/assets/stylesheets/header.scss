@@ -108,14 +108,15 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         }
     }
 
-    #grey-screen-cover {
-        display: none;
+    .grey-screen-cover {
         position: fixed;
         top: 105px;
         left: 0;
         height: 100vh;
         width: 100vw;
         background-color: rgba(0, 0, 0, 0.25);
+        z-index: 8;
+        transform: translateZ(-10px);
     }
 
     .category-select {

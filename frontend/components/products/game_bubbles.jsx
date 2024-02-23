@@ -22,7 +22,7 @@ class GameBubbles extends React.Component {
         this.props.searchByProductName(game)
             .then(
                 setTimeout(() => {
-                    this.routeToProductSearchIndex()
+                    this.routeToProductSearchIndex();
                 }, 50)
             )
     }

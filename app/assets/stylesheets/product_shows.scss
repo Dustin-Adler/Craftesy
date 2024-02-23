@@ -6,6 +6,7 @@
     justify-content: space-evenly;
     flex-basis: 50%;
     max-width: 1400px;
+    min-width: 855px;
     font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
     color: black;
     font-size: 13px;
@@ -23,11 +24,14 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 2.5rem;
+        width: 100%;
+        min-width: 592px;
     }
 
     .product-index-item-img {
         border-radius: 15px;
-        max-width: 80%;
+        // width: 520px;
+        width: 80%;
         background-color: whitesmoke;
         object-fit: cover;
     }

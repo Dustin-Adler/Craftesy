@@ -42,10 +42,12 @@ class Header extends React.Component {
     }
 
     handleSearchInput(e) {
+        const checkCatSelOpen = () => {this.state.catSelOpen ? this.toggleCatMenu() : null}
         if (e.key === "Enter") {
             this.props.searchByProductName(this.state.searchString)
             .then(
                 this.clearSearchBar(),
+                checkCatSelOpen(),
                 setTimeout(() => {
                     this.routeToProductSearchIndex();
                 }, 50)
@@ -56,6 +58,8 @@ class Header extends React.Component {
     routeToProductSearchIndex() {
         if(this.props.history.location.pathname !== '/products/search') {
             return this.props.history.push('/products/search')
+        } else {
+            location.reload();
         }
     }
 
@@ -69,13 +73,13 @@ class Header extends React.Component {
     }
 
     toggleCatMenu() {
-        const greyScreen = document.getElementById('grey-screen-cover');
+        // const greyScreen = document.getElementById('grey-screen-cover');
         if (this.state.catSelOpen) {
             this.setState({catSelOpen: false})
-            greyScreen.style.display = 'none'
+            // greyScreen.style.display = 'none'
         } else {
             this.setState({catSelOpen: true})
-            greyScreen.style.display = 'block'
+            // greyScreen.style.display = 'block'
         }
     }
 
@@ -100,9 +104,12 @@ class Header extends React.Component {
             options.push(option)
         }
         return (
-            <div className="category-select">
-                {options}
-            </div>
+            <>
+                <div className="category-select">
+                    {options}
+                </div>
+                <div onClick={() => this.toggleCatMenu()} className='grey-screen-cover'></div>
+            </>
         )
     }
 
@@ -154,7 +161,6 @@ class Header extends React.Component {
                         Come What May
                     </a>
                 </div>
-                <div id='grey-screen-cover'></div>
             </div>
         )
     }

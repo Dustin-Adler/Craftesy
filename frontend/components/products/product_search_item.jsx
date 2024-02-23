@@ -9,8 +9,6 @@ class ProductSearchItem extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            product_id: this.props.product.id,
-            quantity: 1,
             confirmationModal: false
         }
     }
@@ -25,7 +23,10 @@ class ProductSearchItem extends React.Component {
     }
 
     handleAddItemToCart() {
-        this.props.createCartItem(this.state)
+        this.props.createCartItem({
+            product_id: this.props.product.id,
+            quantity: 1
+        })
         .then(
             () => this.setState({confirmationModal: true})
         )
