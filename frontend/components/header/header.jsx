@@ -73,13 +73,10 @@ class Header extends React.Component {
     }
 
     toggleCatMenu() {
-        // const greyScreen = document.getElementById('grey-screen-cover');
         if (this.state.catSelOpen) {
             this.setState({catSelOpen: false})
-            // greyScreen.style.display = 'none'
         } else {
             this.setState({catSelOpen: true})
-            // greyScreen.style.display = 'block'
         }
     }
 
@@ -135,8 +132,11 @@ class Header extends React.Component {
                         className='main-search-field'
                         placeholder="It's dangerous to go alone..."/>
                     {this.signInButton()}
-                    <Link className='cart button-transition' to='/cart'>
-                        <FontAwesomeIcon icon={faCartShopping}/>
+                    <Link className='cart-container button-transition' to='/cart'>
+                        <FontAwesomeIcon className='cart' icon={faCartShopping}/>
+                        <div className='cart-ref'>
+                            <span>{this.props.numberOfItemsInCart}</span>
+                        </div>
                     </Link>
                 </div>
                 <div className='professional-links'>

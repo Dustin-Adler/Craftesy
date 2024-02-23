@@ -7,7 +7,8 @@ import { searchByProductName } from '../../actions/product_actions'
 
 const mSTP = (state) => ({
     currentUser: state.session.id,
-    searchString: ''
+    searchString: '',
+    numberOfItemsInCart: Object.values(state.entities.cart).length
 })
 
 const mDTP = (dispatch) => ({

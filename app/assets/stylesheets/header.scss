@@ -79,14 +79,35 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         letter-spacing: -1px;
     }
 
-    .cart {
+    .cart-container {
         color: black;
         padding: 10px;
         margin: 0 10px;
+        position: relative;
 
         &::after {
             height: 100%;
             background-color: rgba($color: $bright-blue, $alpha: 0.10);
+        }
+
+        .cart {
+            font-size: 20px;
+        }
+
+        .cart-ref {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 17px;
+            height: 17px;
+            background-color: #18f98d;
+            border-radius: 50%;
+            font-size: 10px;
+            color: $bright-blue;
+            z-index: 2;
         }
     }
 
@@ -118,6 +139,8 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         z-index: 8;
         transform: translateZ(-10px);
     }
+
+
 
     .category-select {
         display: flex;
