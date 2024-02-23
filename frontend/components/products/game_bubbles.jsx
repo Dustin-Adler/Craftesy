@@ -7,7 +7,6 @@ class GameBubbles extends React.Component {
 
     componentDidMount(){
         const numberOfImages = Object.keys(this.props.images).length;
-        console.log(numberOfImages)
         if (numberOfImages < 6) {
             this.props.getProducts();
         }

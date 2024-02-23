@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom'
 import ProductSearchItem from '../products/product_search_item'
 
 class ProductSearchIndex extends React.Component {

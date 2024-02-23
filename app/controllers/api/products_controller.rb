@@ -12,9 +12,13 @@ class Api::ProductsController < ApplicationController
 
     def search_products_by_name
         search_string = product_search_params.strip.downcase
-        @products = Product.where("lower(name) LIKE (?) OR lower(game_name) LIKE (?)", "%#{search_string}%", "%#{search_string}%")
-            .with_attached_images
-            .includes(:reviews)
+        if (search_string.present?)
+            @products = Product.where("lower(name) LIKE (?) OR lower(game_name) LIKE (?)", "%#{search_string}%", "%#{search_string}%")
+                .with_attached_images
+                .includes(:reviews)
+        else
+            @products = Product.all.with_attached_images.includes(:reviews)
+        end
         render "api/products/search_products_by_name"
     end
 
@@ -37,6 +41,6 @@ class Api::ProductsController < ApplicationController
     end
 
     def product_search_params
-        params.require(:search_string)
+        params[:search_string].present? ? params.require(:search_string) : ""
     end
 end

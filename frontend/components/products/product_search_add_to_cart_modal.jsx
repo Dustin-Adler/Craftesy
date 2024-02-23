@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faCircleCheck, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faCircleCheck, faArrowRight, faCircle }
+    from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux'
+import { searchByProductName } from "../../actions/product_actions"
 
 class ProductSearchAddToCartModal extends React.Component {
     constructor(props) {
@@ -18,6 +20,13 @@ class ProductSearchAddToCartModal extends React.Component {
         })
     }
 
+    moreLikeThis(game_name) {
+        this.props.searchByProductName(game_name)
+            .then(
+                this.closeModal()
+            )
+    }
+
     render() {
         if (!this.state.display) {
             return null
@@ -26,37 +35,57 @@ class ProductSearchAddToCartModal extends React.Component {
         return (
             <div className='add-to-cart-modal-container'>
                 <span onClick={() => this.closeModal()} className="grey-screen"></span>
-                <FontAwesomeIcon onClick={() => this.closeModal()} icon={faXmark} />
-                <div className="confirm-added-to-cart-container">
-                    <FontAwesomeIcon className="check" icon={faCircleCheck} />
-                    <p className="confirm-text">1 Item added to cart</p>
+                <div className="close-container" onClick={() => this.closeModal()}>
+                    <FontAwesomeIcon className="close" icon={faXmark} />
+                    <span className="background"></span>
                 </div>
-                <Link className="img-and-text-link">
-                    <img className="modal-img"src={product.images[0]} alt={product.name} />
-                    <p className="product-name">{product.name}</p>
-                </Link>
-                <div className="edit">
-                    <p>None of the items on this website currently support any editing</p>
+                <div className="product-cart-info-container">
+                    <div className="confirm-added-to-cart-container">
+                        <FontAwesomeIcon className="check" icon={faCircleCheck} />
+                        <p>1 Item added to cart</p>
+                    </div>
+                    <Link className="img-link" to={`/products/${product.id}`}>
+                        <img className="modal-img"src={product.images[0].url} alt={product.name} />
+                    </Link>
+                    <Link className="text-link" to={`/products/${product.id}`}>
+                        <span className="product-name">{product.name}</span>
+                    </Link>
+                    <p className="price">${product.price.toFixed(2)}</p>
+                    <div className="edit">
+                        <p>Edit the following variations from your cart</p>
+                        <ul>
+                            <li>
+                                <FontAwesomeIcon className="li-dot" icon={faCircle}/>
+                                Quantity
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="buttons-container">
-                    <button className="find-more btn">
-                        <p>Find more like this</p>
-                        <FontAwesomeIcon className="arrow" icon={faArrowRight}/>
+                    <button 
+                        onClick={() => this.moreLikeThis(product.game_name)}
+                        className="find-more btn">
+                            <p>Find more like this</p>
+                            <FontAwesomeIcon className="arrow" icon={faArrowRight}/>
                     </button>
-                    <button className="view-cart btn">
-                        view cart & check out
-                    </button>
+                    <Link className="cart-link" to="/cart">
+                        <button className="view-cart btn">
+                            view cart & check out
+                        </button>
+                    </Link>
                 </div>
             </div>
         )
     }
 }
 
-const mSTP = (state, ownProps) => {
-    return {
-        product: ownProps.product,
-        display: ownProps.display
-    };
-};
+const mSTP = (state, ownProps) => ({
+    product: ownProps.product,
+    display: ownProps.display
+});
 
-export default connect(mSTP)(ProductSearchAddToCartModal);
+const mDTP = (dispatch) => ({
+    searchByProductName: (searchString) => dispatch(searchByProductName(searchString))
+})
+
+export default connect(mSTP, mDTP)(ProductSearchAddToCartModal);

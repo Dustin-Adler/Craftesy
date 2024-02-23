@@ -21,8 +21,6 @@ class ProductSearchItem extends React.Component {
                 display={this.state.confirmationModal}
                 product={this.props.product}/>
             : null
-
-        console.log(modal)
         return modal
     }
 
