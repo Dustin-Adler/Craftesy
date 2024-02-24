@@ -1,16 +1,16 @@
 import React from 'react'
-// import CreateReviewContainer from '../reviews/create_review_container'
-import CreateReview from '../reviews/create_review_form'
 import ProductReview from '../reviews/product_reviews_container';
+import ProductSearchAddToCartModal from './product_search_add_to_cart_modal'
 
 class ProductIndexItem extends React.Component {
     constructor(props){
         super(props)
-
         this.state= {
             quantity: 1,
             description: false,
+            dispConfModal: false
         }
+        this.toggleConfModal = this.toggleConfModal.bind(this)
     }
 
     componentDidMount(){
@@ -59,6 +59,31 @@ class ProductIndexItem extends React.Component {
         }
     }
 
+    confirmationModal() {
+        console.log(this.state.dispConfModal)
+        return this.state.dispConfModal ? 
+            <ProductSearchAddToCartModal
+                display={this.state.dispConfModal}
+                modalState={this.toggleConfModal}
+                quantity={this.state.quantity}
+                product={this.props.product}/>
+            : null
+    }
+
+    toggleConfModal(kingBoo) {
+        this.setState({dispConfModal: kingBoo})
+    }
+
+    addToCart() {
+        this.props.createCartItem({
+            product_id: this.props.product.id,
+            quantity: this.state.quantity
+        })
+        .then(
+           () => this.toggleConfModal(true)
+        )
+    }
+
     render() {
         if (!this.props.product){
             return null
@@ -72,6 +97,7 @@ class ProductIndexItem extends React.Component {
             const review = [...Array(5)].map( (el, i) => <i key={i} className="fas fa-star"></i>) // actual review calc coming soon
             return(
                 <div className='product-show'>
+                    {this.confirmationModal()}
                     <div className='img-review'>
                         <div className='img-create-review-button' >
                             <img 
@@ -80,7 +106,7 @@ class ProductIndexItem extends React.Component {
                                 alt={product.name}/> <br />
                             {this.createReview()}
                         </div>
-                        < ProductReview />
+                        < ProductReview/>
                     </div>
                     <div className='product-info'>
                         <div className='product-show-seller-shop-name'>Super Totally Awesome Seller</div>
@@ -105,16 +131,12 @@ class ProductIndexItem extends React.Component {
                                             quantity: e.target.value
                                         })
                                     }}>
-                                   {quantityOptions}
+                                    {quantityOptions}
                                 </select>
                             </label>
                             <button 
                                 className='add-to-cart-button'
-                                onClick={() => this.props.createCartItem({
-                                        product_id: product.id,
-                                        quantity: this.state.quantity
-                                    }
-                                )}>
+                                onClick={() => this.addToCart()}>
                                 Add to cart
                             </button>
                         </form>

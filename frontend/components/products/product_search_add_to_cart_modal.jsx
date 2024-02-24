@@ -10,7 +10,7 @@ class ProductSearchAddToCartModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: this.props.display
+            display: this.props.display,
         }
     }
 
@@ -31,6 +31,7 @@ class ProductSearchAddToCartModal extends React.Component {
             return null
         }
         const product = this.props.product;
+        const quantity = this.props.quantity ? this.props.quantity : 1;
         return (
             <div className='add-to-cart-modal-container'>
                 <span onClick={() => this.closeModal()} className="grey-screen"></span>
@@ -41,7 +42,7 @@ class ProductSearchAddToCartModal extends React.Component {
                 <div className="product-cart-info-container">
                     <div className="confirm-added-to-cart-container">
                         <FontAwesomeIcon className="check" icon={faCircleCheck} />
-                        <p>1 Item added to cart</p>
+                        <p>{quantity} {quantity === 1 ? "Item" : "Items"} added to cart</p>
                     </div>
                     <Link className="img-link" to={`/products/${product.id}`}>
                         <img className="modal-img"src={product.images[0].url} alt={product.name} />

@@ -6,7 +6,7 @@ class SignInOrSignUp extends React.Component {
     constructor(props){
         super(props)
 
-        this.state = this.props.user;  
+        this.state = this.props.user;
         this.signInOrSignUp = this.signInOrSignUp.bind(this)
     }
 
