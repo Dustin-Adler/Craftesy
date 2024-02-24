@@ -18,11 +18,7 @@ class ProductIndexItem extends React.Component {
     }
 
     descriptionClick(){
-        if(this.state.description){
-            return this.setState({description: false})
-        } else {
-            return this.setState({description: true})
-        }
+        this.state.description ? this.setState({description: false}) : this.setState({description: true})
     }
 
     displayDescription(){
@@ -125,8 +121,8 @@ class ProductIndexItem extends React.Component {
                         <button 
                             className='product-show-additional-info-button'
                             onClick={()=>this.descriptionClick()}>
-                            <div>Description</div>
-                            <i className="fas fa-caret-down"></i>
+                                <div>Description</div>
+                                <i className="fas fa-caret-down"></i>
                         </button>
                         {this.displayDescription()}
                     </div>
