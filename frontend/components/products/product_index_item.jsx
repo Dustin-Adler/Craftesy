@@ -18,7 +18,7 @@ class ProductIndexItem extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(!prevProps.product) {
+        if(!prevProps.product || !this.props.product) {
             return null
         } else if(prevProps.product.id != this.props.product.id) {
             this.toggleConfModal();
