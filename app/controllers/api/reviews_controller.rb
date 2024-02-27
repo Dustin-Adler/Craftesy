@@ -34,7 +34,6 @@ class Api::ReviewsController < ApplicationController
         else  
             render json: @review.errors.full_messages, status: 404
         end
-        
     end
 
     private

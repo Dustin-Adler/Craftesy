@@ -5,13 +5,19 @@ import { faXmark, faCircleCheck, faArrowRight, faCircle }
     from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux'
 import { searchByProductName } from "../../actions/product_actions"
+import ProductSearchItem from "./product_search_item"
 
 class ProductSearchAddToCartModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            display: this.props.display,
+            display: this.props.display
         }
+        this.onProductShow = this.props.history.location.pathname === `/products/${this.props.product.id}`
+    }
+
+    componentDidMount() {
+        this.props.searchByProductName(this.props.product.game_name)
     }
 
     closeModal() {
@@ -20,10 +26,35 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 
     moreLikeThis(game_name) {
+        if(this.onProductShow) {
+            this.props.history.push('/products/search')
+        }
         this.props.searchByProductName(game_name)
             .then(
                 this.closeModal()
             )
+    }
+
+    listSimilarProducts() {
+        if(!this.onProductShow) {
+            return null;
+        }
+        const similarProducts = {...this.props.products}
+        delete similarProducts[this.props.product.id]
+        const productArr = Object.values(similarProducts);
+        const numberOfProducts = productArr.length >= 4 ? 4 : productArr.length
+        const productElements = productArr.slice(0, numberOfProducts).map((product, i) => {
+            return (
+                <div className="item" key={i}>
+                    <ProductSearchItem product={product}/>
+                </div>
+            )
+        })
+        return (
+            <ul className="similar-items-container">
+                {productElements}
+            </ul>
+        )
     }
 
     render() {
@@ -60,6 +91,7 @@ class ProductSearchAddToCartModal extends React.Component {
                             </li>
                         </ul>
                     </div>
+                    {this.listSimilarProducts()}
                 </div>
                 <div className="buttons-container">
                     <button 
@@ -80,12 +112,15 @@ class ProductSearchAddToCartModal extends React.Component {
 }
 
 const mSTP = (state, ownProps) => ({
+    products: state.entities.products,
     product: ownProps.product,
-    display: ownProps.display
+    display: ownProps.display,
+    history: ownProps.history
 });
 
 const mDTP = (dispatch) => ({
-    searchByProductName: (searchString) => dispatch(searchByProductName(searchString))
+    searchByProductName: (searchString) => dispatch(searchByProductName(searchString)),
+    getProduct: (product_id) => dispatch(getProduct(product_id))
 })
 
 export default connect(mSTP, mDTP)(ProductSearchAddToCartModal);

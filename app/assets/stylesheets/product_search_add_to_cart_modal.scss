@@ -22,6 +22,8 @@
     border: 10px solid black;
     border-style: double;
     padding: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     .grey-screen {
         position: fixed;
@@ -215,6 +217,30 @@
             justify-content: center;
             width: 100%;
             text-decoration: none;
+        }
+    }
+
+    .similar-items-container {
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 14px;
+
+        .product-search-item-container {
+            width: 100%;
+            min-width: 0px;
+        }
+
+        .cart-search-container {
+            display: none;
+        }
+
+        .product-search-details-container {
+            width: 100%;
+        }
+        
+        .item {
+            width: 50%;
         }
     }
 }

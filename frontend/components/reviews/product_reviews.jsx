@@ -13,11 +13,16 @@ import{
 class ProductReviews extends React.Component {
     constructor(props){
         super(props)
-
     }
 
-    componentDidMount(){
-        this.props.getProductReviews()
+    componentDidMount() {
+        this.props.getProductReviews();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.productId != this.props.productId) {
+            this.props.getProductReviews();
+        }
     }
 
     updateReview(review){
@@ -121,7 +126,7 @@ class ProductReviews extends React.Component {
     render(){
         const productReviews = this.props.reviews.map(
             (review, i) =>
-                <li 
+                <li
                     className='review-container'
                     key = { review.id + i } >
                         {this.randomUserIcon()}
@@ -143,7 +148,7 @@ class ProductReviews extends React.Component {
             reviewAverage += review.rating
         })
         reviewAverage = Math.floor(reviewAverage / this.props.reviews.length)
-        
+
         return (
             <div className='reviews-container'>
                 <div className='reviews-header'>

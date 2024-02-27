@@ -21,7 +21,8 @@ class ProductSearchIndex extends React.Component {
                 <ProductSearchItem 
                     key={i}
                     product={product}
-                    createCartItem={this.props.createCartItem}>
+                    createCartItem={this.props.createCartItem}
+                    history={this.props.history}>
                 </ProductSearchItem>
         )
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import ProductSearchAddToCartModal from "./product_search_add_to_cart_modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCertificate, faStar, faCircle, faPlus, faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import ProductSearchAddToCartModal from "./product_search_add_to_cart_modal";
 
 class ProductSearchItem extends React.Component {
     constructor(props) {
@@ -23,7 +23,8 @@ class ProductSearchItem extends React.Component {
             <ProductSearchAddToCartModal
                 modalState={this.getStateOfConfirmationModal}
                 display={this.state.confirmationModal}
-                product={this.props.product}/>
+                product={this.props.product}
+                history={this.props.history}/>
             : null
         return modal
     }
@@ -110,10 +111,14 @@ class ProductSearchItem extends React.Component {
 
 };
 
-const mSTP = (state, ownProps) => {
-    return {
-        product: ownProps.product,
-    };
-};
+const mSTP = (state, ownProps) => ({
+    product: ownProps.product,
+    history: ownProps.history
+});
 
-export default connect(mSTP)(ProductSearchItem);
+const mDTP = (dispatch) => ({
+    getProduct: (product_id) => dispatch(getProduct(product_id))
+})
+
+
+export default connect(mSTP, mDTP)(ProductSearchItem);

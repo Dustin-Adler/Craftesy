@@ -30,10 +30,11 @@
 
     .product-index-item-img {
         border-radius: 15px;
-        // width: 520px;
+        height: 520px;
         width: 80%;
         background-color: whitesmoke;
         object-fit: cover;
+        object-position: top;
     }
 
     .size-review-button {

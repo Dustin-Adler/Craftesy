@@ -172,7 +172,7 @@ class CartItem extends React.Component {
                     <div className='cart-item-row-container cart-item-info'>
                         <Link
                             className='link' 
-                            to={`/products/${cartItem.id}`}>
+                            to={`/products/${cartItem.product_id}`}>
                             <img 
                                 className='cart-item-img' 
                                 src={cartItem.images[0].url} 
@@ -267,7 +267,7 @@ class CartItem extends React.Component {
                     </textarea>
                     <div className='cart-item-column-container column-right delivery-info'>
                         <p>
-                            Estimated delivery: 
+                            Estimated delivery:
                             <span>{currentDate}</span>
                         </p>
                         <p>from: The Interweb</p>

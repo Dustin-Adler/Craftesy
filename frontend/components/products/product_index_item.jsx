@@ -13,15 +13,23 @@ class ProductIndexItem extends React.Component {
         this.toggleConfModal = this.toggleConfModal.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getProduct()
     }
 
-    descriptionClick(){
+    componentDidUpdate(prevProps) {
+        if(!prevProps.product) {
+            return null
+        } else if(prevProps.product.id != this.props.product.id) {
+            this.toggleConfModal();
+        }
+    }
+
+    descriptionClick() {
         this.state.description ? this.setState({description: false}) : this.setState({description: true})
     }
 
-    displayDescription(){
+    displayDescription() {
         return(
             <div className={this.state.description ? 'product-show-additional-info-active' : 'product-show-additional-info-inactive'}>
                 <p>{this.props.product.description}</p>
@@ -35,7 +43,7 @@ class ProductIndexItem extends React.Component {
         )
     }
 
-    createReview(){
+    createReview() {
         if(this.props.session){
             return (
                 <div className='size-review-button'>
@@ -60,13 +68,13 @@ class ProductIndexItem extends React.Component {
     }
 
     confirmationModal() {
-        console.log(this.state.dispConfModal)
         return this.state.dispConfModal ? 
             <ProductSearchAddToCartModal
                 display={this.state.dispConfModal}
                 modalState={this.toggleConfModal}
                 quantity={this.state.quantity}
-                product={this.props.product}/>
+                product={this.props.product}
+                history={this.props.history}/>
             : null
     }
 
@@ -106,7 +114,7 @@ class ProductIndexItem extends React.Component {
                                 alt={product.name}/> <br />
                             {this.createReview()}
                         </div>
-                        < ProductReview/>
+                        <ProductReview productId={product.id}/>
                     </div>
                     <div className='product-info'>
                         <div className='product-show-seller-shop-name'>Super Totally Awesome Seller</div>
