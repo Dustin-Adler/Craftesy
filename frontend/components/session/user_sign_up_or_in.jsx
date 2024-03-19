@@ -30,7 +30,8 @@ class SignInOrSignUp extends React.Component {
         this.props.clearErrors()
     }
 
-    signInOrSignUp(){
+    signInOrSignUp(e){
+        e.preventDefault()
         this.props.getAccountFromEmail(this.state.email)
         .then( res => {
             if (res.user.id){
