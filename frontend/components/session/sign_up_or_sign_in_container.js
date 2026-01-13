@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import React from 'react';
 import { registerAccount, getAccountFromEmail } from '../../actions/user_actions';
 import { login, clearErrors } from '../../actions/session_actions';
 import SignInOrSignUp from './user_sign_up_or_in';
