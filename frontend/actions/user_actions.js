@@ -1,4 +1,5 @@
 import * as UsersAPIUtil from '../utils/users_api_util'
+import { receiveCurrentUser } from './session_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const REMOVE_USER = 'REMOVE_USER'
@@ -38,6 +39,7 @@ export const registerAccount = user => dispatch => (
     UsersAPIUtil.registerAccount(user)
     .then(
       user => dispatch(receiveUser(user)),
+      user => dispatch(receiveCurrentUser(user)),
       error => dispatch(receiveErrors(error.responseJSON))
     )
  )
