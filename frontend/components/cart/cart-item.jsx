@@ -182,7 +182,7 @@ class CartItem extends React.Component {
                             <div className='cart-item-column-container '>
                                 <Link
                                     className='text-link'
-                                    to={`/products/${cartItem.id}`}>
+                                    to={`/products/${cartItem.product_id}`}>
                                     <div>{cartItem.name}</div>
                                 </Link>
                                 <div className='cart-item-options'></div>
