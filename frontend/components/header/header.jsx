@@ -110,6 +110,19 @@ class Header extends React.Component {
         )
     }
 
+    numberOfItemsInCart() {
+        const numberOfItemsInCart = this.props.numberOfItemsInCart
+        if (numberOfItemsInCart > 0) {
+            return (
+                <div className='cart-ref'>
+                    <span>{numberOfItemsInCart}</span>
+                </div>
+            )
+        } else {
+            return null
+        }
+    }
+
     render() {
         
         return(
@@ -134,9 +147,7 @@ class Header extends React.Component {
                     {this.signInButton()}
                     <Link className='cart-container button-transition' to='/cart'>
                         <FontAwesomeIcon className='cart' icon={faCartShopping}/>
-                        <div className='cart-ref'>
-                            <span>{this.props.numberOfItemsInCart}</span>
-                        </div>
+                        {this.numberOfItemsInCart()}
                     </Link>
                 </div>
                 <div className='professional-links'>
