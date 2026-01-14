@@ -1,6 +1,10 @@
 class Cart < ApplicationRecord
-    validates :shopper_id, :product_id, presence: true
-    validates :quantity, presence: true
+    validates :belongs_to_shopper_or_guest
+    validates :quantity, :product_id, presence: true
+
+    belongs_to :guest_shopper, 
+        foreign_key: :guest_id,
+        class_name: :Guest
 
     belongs_to :shopper, 
         foreign_key: :shopper_id, 
@@ -13,5 +17,11 @@ class Cart < ApplicationRecord
     has_many :images, 
         through: :product,
         source: :images_attachments
+
+    def belongs_to_shopper_or_guest
+        if self.shopper_id.nil? && self.guest_id.nil?
+            errors.add(:base, "No guest or user to associate with cart item")
+        end
+    end
 
 end
