@@ -13,9 +13,9 @@ class Api::CartsController < ApplicationController
     def create
         # bug - silent error if their is no current user
         @cart_item  = Cart.new(cart_params)
-        @cart_item.shopper_id = current_user.id
+        user? ? @cart_item.shopper_id = current_user.id : @cart_item.guest_id = current_guest.id
         if @cart_item.save
-            @cart = current_user.items_in_cart
+            @cart = current_actor.items_in_cart
             render "api/carts/show"
         else
             render json: @cart_item.errors.full_messages, status: 422

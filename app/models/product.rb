@@ -14,5 +14,9 @@ class Product < ApplicationRecord
     has_many :buyers,
         through: :carts, 
         source: :shopper
+
+    has_many :guest_buyers,
+        through: :carts,
+        source: :guest_shopper
         
 end

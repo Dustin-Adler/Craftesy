@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if ongoing_session? %>
   <script id="bootstrap-current-user" type="text/javascript">
   	window.currentUser = 
       <%= sanitize render partial: 'api/users/user',

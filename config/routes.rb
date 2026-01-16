@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       end
     end
     resources :guests, only: [:show, :create, :destroy]
-    resource :session, only: [:create, :destroy]
+    resource :session, only: [:new, :create, :destroy]
     resources :products, only: [:create, :update, :destroy, :show, :index] do
       collection do
         get 'search_products_by_name'

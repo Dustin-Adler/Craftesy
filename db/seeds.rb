@@ -12,6 +12,8 @@ if any_products
     Product.delete_all
 end
 
+puts "Seeding Demo User and Products..."
+
 DemoUser = User.create({
     email: 'demo@account.id',
     password: 'password',
@@ -400,3 +402,5 @@ product37 = Product.create({
 })
 img37 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_project_assets/fortnite-present.png')
 product37.images.attach(io: img37, filename: 'fortnite-present.png')
+
+puts "Seeding Complete!"
