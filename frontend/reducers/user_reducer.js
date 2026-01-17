@@ -1,7 +1,7 @@
 import { RECEIVE_USER, REMOVE_USER, RECEIVE_EMAIL } from "../actions/user_actions";
 import { LOGOUT_CURRENT_USER } from "../actions/session_actions"
 
-const userReducer = (state={}, action) => {
+const userReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_USER:
             return {[action.user.id]: action.user}

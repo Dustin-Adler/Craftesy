@@ -6,7 +6,7 @@ export const REMOVE_USER = 'REMOVE_USER'
 export const RECEIVE_EMAIL = 'RECEIVE_EMAIL'
 export const RECEIVE_ALL_ERRORS = 'RECEIVE_ALL_ERRORS'
 
-const receiveUser = user => ({
+export const receiveUser = user => ({
     type: RECEIVE_USER,
     user
   })
