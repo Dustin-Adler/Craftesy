@@ -1,21 +1,17 @@
 class ApplicationController < ActionController::Base
-    helper_method :ongoing_session?, :current_user, :current_guest, :current_actor
+    include GuestTrackable
+    include UserTrackable
 
+    helper_method :ongoing_session?, :current_actor, :ensure_session_token
 
-    def current_guest
-        @current_guest ||= Guest.find_by(session_token: session[:session_token])
-    end
-
-    def current_user
-        @current_user ||= User.find_by(session_token: session[:session_token])
-    end
+    # An actor is either a user or a guest
 
     def current_actor
-        @current_actor ||= current_user || current_guest
+        @current_actor = current_user.present? ? current_user : current_guest
     end
 
     def ensure_session_token
-        redirect_to new_session_url unless ongoing_session?
+        redirect_to new_api_session_url unless ongoing_session?
     end
 
     def start_session(actor)
@@ -30,14 +26,6 @@ class ApplicationController < ActionController::Base
         @current_user = nil
         @current_guest = nil
         @current_actor = nil
-    end
-
-    def guest?
-        !!current_guest
-    end
-
-    def user?
-        !!current_user
     end
 
     def ongoing_session?

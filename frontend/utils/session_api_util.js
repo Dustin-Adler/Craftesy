@@ -12,3 +12,10 @@
       method: 'delete'
     })
   )
+
+  export const guestLogin = () => (
+    $.ajax({
+      url: '/api/session/guest_login',
+      method: 'post'
+    })
+  )
