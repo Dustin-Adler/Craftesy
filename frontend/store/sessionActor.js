@@ -1,7 +1,7 @@
-import { receiveCurrentUser } from "../actions/session_actions";
-
-export const getSessionActor = () => {
-    let sessionActor = null;
-    window.currentGuest == undefined ? sessionActor = window.currentUser : sessionActor = window.currentGuest;
-    return sessionActor;
+export const setSessionActor = () => {
+    if (window.currentGuest == undefined) {
+        return {...window.currentUser, type: "user"};
+    } else {
+        return {...window.currentGuest, type: "guest"};
+    }
 }

@@ -1,10 +1,22 @@
+import { setSessionActor } from './sessionActor';
+
 export const loadState = () => {
     try {
         const serialState = localStorage.getItem('craftesyState');
         if (serialState === null) {
             return undefined;
         }
-        return JSON.parse(serialState);
+        let parsedState = JSON.parse(serialState);
+        let actor = setSessionActor();
+        if (actor.type === "user") {
+            delete actor.type;
+            parsedState.entities.users = { [actor.id]: actor };
+        } else if (actor.type === "guest") {
+            delete actor.type;
+            parsedState.entities.guest = { [actor.id]: actor };
+        }
+        parsedState.session = actor.id;
+        return parsedState;
     } catch(err) {
         return undefined;
     }
@@ -18,24 +30,3 @@ export const saveState = (state) => {
         console.log(err)
     }
 };
-
-// export const loadGuest = () => {
-//     try {
-//         const serialGuest = localStorage.getItem('guestUUID');
-//         if (serialGuest === null) {
-//             return undefined;
-//         }
-//         return JSON.parse(serialGuest);
-//     } catch(err) {
-//         return undefined;
-//     }
-// };
-
-// export const saveGuest = (guest) => {
-//     try {
-//         const serialGuest = JSON.stringify(guest)
-//         localStorage.setItem('guestUUID', serialGuest)
-//     } catch(err) {
-//         console.log(err)
-//     }
-// }; 

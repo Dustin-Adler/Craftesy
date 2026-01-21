@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,93 +12,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_16_025149) do
+ActiveRecord::Schema[7.1].define(version: 20_260_116_025_149) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  create_table 'active_storage_attachments', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'record_type', null: false
+    t.bigint 'record_id', null: false
+    t.bigint 'blob_id', null: false
+    t.datetime 'created_at', precision: nil, null: false
+    t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
+    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness',
+                                                    unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.bigint "byte_size", null: false
-    t.string "checksum"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "service_name", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  create_table 'active_storage_blobs', force: :cascade do |t|
+    t.string 'key', null: false
+    t.string 'filename', null: false
+    t.string 'content_type'
+    t.text 'metadata'
+    t.bigint 'byte_size', null: false
+    t.string 'checksum'
+    t.datetime 'created_at', precision: nil, null: false
+    t.string 'service_name', null: false
+    t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
-    t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  create_table 'active_storage_variant_records', force: :cascade do |t|
+    t.bigint 'blob_id', null: false
+    t.string 'variation_digest', null: false
+    t.index %w[blob_id variation_digest], name: 'index_active_storage_variant_records_uniqueness', unique: true
   end
 
-  create_table "carts", force: :cascade do |t|
-    t.integer "shopper_id"
-    t.integer "product_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "quantity", null: false
-    t.decimal "discount", default: "1.0", null: false
-    t.integer "guest_id"
-    t.index ["guest_id"], name: "index_carts_on_guest_id"
-    t.index ["shopper_id"], name: "index_carts_on_shopper_id"
+  create_table 'carts', force: :cascade do |t|
+    t.integer 'shopper_id'
+    t.integer 'product_id', null: false
+    t.datetime 'created_at', precision: nil, null: false
+    t.datetime 'updated_at', precision: nil, null: false
+    t.integer 'quantity', null: false
+    t.decimal 'discount', default: '1.0', null: false
+    t.integer 'guest_id'
+    t.index ['guest_id'], name: 'index_carts_on_guest_id'
+    t.index ['shopper_id'], name: 'index_carts_on_shopper_id'
   end
 
-  create_table "guests", force: :cascade do |t|
-    t.string "session_token", null: false
-    t.string "uuid", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["uuid"], name: "index_guests_on_uuid"
+  create_table 'guests', force: :cascade do |t|
+    t.string 'session_token', null: false
+    t.string 'uuid', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['uuid'], name: 'index_guests_on_uuid'
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
-    t.float "price", null: false
-    t.integer "seller_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "game_name"
-    t.index ["game_name"], name: "index_products_on_game_name"
-    t.index ["name"], name: "index_products_on_name"
-    t.index ["seller_id"], name: "index_products_on_seller_id"
+  create_table 'products', force: :cascade do |t|
+    t.string 'name', null: false
+    t.text 'description', null: false
+    t.float 'price', null: false
+    t.integer 'seller_id', null: false
+    t.datetime 'created_at', precision: nil, null: false
+    t.datetime 'updated_at', precision: nil, null: false
+    t.string 'game_name'
+    t.index ['game_name'], name: 'index_products_on_game_name'
+    t.index ['name'], name: 'index_products_on_name'
+    t.index ['seller_id'], name: 'index_products_on_seller_id'
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "author_id"
-    t.integer "product_id"
-    t.integer "rating"
-    t.text "body"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["author_id"], name: "index_reviews_on_author_id"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
+  create_table 'reviews', force: :cascade do |t|
+    t.integer 'author_id'
+    t.integer 'product_id'
+    t.integer 'rating'
+    t.text 'body'
+    t.datetime 'created_at', precision: nil, null: false
+    t.datetime 'updated_at', precision: nil, null: false
+    t.index ['author_id'], name: 'index_reviews_on_author_id'
+    t.index ['product_id'], name: 'index_reviews_on_product_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "session_token", null: false
-    t.string "password_digest", null: false
-    t.string "email", null: false
-    t.string "first_name", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["session_token"], name: "index_users_on_session_token"
+  create_table 'users', force: :cascade do |t|
+    t.string 'session_token', null: false
+    t.string 'password_digest', null: false
+    t.string 'email', null: false
+    t.string 'first_name', null: false
+    t.datetime 'created_at', precision: nil, null: false
+    t.datetime 'updated_at', precision: nil, null: false
+    t.index ['email'], name: 'index_users_on_email'
+    t.index ['session_token'], name: 'index_users_on_session_token'
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
 end

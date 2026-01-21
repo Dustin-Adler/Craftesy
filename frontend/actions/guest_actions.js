@@ -6,12 +6,12 @@ export const RECEIVE_GUEST = 'RECEIVE_GUEST'
 export const REMOVE_GUEST = 'REMOVE_GUEST'
 export const RECEIVE_ALL_ERRORS = 'RECEIVE_ALL_ERRORS'
 
-const receiveGuest = guest => ({
+export const receiveGuest = guest => ({
     type: RECEIVE_GUEST,
     guest
 });
 
-const removeGuest = () => ({
+export const removeGuest = () => ({
     type: REMOVE_GUEST
 });
 

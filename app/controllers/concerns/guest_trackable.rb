@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GuestTrackable
   extend ActiveSupport::Concern
 
@@ -10,11 +12,12 @@ module GuestTrackable
   end
 
   def returning_guest
-    @current_guest ||= Guest.find_by(uuid: cookies.signed[:guest_uuid])
+    @returning_guest ||= Guest.find_by(uuid: cookies.signed[:guest_uuid])
   end
 
   def ensure_guest
     return if current_guest.present? || returning_guest.present?
+
     guest = Guest.create!
     set_guest_cookie(guest)
     @current_guest = guest

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import { loadState, saveState } from './store/localStorage';
-import { getSessionActor } from './store/sessionActor';
+import { setSessionActor } from './store/sessionActor';
 import * as UserActions from './actions/user_actions';
 import * as SessionActions from './actions/session_actions';
 import * as ProductActions from './actions/product_actions';
@@ -13,12 +13,21 @@ import * as GuestActions from './actions/guest_actions';
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   let preloadedState = loadState();
-  // let currentSession = getSessionActor();
   store = configureStore(preloadedState);
+  let state = store.getState();
+  // let actor = setSessionActor();
+  // console.log("Session Actor:", actor);
+  // debugger
   store.subscribe(() => {
-    const state = store.getState()
     saveState({
-      entities: state.entities,
+      entities: {
+        cart: state.entities.cart,
+        users: state.entities.users,
+        guest: state.entities.guest,
+        products: state.entities.products,
+        reviews: state.entities.reviews,
+        images: state.entities.images
+      },
       errors: state.errors,
       session: state.session,
       ui: state.ui

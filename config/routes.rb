@@ -1,33 +1,32 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
-  namespace :api, defaults: {format: :json} do
-    resources :users, only: [:create, :show, :destroy, :update] do
+Rails.application.routes.draw do
+  namespace :api, defaults: { format: :json } do
+    resources :users, only: %i[create show destroy update] do
       collection do
         get 'getAccountFromEmail'
       end
     end
-    resources :guests, only: [:show, :create] do
+    resources :guests, only: %i[show create] do
       collection do
         post 'upgrade_guest_to_user'
       end
     end
-    resource :session, only: [:new, :create, :destroy] do
+    resource :session, only: %i[new create destroy] do
       collection do
         post 'guest_login'
       end
     end
-    resources :products, only: [:create, :update, :destroy, :show, :index] do
+    resources :products, only: %i[create update destroy show index] do
       collection do
         get 'search_products_by_name'
         get 'get_game_images'
       end
-      resources :reviews, only: [:index, :create]
+      resources :reviews, only: %i[index create]
     end
-    resources :reviews, only: [:destroy, :update]
-    resources :carts, only: [:index, :create, :destroy, :update]
-    
+    resources :reviews, only: %i[destroy update]
+    resources :carts, only: %i[index create destroy update]
   end
 
-  root "static_pages#root"
-  
+  root 'static_pages#root'
 end
