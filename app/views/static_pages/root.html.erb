@@ -1,10 +1,18 @@
-<% if ongoing_session? %>
+<% if user? %>
   <script id="bootstrap-current-user" type="text/javascript">
   	window.currentUser = 
       <%= sanitize render partial: 'api/users/user',
         formats: :json,
         handlers: :jbuilder,
         locals: {user: current_user} %>
+  </script>
+<% elsif guest? %>
+  <script id="bootstrap-guest-user" type="text/javascript">
+  	window.currentGuest = 
+      <%= sanitize render partial: 'api/guests/guest',
+      formats: :json,
+      handlers: :jbuilder,
+      locals: {guest: current_guest} %>
   </script>
 <% end %>
 

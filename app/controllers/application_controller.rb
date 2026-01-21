@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
     def current_actor
         @current_actor = current_user.present? ? current_user : current_guest
+        @current_actor = returning_guest unless @current_actor.present?
+        @current_actor
     end
 
     def ensure_session_token

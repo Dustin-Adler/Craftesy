@@ -37,6 +37,7 @@ class Api::SessionsController < ApplicationController
             params[:user][:password]
         )
         if @user.present?
+            terminate_session! if ongoing_session?
             start_session(@user)
             render 'api/users/show'
         else

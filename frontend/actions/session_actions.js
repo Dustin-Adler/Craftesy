@@ -16,6 +16,11 @@ const receiveErrors = errors => ({
   errors
 })
 
+export const receiveCurrentUser = currentUser => ({
+  type: RECEIVE_CURRENT_USER,
+  currentUser
+})
+
 export const clearErrors = () => ({
   type: CLEAR_SESSION_ERRORS
 })
@@ -32,8 +37,3 @@ export const logout = () => dispatch => (
     SessionAPIUtil.logout()
     .then(() => dispatch(logoutCurrentUser()))
 )
-
-export const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
-})
