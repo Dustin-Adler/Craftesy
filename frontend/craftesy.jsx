@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import { loadState, saveState } from './store/localStorage';
-import { setSessionActor } from './store/sessionActor';
 import * as UserActions from './actions/user_actions';
 import * as SessionActions from './actions/session_actions';
 import * as ProductActions from './actions/product_actions';
@@ -15,9 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let preloadedState = loadState();
   store = configureStore(preloadedState);
   let state = store.getState();
-  // let actor = setSessionActor();
-  // console.log("Session Actor:", actor);
-  // debugger
   store.subscribe(() => {
     saveState({
       entities: {

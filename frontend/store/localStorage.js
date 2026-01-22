@@ -15,7 +15,7 @@ export const loadState = () => {
             delete actor.type;
             parsedState.entities.guest = { [actor.id]: actor };
         }
-        parsedState.session = actor.id;
+        parsedState.session = { id: actor.id};
         return parsedState;
     } catch(err) {
         return undefined;
