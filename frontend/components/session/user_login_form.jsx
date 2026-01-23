@@ -26,6 +26,7 @@ class UserLoginForm extends React.Component {
     handleSubmit(){
         this.props.login(this.state)
         .then(()=>this.props.closeModal())
+        .then(()=>this.props.removeGuest())
     }
 
     render() {

@@ -1,6 +1,5 @@
 import * as SessionAPIUtil from '../utils/session_api_util'
-
-import { removeGuest } from './guest_actions'
+import { removeGuest } from './guest_actions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'
 export const RECEIVE_CURRENT_GUEST = 'RECEIVE_CURRENT_GUEST'
@@ -37,7 +36,6 @@ export const login = user => dispatch => (
     SessionAPIUtil.login(user)
     .then(
       currentUser => dispatch(receiveCurrentUser(currentUser)),
-      () => dispatch(removeGuest()),
       error => dispatch(receiveErrors(error.responseJSON))
     )
 )

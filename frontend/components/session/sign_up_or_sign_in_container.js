@@ -3,6 +3,7 @@ import { registerAccount, getAccountFromEmail } from '../../actions/user_actions
 import { login, clearErrors } from '../../actions/session_actions';
 import SignInOrSignUp from './user_sign_up_or_in';
 import { closeModal } from '../../actions/modal_actions';
+import { removeGuest } from '../../actions/guest_actions';
 
 const mSTP = ({errors}) => {
     return {
@@ -23,7 +24,8 @@ const mDTP = (dispatch) => {
         registerAccount: (user) => dispatch(registerAccount(user)),
         getAccountFromEmail: (email) => dispatch(getAccountFromEmail(email)),
         closeModal: () => dispatch(closeModal()),
-        clearErrors: () => dispatch(clearErrors())
+        clearErrors: () => dispatch(clearErrors()),
+        removeGuest: () => dispatch(removeGuest())
     };
 };
 

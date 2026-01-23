@@ -72,7 +72,8 @@ class SignInOrSignUp extends React.Component {
                             onClick={()=>this.props.login({
                                 email: 'demo@account.id',
                                 password: 'password',
-                            }).then(()=>this.props.closeModal())}>
+                            }).then(()=>this.props.closeModal())
+                            .then(()=>this.props.removeGuest())}>
                             Demo login
                         </button> 
                     </div>
@@ -80,11 +81,12 @@ class SignInOrSignUp extends React.Component {
                 break;
             case 1:
                 return <UserLoginForm 
-                    user={this.state} 
-                    login={this.props.login} 
-                    closeModal={this.props.closeModal} 
-                    errors={this.props.errors} 
-                    clearErrors={this.props.clearErrors} 
+                    user={this.state}
+                    login={this.props.login}
+                    closeModal={this.props.closeModal}
+                    errors={this.props.errors}
+                    clearErrors={this.props.clearErrors}
+                    removeGuest={this.props.removeGuest}
                     formType='Login'/>
                     
                 break;
@@ -96,6 +98,7 @@ class SignInOrSignUp extends React.Component {
                     closeModal={this.props.closeModal}
                     errors={this.props.errors}
                     clearErrors={this.props.clearErrors}
+                    removeGuest={this.props.removeGuest}
                     formType='Register'/>
                 break;
             default:
