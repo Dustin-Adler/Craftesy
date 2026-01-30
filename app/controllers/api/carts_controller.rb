@@ -3,7 +3,7 @@
 module Api
   class CartsController < ApplicationController
     def index
-      @cart = current_user.cart_items.includes({ product: [:carts] }, :images)
+      @cart = current_actor.cart_items.includes({ product: [:carts] }, :images)
 
       if @cart
         render 'api/carts/index'
@@ -13,7 +13,6 @@ module Api
     end
 
     def create
-      # bug - silent error if their is no current user
       @cart_item = Cart.new(cart_params)
       user? ? @cart_item.shopper_id = current_user.id : @cart_item.guest_id = current_guest.id
       if @cart_item.save

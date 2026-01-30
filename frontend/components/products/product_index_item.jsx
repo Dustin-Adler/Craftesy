@@ -102,7 +102,7 @@ class ProductIndexItem extends React.Component {
                 <option key={i} value={i+1} defaultValue> {i+1} </option>
                 :
                 <option key={i} value={i+1}> {i+1} </option>)
-            const review = [...Array(5)].map( (el, i) => <i key={i} className="fas fa-star"></i>) // actual review calc coming soon
+            const review = [...Array(5)].map( (el, i) => <i key={i} className="fas fa-star"></i>)
             return(
                 <div className='product-show'>
                     {this.confirmationModal()}
