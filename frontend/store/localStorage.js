@@ -3,19 +3,21 @@ import { setSessionActor } from './sessionActor';
 export const loadState = () => {
     try {
         const serialState = localStorage.getItem('craftesyState');
-        if (serialState === null) {
-            return undefined;
-        }
-        let parsedState = JSON.parse(serialState);
         let actor = setSessionActor();
-        if (actor.type === "user") {
-            delete actor.type;
-            parsedState.entities.users = { [actor.id]: actor };
-        } else if (actor.type === "guest") {
-            delete actor.type;
-            parsedState.entities.guest = { [actor.id]: actor };
-        }
+        if (!serialState) return undefined;
+        let parsedState = JSON.parse(serialState);
+        if (!!actor) {
+            if (actor.type === "user") {
+                delete actor.type;
+                parsedState.entities.users = { [actor.id]: actor };
+                parsedState.entities.guest = { };
+            } else {
+                delete actor.type;
+                parsedState.entities.guest = { [actor.id]: actor };
+                parsedState.entities.users = { };
+            }
         parsedState.session = { id: actor.id};
+        }
         return parsedState;
     } catch(err) {
         return undefined;

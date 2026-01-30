@@ -6,7 +6,7 @@ import { logout } from '../../actions/session_actions'
 import { searchByProductName } from '../../actions/product_actions'
 
 const mSTP = (state) => ({
-    currentUser: state.session.id,
+    currentUser: Object.values(state.entities.users)[0],
     searchString: '',
     numberOfItemsInCart: Object.values(state.entities.cart).length
 })
