@@ -1,5 +1,4 @@
 import {openModal} from '../../actions/modal_actions'
-import React from 'react'
 import { connect } from 'react-redux'
 import Header from './header'
 import { logout } from '../../actions/session_actions'
