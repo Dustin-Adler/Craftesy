@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :session_token, :email, presence: true, uniqueness: true
+  include SessionTokenable
+
+  validates :email, presence: true, uniqueness: true
   validates :password_digest, :first_name, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true
   # validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   attr_reader :password
 
-  after_initialize :ensure_session_token
 
   has_many :reviews,
            foreign_key: :author_id,
@@ -29,10 +30,6 @@ class User < ApplicationRecord
     user
   end
 
-  def self.generate_session_token
-    SecureRandom.urlsafe_base64(16)
-  end
-
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -40,15 +37,5 @@ class User < ApplicationRecord
 
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
-  end
-
-  def ensure_session_token
-    self.session_token ||= User.generate_session_token
-  end
-
-  def reset_session_token!
-    self.session_token = User.generate_session_token
-    save!
-    self.session_token
   end
 end

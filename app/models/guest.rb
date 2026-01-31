@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Guest < ApplicationRecord
+  include SessionTokenable
+
   before_validation :ensure_uuid, on: :create
-  validates :session_token, :uuid, presence: true, uniqueness: true
-  after_initialize :ensure_session_token
+  validates :uuid, presence: true, uniqueness: true
 
   attr_readonly :uuid
 
@@ -15,25 +16,11 @@ class Guest < ApplicationRecord
            through: :cart_items,
            source: :product
 
-  def self.generate_session_token
-    SecureRandom.urlsafe_base64(16)
-  end
-
   def self.generate_uuid
     SecureRandom.uuid
   end
 
   def ensure_uuid
     self.uuid ||= Guest.generate_uuid
-  end
-
-  def ensure_session_token
-    self.session_token ||= Guest.generate_session_token
-  end
-
-  def reset_session_token!
-    self.session_token = Guest.generate_session_token
-    save!
-    self.session_token
   end
 end
