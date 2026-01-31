@@ -44,7 +44,7 @@ class ProductIndexItem extends React.Component {
     }
 
     createReview() {
-        if(this.props.session){
+        if(this.props.currentUser?.id){
             return (
                 <div className='size-review-button'>
                     <button 

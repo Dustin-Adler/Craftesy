@@ -8,7 +8,7 @@ const mSTP = (state, ownProps) => {
 
     return {
         product: state.entities.products[ownProps.match.params.id],
-        session: state.session.id
+        currentUser: Object.values(state.entities.users)[0]
     }
 }
 
