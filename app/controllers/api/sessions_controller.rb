@@ -3,11 +3,6 @@
 module Api
   class SessionsController < ApplicationController
     def new
-      @user = User.find_by_credentials(
-        params[:user][:email],
-        params[:user][:password]
-      )
-      @guest = Guest.find_by(uuid: cookies.signed[:guest_uuid])
       if @user.present?
         start_session(@user)
         render 'api/users/show'
@@ -22,8 +17,7 @@ module Api
     end
 
     def guest_login
-      @guest = Guest.find_by(uuid: cookies.signed[:guest_uuid])
-      @guest = ensure_guest unless @guest.present?
+      @guest = ensure_guest
       start_session(@guest)
       render 'api/guests/show'
     end

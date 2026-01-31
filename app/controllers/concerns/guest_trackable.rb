@@ -13,10 +13,13 @@ module GuestTrackable
 
   def returning_guest
     @returning_guest ||= Guest.find_by(uuid: cookies.signed[:guest_uuid])
+    set_guest_cookie(@returning_guest) if @returning_guest
+    @returning_guest
   end
 
   def ensure_guest
-    return if current_guest.present? || returning_guest.present?
+    return @current_guest if current_guest.present?
+    return @returning_guest if returning_guest.present?
 
     guest = Guest.create!
     set_guest_cookie(guest)
