@@ -12,7 +12,8 @@ class Guest < ApplicationRecord
 
   has_many :cart_items,
            foreign_key: :guest_id,
-           class_name: :Cart
+           class_name: :Cart,
+            dependent: :destroy
 
   has_many :items_in_cart,
            through: :cart_items,
