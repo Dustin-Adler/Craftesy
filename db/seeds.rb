@@ -162,7 +162,7 @@ img14 = URI.open('https://craftesy-seeds.s3.us-east-2.amazonaws.com/fullstack_pr
 product14.images.attach(io: img14, filename: 'knights-of-the-round-ffvii.png')
 
 product15 = Product.create({
-                             name: 'Chocobo ',
+                             name: 'Chocobo',
                              description: 'Fighting one is the equivelant to fighting a goose',
                              price: 3.00,
                              seller_id: 1,
