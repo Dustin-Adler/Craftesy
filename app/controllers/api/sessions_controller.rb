@@ -49,7 +49,6 @@ module Api
       end
     end
 
-    private
     # There are currently no strong params for sessions
     # def session_params
     #     params.require(:session).permit( :email, :password )

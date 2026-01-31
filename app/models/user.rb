@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-
   has_many :reviews,
            foreign_key: :author_id,
            class_name: :Review
