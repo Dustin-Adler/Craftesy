@@ -23,4 +23,10 @@ class Guest < ApplicationRecord
   def ensure_uuid
     self.uuid ||= Guest.generate_uuid
   end
+
+  def transfer_items_to_user(user)
+    self.cart_items.each do |cart_item|
+      cart_item.update(guest_id: nil, shopper_id: user.id)
+    end
+  end
 end

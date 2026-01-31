@@ -24,8 +24,13 @@ class UserRegisterForm extends React.Component {
       }
 
     handleSubmit(){
-        this.props.registerAccount(this.state)
-        .then(()=>this.props.login(this.state))
+        this.props.registerAccount(
+                {
+                    first_name: this.state.first_name,
+                    email: this.state.email,
+                    password: this.state.password
+                }
+            )
         .then(()=>this.props.closeModal())
     }
 

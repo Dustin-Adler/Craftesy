@@ -24,8 +24,7 @@ const mDTP = (dispatch) => {
         registerAccount: (user) => dispatch(registerAccount(user)),
         getAccountFromEmail: (email) => dispatch(getAccountFromEmail(email)),
         closeModal: () => dispatch(closeModal()),
-        clearErrors: () => dispatch(clearErrors()),
-        removeGuest: () => dispatch(removeGuest())
+        clearErrors: () => dispatch(clearErrors())
     };
 };
 

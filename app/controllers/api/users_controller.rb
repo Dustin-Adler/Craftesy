@@ -6,6 +6,9 @@ module Api
       @user = User.new(user_params)
 
       if @user.save
+        current_guest.transfer_items_to_user(@user) if current_actor.is_a?(Guest)
+        @cart = @user.cart_items
+        terminate_session! if ongoing_session?
         start_session(@user)
         render 'api/users/show'
       else
