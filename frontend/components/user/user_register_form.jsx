@@ -24,8 +24,13 @@ class UserRegisterForm extends React.Component {
       }
 
     handleSubmit(){
-        this.props.registerAccount(this.state)
-        .then(()=>this.props.login(this.state))
+        this.props.registerAccount(
+                {
+                    first_name: this.state.first_name,
+                    email: this.state.email,
+                    password: this.state.password
+                }
+            )
         .then(()=>this.props.closeModal())
     }
 
@@ -35,13 +40,13 @@ class UserRegisterForm extends React.Component {
                 <div className='form-type'>{this.props.formType}</div>
                 <form onSubmit={() => this.handleSubmit()} className='form-items'>
                     <h5 className='form-field-name'>First Name</h5>
-                    <input 
+                    <input
                         className="form-field-text"
                         type="text"
-                        value={this.state.firstName}
+                        value={this.state.first_name}
                         onChange={this.update('first_name')} />
                     <h5 className='form-field-name'>Password</h5>
-                    <input 
+                    <input
                         className="form-field-text"
                         type="password"
                         value={this.state.password}

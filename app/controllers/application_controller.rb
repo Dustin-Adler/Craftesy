@@ -1,26 +1,38 @@
-  class ApplicationController < ActionController::Base
-    helper_method :logged_in?, :current_user
+# frozen_string_literal: true
 
-    def current_user
-        @current_user = User.find_by(session_token: session[:session_token])
-    end
+class ApplicationController < ActionController::Base
+  include GuestTrackable
+  include UserTrackable
 
-    def ensure_logged_in
-        redirect_to new_session_url unless logged_in?
-    end
+  helper_method :ongoing_session?, :current_actor, :ensure_session_token
 
-    def log_in(user)
-        @current_user = user
-        session[:session_token] = user.reset_session_token!
-    end
+  # An actor is either a user or a guest
 
-    def log_out!
-        @current_user.reset_session_token!
-        session[:session_token] = nil
-        @current_user = nil
-    end
+  def current_actor
+    @current_actor = current_user.present? ? current_user : current_guest
+    @current_actor = returning_guest unless @current_actor.present?
+    @current_actor
+  end
 
-    def logged_in?
-        !!current_user
-    end
+  def ensure_session_token
+    redirect_to new_api_session_url unless ongoing_session?
+  end
+
+  def start_session(actor)
+    @current_actor = actor
+    session[:session_token] = actor.reset_session_token!
+  end
+
+  def terminate_session!
+    actor = @current_actor
+    actor.reset_session_token!
+    session[:session_token] = nil
+    @current_user = nil
+    @current_guest = nil
+    @current_actor = nil
+  end
+
+  def ongoing_session?
+    !!current_actor
+  end
 end

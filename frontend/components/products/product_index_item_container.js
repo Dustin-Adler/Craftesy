@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
 import * as ProductActions from "../../actions/product_actions"
 import ProductIndexItem from './product_index_item'
-import {openModal, openRevModal} from '../../actions/modal_actions'
-import {createCartItem} from '../../actions/cart_actions'
+import { openModal, openRevModal } from '../../actions/modal_actions'
+import { createCartItem } from '../../actions/cart_actions'
 
 const mSTP = (state, ownProps) => {
 
     return {
         product: state.entities.products[ownProps.match.params.id],
-        session: state.session.id
+        currentUser: Object.values(state.entities.users)[0]
     }
 }
 

@@ -14,7 +14,7 @@ class Header extends React.Component {
     }
 
     signInButton() {
-        if (this.props.currentUser){
+        if (this.props.currentUser?.id){
             return (<button
                 className="sign-in-button button-transition"
                 onClick={()=> this.props.logout()}

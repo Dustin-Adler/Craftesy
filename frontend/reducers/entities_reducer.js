@@ -4,9 +4,11 @@ import productReducer from './products_reducer';
 import reviewReducer from './reviews_reducer';
 import cartReducer from './cart_reducer';
 import imagesReducer from './images_reducer';
+import guestReducer from './guest_reducer';
 
 const entitiesReducer = combineReducers({
     users: userReducer,
+    guest: guestReducer,
     products: productReducer,
     reviews: reviewReducer,
     cart: cartReducer,

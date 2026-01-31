@@ -1,12 +1,14 @@
 import * as UsersAPIUtil from '../utils/users_api_util'
 import { receiveCurrentUser } from './session_actions'
+import { receiveCartItems } from './cart_actions'
+import { removeGuest } from './guest_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const RECEIVE_EMAIL = 'RECEIVE_EMAIL'
 export const RECEIVE_ALL_ERRORS = 'RECEIVE_ALL_ERRORS'
 
-const receiveUser = user => ({
+export const receiveUser = user => ({
     type: RECEIVE_USER,
     user
   })
@@ -38,8 +40,12 @@ export const getAccountFromEmail = (email) => dispatch => (
 export const registerAccount = user => dispatch => (
     UsersAPIUtil.registerAccount(user)
     .then(
-      user => dispatch(receiveUser(user)),
-      user => dispatch(receiveCurrentUser(user)),
+      response => {
+        dispatch(receiveUser(response.user))
+        dispatch(receiveCurrentUser(response.user))
+        dispatch(receiveCartItems(response.cart))
+        dispatch(removeGuest())
+      },
       error => dispatch(receiveErrors(error.responseJSON))
     )
  )

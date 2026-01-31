@@ -1,6 +1,7 @@
 import {
     LOGOUT_CURRENT_USER,
     RECEIVE_CURRENT_USER,
+    RECEIVE_CURRENT_GUEST
   } from "../actions/session_actions";
   
   const _nullSession = {
@@ -12,6 +13,8 @@ import {
     switch (action.type) {
       case RECEIVE_CURRENT_USER:
         return { id: action.currentUser.id };
+      case RECEIVE_CURRENT_GUEST:
+        return { id: action.currentGuest.id };
       case LOGOUT_CURRENT_USER:
         return _nullSession;
       default:

@@ -139,10 +139,8 @@ class CartItem extends React.Component {
     }
 
     handleCode() {
-
         const cartItem = this.props.cartItem
-
-        if(this.state.code.toUpperCase() === cartItem.name.toUpperCase()
+        if(this.state.code.trim().toUpperCase() === cartItem.name.trim().toUpperCase()
             && cartItem.discount >= 0.9){
             this.props.updateCartItem({
                 discount: cartItem.discount -= .2, 

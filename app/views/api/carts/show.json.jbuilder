@@ -1,2 +1,4 @@
+# frozen_string_literal: true
+
 json.extract! @cart_item, :id, :quantity, :discount
-json.partial! "api/carts/cart_item", cart_item: @cart_item.product
+json.partial! 'api/carts/cart_item', cart_item: @cart_item.product

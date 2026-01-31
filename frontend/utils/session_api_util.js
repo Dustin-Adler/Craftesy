@@ -1,4 +1,4 @@
-    export const login = (user) => (
+  export const login = (user) => (
     $.ajax({
       url: '/api/session',
       method: 'post',
@@ -10,5 +10,12 @@
     $.ajax({
       url: '/api/session',
       method: 'delete'
+    })
+  )
+
+  export const guestLogin = () => (
+    $.ajax({
+      url: '/api/session/guest_login',
+      method: 'post'
     })
   )

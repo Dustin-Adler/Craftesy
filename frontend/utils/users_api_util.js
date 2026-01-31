@@ -17,7 +17,7 @@ export const updateAccount = (user) => (
 export const deleteAccount = (id) => (
     $.ajax({
         url: `/api/users/${id}`,
-        method: 'delete',
+        method: 'delete'
     })
 )
 
