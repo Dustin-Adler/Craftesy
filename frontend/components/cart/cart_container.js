@@ -9,7 +9,8 @@ import { openModal } from '../../actions/modal_actions'
 
 const mSTP = (state) => {
     return {
-        cart: Object.values(state.entities.cart)
+        cart: Object.values(state.entities.cart),
+        cartItemCount: Object.values(state.entities.cart).length
     }
 }
 
