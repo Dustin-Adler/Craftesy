@@ -130,11 +130,10 @@ class Cart extends React.Component {
     render() {
         if (!this.state.cartItemCount) {
             return (
-                <EmptyCart/>
+                <EmptyCart
+                    openModal={this.props.openModal}
+                    />
         )}
-        // if (!this.props.cart) {
-        //     return (null)
-        // }
         const cartItems = this.props.cart.map(
             (cartItem, i) => {
                 return (
