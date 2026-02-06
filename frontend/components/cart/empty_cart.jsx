@@ -11,22 +11,22 @@ class EmptyCart extends React.Component {
                 <h2>Uh oh, your cart is empty!</h2>
                 <p>Let's see if we can't find something cool for you to look at.</p>
                 <div className="empty-cart-links-container">
-                    <Link to="/shop" className="empty-cart-link">
+                    <Link to="/" className="empty-cart-link">
                         <div className="icon-container">
                             <FontAwesomeIcon className="icon" icon={faFaceGrinHearts} />
                         </div>
                     </Link>
-                    <Link to="/shop" className="empty-cart-link">
+                    <Link to="/" className="empty-cart-link">
                         <div className="icon-container">
                             <FontAwesomeIcon className="icon" icon={faFaceDizzy} />
                         </div>
                     </Link>
-                    <Link to="/shop" className="empty-cart-link">
+                    <Link to="/" className="empty-cart-link">
                         <div className="icon-container">
                             <FontAwesomeIcon className="icon" icon={faFaceFlushed} />
                         </div>
                     </Link>
-                    <Link to="/shop" className="empty-cart-link">
+                    <Link to="/" className="empty-cart-link">
                         <div className="icon-container">
                             <FontAwesomeIcon className="icon" icon={faFaceGrin} />
                         </div>
