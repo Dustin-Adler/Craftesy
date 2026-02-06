@@ -4,7 +4,7 @@ const productReducer = (state = {}, action) => {
     let newState
     switch (action.type) {
         case RECEIVE_PRODUCTS:
-            newState = {...action.products}
+            newState = {...state, ...action.products}
             return newState
         case RECEIVE_PRODUCT:
             return {...state, [action.product.id]: action.product}

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import * as ProductActions from "../../actions/product_actions"
 import { getImages } from "../../actions/image_actions";
 import GameBubbles from "./game_bubbles";
+import { currentSearch } from "../../actions/search_actions";
 
 const mSTP = (state) => {
     const productImages = Object.values(state.entities.images)
@@ -38,7 +39,8 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => ({
     searchByProductName: (searchString) => dispatch(ProductActions.searchByProductName(searchString)),
-    getImages: () => dispatch(getImages())
+    getImages: () => dispatch(getImages()),
+    currentSearch: (search) => dispatch(currentSearch(search))
 })
 
 export default connect(mSTP, mDTP)(GameBubbles)

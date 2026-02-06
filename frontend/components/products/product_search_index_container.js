@@ -4,7 +4,14 @@ import ProductSearchIndex from './product_search_index'
 import { createCartItem } from "../../actions/cart_actions"
 
 const mSTP = (state) => {
-    const productsArr = Object.values(state.entities.products)
+    let productsArr = Object.values(state.entities.products)
+    if (state.ui.search.productIds.length > 0) {
+        const productIds = state.ui.search.productIds
+        productsArr = productsArr.filter(product =>
+            productIds.includes(product.id)
+        )
+    }
+
     return {
         products: productsArr
     }

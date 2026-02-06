@@ -19,11 +19,10 @@ class GameBubbles extends React.Component {
     }
 
     handleClickBubble(game) {
+        this.props.currentSearch(game)
         this.props.searchByProductName(game)
             .then(
-                setTimeout(() => {
-                    this.routeToProductSearchIndex();
-                }, 50)
+                this.routeToProductSearchIndex()
             )
     }
 

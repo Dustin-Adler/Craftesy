@@ -44,13 +44,12 @@ class Header extends React.Component {
     handleSearchInput(e) {
         const checkCatSelOpen = () => {this.state.catSelOpen ? this.toggleCatMenu() : null}
         if (e.key === "Enter") {
+            this.props.currentSearch(this.state.searchString)
             this.props.searchByProductName(this.state.searchString)
             .then(
                 this.clearSearchBar(),
                 checkCatSelOpen(),
-                setTimeout(() => {
-                    this.routeToProductSearchIndex();
-                }, 50)
+                this.routeToProductSearchIndex()
             )
         }
     }
@@ -58,18 +57,13 @@ class Header extends React.Component {
     routeToProductSearchIndex() {
         if(this.props.history.location.pathname !== '/products/search') {
             return this.props.history.push('/products/search')
-        } else {
-            location.reload();
         }
     }
 
     handleCategorySelect(category) {
+        this.props.currentSearch(category)
         this.props.searchByProductName(category)
-        .then(
-            setTimeout(() => {
-                this.routeToProductSearchIndex();
-            }, 50)
-        )
+        this.routeToProductSearchIndex()
     }
 
     toggleCatMenu() {

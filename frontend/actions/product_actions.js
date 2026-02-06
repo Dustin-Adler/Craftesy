@@ -1,5 +1,6 @@
 import * as ProductApiUtil from '../utils/products_api_util'
-export const RECEIVE_PRODUCTS = 'RECEIVE_ALL_PRODUCTS'
+import { searchedProductIds } from './search_actions'
+export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 
@@ -54,6 +55,9 @@ export const deleteProduct = (id) => (dispatch) => (
 export const searchByProductName = (search_string) => (dispatch) => (
     ProductApiUtil.searchByProductName(search_string)
     .then(
-        products => dispatch(receiveProducts(products))
+        response => {
+            dispatch(receiveProducts(response.products)),
+            dispatch(searchedProductIds(response.ui.product_ids))
+        }
     )
 )
