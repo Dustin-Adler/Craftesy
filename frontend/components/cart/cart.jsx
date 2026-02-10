@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import CartItem from './cart_item'
 import EmptyCart from './empty_cart';
+import EmptyCartContainer from './empty_cart_container';
 
 class Cart extends React.Component {
     constructor(props){
@@ -128,11 +129,15 @@ class Cart extends React.Component {
     }
 
     render() {
+        // if (!this.state.cartItemCount) {
+        //     return (
+        //         <EmptyCart
+        //             openModal={this.props.openModal}
+        //             />
+        // )}        
         if (!this.state.cartItemCount) {
             return (
-                <EmptyCart
-                    openModal={this.props.openModal}
-                    />
+                <EmptyCartContainer/>
         )}
         const cartItems = this.props.cart.map(
             (cartItem, i) => {
