@@ -1,7 +1,13 @@
 import { connect } from 'react-redux'
 import EmptyCart from './empty_cart';
-import { searchByProductName } from '../../actions/product_actions';
+import { searchByProductName, getProducts } from '../../actions/product_actions';
 import { openModal } from '../../actions/modal_actions';
+
+const randomlySelectOneProduct = (products) => {
+    if (products.length === 0) return null;
+    const randomIndex = Math.floor(Math.random() * products.length);
+    return products[randomIndex];
+}
 
 const oneProductFromEachGame = (products) => {
     const productsByGame = {}
@@ -21,12 +27,6 @@ const oneProductFromEachGame = (products) => {
     return selectedProducts
 }
 
-const randomlySelectOneProduct = (products) => {
-    if (products.length === 0) return null;
-    const randomIndex = Math.floor(Math.random() * products.length);
-    return products[randomIndex];
-}
-
 const mSTP = (state) => {
     const products = oneProductFromEachGame(Object.values(state.entities.products)).filter(product => product !== null);
 
@@ -38,7 +38,8 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         searchByProductName: (search_string) => dispatch(searchByProductName(search_string)),
-        openModal: (modal) => dispatch(openModal(modal))
+        openModal: (modal) => dispatch(openModal(modal)),
+        getProducts: () => dispatch(getProducts())
     }
 }
 
