@@ -52,6 +52,13 @@ export const deleteProduct = (id) => (dispatch) => (
     )
 )
 
+export const autoSearchByProductAssociation = (search_string) => (dispatch) => (
+    ProductApiUtil.searchByProductName(search_string)
+    .then(
+        response => dispatch(receiveProducts(response.products))
+    )
+)
+
 export const searchByProductName = (search_string) => (dispatch) => (
     ProductApiUtil.searchByProductName(search_string)
     .then(
