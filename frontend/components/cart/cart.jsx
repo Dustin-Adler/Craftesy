@@ -6,7 +6,9 @@ import {
     faTag 
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import CartItem from './cart-item'
+import CartItem from './cart_item'
+import EmptyCart from './empty_cart';
+import EmptyCartContainer from './empty_cart_container';
 
 class Cart extends React.Component {
     constructor(props){
@@ -16,6 +18,7 @@ class Cart extends React.Component {
             shipping: false,
             coupon: false,
             code: '',
+            cartItemCount: this.props.cartItemCount
         }
     }
 
@@ -126,9 +129,11 @@ class Cart extends React.Component {
     }
 
     render() {
-        if (!this.props.cart) {
-            return (null)
-        } 
+        if (!this.state.cartItemCount) {
+            return (
+                <EmptyCartContainer
+                    history={this.props.history}/>
+        )}
         const cartItems = this.props.cart.map(
             (cartItem, i) => {
                 return (
