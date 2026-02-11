@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCircleCheck, faArrowRight, faCircle }
     from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux'
-import { searchByProductName } from "../../actions/product_actions"
+import { searchByProductName, autoSearchByProductAssociation  } from "../../actions/product_actions"
 import ProductSearchItem from "./product_search_item"
 
 class ProductSearchAddToCartModal extends React.Component {
@@ -17,7 +17,7 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 
     componentDidMount() {
-        this.props.searchByProductName(this.props.product.game_name)
+        this.props.autoSearchByProductAssociation(this.props.product.game_name)
     }
 
     closeModal() {
@@ -119,8 +119,9 @@ const mSTP = (state, ownProps) => ({
 });
 
 const mDTP = (dispatch) => ({
-    searchByProductName: (searchString) => dispatch(searchByProductName(searchString)),
-    getProduct: (product_id) => dispatch(getProduct(product_id))
+    getProduct: (product_id) => dispatch(getProduct(product_id)),
+    autoSearchByProductAssociation: (searchString) => dispatch(autoSearchByProductAssociation(searchString)),
+    searchByProductName: (searchString) => dispatch(searchByProductName(searchString))
 })
 
 export default connect(mSTP, mDTP)(ProductSearchAddToCartModal);
