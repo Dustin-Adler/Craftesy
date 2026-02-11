@@ -1,5 +1,6 @@
 import React from "react";
 import ProductSearchItem from '../products/product_search_item'
+import EmptyCartContainer from '../cart/empty_cart_container'
 
 class ProductSearchIndex extends React.Component {
     constructor(props) {
@@ -9,10 +10,10 @@ class ProductSearchIndex extends React.Component {
     render() {
         const anyProducts = this.props.products.length
         if (!anyProducts){
+            console.log(`render product search index`, anyProducts)
             return (
-                <div className="empty-search-results-banner">
-                    Sorry, but nothing seems to match your search results
-                </div>
+                <EmptyCartContainer
+                    history={this.props.history}/>
             )
         }
 
