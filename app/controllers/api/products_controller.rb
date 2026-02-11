@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Api
+  # Controller for products, including product search functionality
   class ProductsController < ApplicationController
     def index
       @products = Product.all.with_attached_images
@@ -30,6 +31,17 @@ module Api
                        'Trinity Force']
       @products = Product.where(name: product_names).with_attached_images
       render 'api/products/get_game_images'
+    end
+
+    def search_assist
+      search_string = product_search_params.strip.downcase
+      @matched_terms = if search_string.present?
+                         Product.where('lower(name) LIKE (?) OR lower(game_name) LIKE (?)', "%#{search_string}%",
+                                       "%#{search_string}%").pluck(:name, :game_name).flatten.uniq
+                       else
+                         []
+                       end
+      render 'api/products/search_assist'
     end
 
     private

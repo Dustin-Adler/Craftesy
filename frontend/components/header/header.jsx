@@ -32,6 +32,7 @@ class Header extends React.Component {
     update() {
         return (e) => {
             this.setState({searchString: e.currentTarget.value})
+            this.props.searchAssist(e.currentTarget.value)
         }
     }
 
@@ -52,6 +53,10 @@ class Header extends React.Component {
                 this.routeToProductSearchIndex()
             )
         }
+    }
+
+    updateSearchSuggestions(search_string) {
+        this.props.searchAssist(search_string)
     }
 
     routeToProductSearchIndex() {
@@ -160,10 +165,6 @@ class Header extends React.Component {
                     <a className='header-links button-transition' target="_blank" href="https://dustin-adler.github.io/Relda_Legend_of_Nitsud/">
                         <FontAwesomeIcon className='nav-icon relda' icon={faDungeon}/>
                         The Legend of Relda
-                    </a>
-                    <a className='header-links button-transition' target="_blank" href="https://come-what-may.herokuapp.com/#/">
-                        <FontAwesomeIcon className='nav-icon come-what-may' icon={faHouseCrack}/>
-                        Come What May
                     </a>
                 </div>
             </div>

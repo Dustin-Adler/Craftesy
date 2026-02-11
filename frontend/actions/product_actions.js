@@ -3,6 +3,7 @@ import { searchedProductIds } from './search_actions'
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+export const RECEIVE_MATCHED_SEARCH = 'RECEIVE_MATCHED_SEARCH'
 
 const receiveProducts = (products) => ({
     type: RECEIVE_PRODUCTS,
@@ -11,12 +12,17 @@ const receiveProducts = (products) => ({
 
 const receiveProduct = (product) => ({
     type: RECEIVE_PRODUCT,
-    product,
+    product
 })
 
 const removeProduct = (id) => ({
     type: REMOVE_PRODUCT,
-    id,
+    id
+})
+
+const receiveSearchAssist = (matched_terms) => ({
+    type: RECEIVE_MATCHED_SEARCH,
+    matched_terms
 })
 
 export const getProducts = () => (dispatch) => (
@@ -49,6 +55,13 @@ export const deleteProduct = (id) => (dispatch) => (
     ProductApiUtil.deleteProduct(id)
     .then(
         () => dispatch(removeProduct(id))
+    )
+)
+
+export const searchAssist = (search_string) => (dispatch) => (
+    ProductApiUtil.searchAssist(search_string)
+    .then(
+        response => dispatch(receiveSearchAssist(response.matched_terms))
     )
 )
 

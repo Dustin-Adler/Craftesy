@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       collection do
         get 'search_products_by_name'
         get 'get_game_images'
+        get 'search_assist'
       end
       resources :reviews, only: %i[index create]
     end
