@@ -1,0 +1,33 @@
+.search-assist-window {
+  position: absolute;
+  background: linear-gradient(315deg, rgb(12, 5, 99) 10%, rgba(28,28,160,1) 91%);
+  border-radius: 24px;
+  border: 10px solid black;
+  border-style: double;
+  width: 95%;
+  top: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.search-assist-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.search-assist-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: whitesmoke;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.25);
+    cursor: pointer;
+  }
+}

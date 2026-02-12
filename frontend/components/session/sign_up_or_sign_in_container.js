@@ -3,7 +3,6 @@ import { registerAccount, getAccountFromEmail } from '../../actions/user_actions
 import { login, clearErrors } from '../../actions/session_actions';
 import SignInOrSignUp from './user_sign_up_or_in';
 import { closeModal } from '../../actions/modal_actions';
-import { removeGuest } from '../../actions/guest_actions';
 
 const mSTP = ({errors}) => {
     return {

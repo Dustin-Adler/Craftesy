@@ -5,9 +5,7 @@ import UserLogin from '../session/sign_up_or_sign_in_container';
 import ThankYouModal from '../thank_you/thank_you_modal';
 
 function Modal({modal, closeModal}) {
-  if (!modal) {
-    return null;
-  }
+  if (!modal) return null;
 
   let component;
   switch (modal) {
@@ -29,16 +27,16 @@ function Modal({modal, closeModal}) {
   );
 }
 
-const mapStateToProps = state => {
+const mSTP = state => {
   return {
     modal: state.ui.modal,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mDTP = dispatch => {
   return {
     closeModal: () => dispatch(closeModal())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mSTP, mDTP)(Modal);

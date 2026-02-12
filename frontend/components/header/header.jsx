@@ -3,13 +3,16 @@ import { Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faDungeon, faHamburger, faHandPointer, faHouseCrack } from '@fortawesome/free-solid-svg-icons'
 import { faAngellist, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { debounce } from '../../helpers/time'
+import SearchAssist from './search_assistance'
 
 class Header extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             searchString: this.props.searchString,
-            catSelOpen: false
+            catSelOpen: false,
+            showSearchAssist: false
         }
     }
 
@@ -32,7 +35,7 @@ class Header extends React.Component {
     update() {
         return (e) => {
             this.setState({searchString: e.currentTarget.value})
-            this.props.searchAssist(e.currentTarget.value)
+            this.debouncedSearchSuggestions(e.currentTarget.value)
         }
     }
 
@@ -42,22 +45,11 @@ class Header extends React.Component {
         )
     }
 
-    handleSearchInput(e) {
-        const checkCatSelOpen = () => {this.state.catSelOpen ? this.toggleCatMenu() : null}
-        if (e.key === "Enter") {
-            this.props.currentSearch(this.state.searchString)
-            this.props.searchByProductName(this.state.searchString)
-            .then(
-                this.clearSearchBar(),
-                checkCatSelOpen(),
-                this.routeToProductSearchIndex()
-            )
-        }
-    }
-
-    updateSearchSuggestions(search_string) {
+    searchSuggestions = (search_string) => {
         this.props.searchAssist(search_string)
     }
+
+    debouncedSearchSuggestions = debounce(this.searchSuggestions, 250)
 
     routeToProductSearchIndex() {
         if(this.props.history.location.pathname !== '/products/search') {
@@ -65,48 +57,31 @@ class Header extends React.Component {
         }
     }
 
-    handleCategorySelect(category) {
+    togglePopUp(popUp) {
+        if (this.state[popUp]) {
+            this.setState({[popUp]: false})
+        } else {
+            this.setState({[popUp]: true})
+        }
+    }
+
+    handleSearchSelect(category) {
         this.props.currentSearch(category)
         this.props.searchByProductName(category)
         this.routeToProductSearchIndex()
     }
 
-    toggleCatMenu() {
-        if (this.state.catSelOpen) {
-            this.setState({catSelOpen: false})
-        } else {
-            this.setState({catSelOpen: true})
+    handleSearchInput(e) {
+        const categorySelectorOpen = () => {this.state.catSelOpen ? this.togglePopUp('catSelOpen') : null}
+        if (e.key === "Enter") {
+            this.props.currentSearch(this.state.searchString)
+            this.props.searchByProductName(this.state.searchString)
+            .then(
+                this.clearSearchBar(),
+                categorySelectorOpen(),
+                this.routeToProductSearchIndex()
+            )
         }
-    }
-
-    createCategoryOptions() {
-        if (!this.state.catSelOpen) {
-            return null
-        }
-        const categories = ['mario', 'final fantasy', 'sonic', 'zelda', 'fortnite', 'league of legends'];
-        let options = [];
-        for (let i = 0; i < categories.length; i++) {
-            const optionName = categories[i].replace(/\b[a-z](?!\s)/g, (char) => {return char.toUpperCase()})
-            const option =
-                <div key={i} className='category-option'
-                    onClick={() => this.handleCategorySelect(categories[i])}>
-                    <div className='select-hand-container'>
-                        <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
-                    </div>
-                    <p className='option-name'>
-                            {optionName}
-                    </p>
-                </div>
-            options.push(option)
-        }
-        return (
-            <>
-                <div className="category-select">
-                    {options}
-                </div>
-                <div onClick={() => this.toggleCatMenu()} className='grey-screen-cover'></div>
-            </>
-        )
     }
 
     numberOfItemsInCart() {
@@ -122,6 +97,36 @@ class Header extends React.Component {
         }
     }
 
+    createCategoryOptions() {
+        if (!this.state.catSelOpen) {
+            return null
+        }
+        const categories = ['mario', 'final fantasy', 'sonic', 'zelda', 'fortnite', 'league of legends'];
+        let options = [];
+        for (let i = 0; i < categories.length; i++) {
+            const optionName = categories[i].replace(/\b[a-z](?!\s)/g, (char) => {return char.toUpperCase()})
+            const option =
+                <div key={i} className='category-option'
+                    onClick={() => this.handleSearchSelect(categories[i])}>
+                    <div className='select-hand-container'>
+                        <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
+                    </div>
+                    <p className='option-name'>
+                        {optionName}
+                    </p>
+                </div>
+            options.push(option)
+        }
+        return (
+            <>
+                <div className="category-select">
+                    {options}
+                </div>
+                <div onClick={() => this.togglePopUp('catSelOpen')} className='grey-screen-cover'/>
+            </>
+        )
+    }
+ 
     render() {
         
         return(
@@ -131,18 +136,26 @@ class Header extends React.Component {
                         <div className="logo">Craftesy</div>
                     </Link>
                     <div className="category-select-container button-transition"
-                        onClick={() => this.toggleCatMenu()}>
+                        onClick={() => this.togglePopUp('catSelOpen')}>
                             <FontAwesomeIcon className="nav-icon" icon={faHamburger}/>
                             Categories
                             {this.createCategoryOptions()}
                     </div>
-                    <input
-                        onKeyDown={(e) => this.handleSearchInput(e)}
-                        onChange={this.update()}
-                        value= {this.state.searchString}
-                        type="search"
-                        className='main-search-field'
-                        placeholder="It's dangerous to go alone..."/>
+                    <div className="search-field-container">
+                        <input
+                            className='main-search-field'
+                            onClick={() => this.togglePopUp('showSearchAssist')}
+                            onKeyDown={(e) => this.handleSearchInput(e)}
+                            onChange={this.update()}
+                            value= {this.state.searchString}
+                            type="search"
+                            placeholder="It's dangerous to go alone..."/>
+                        <SearchAssist 
+                            searchAssist={this.props.searchAssistResults} 
+                            handleSearchSelect={this.handleSearchSelect}
+                            togglePopUp={() => this.togglePopUp('showSearchAssist')}
+                            display={this.state.showSearchAssist}/>
+                    </div>
                     {this.signInButton()}
                     <Link className='cart-container button-transition' to='/cart'>
                         <FontAwesomeIcon className='cart' icon={faCartShopping}/>

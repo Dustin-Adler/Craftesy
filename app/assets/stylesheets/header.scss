@@ -194,6 +194,12 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
             border-bottom: 2px solid whitesmoke;
         }
     }
+
+    .search-field-container {
+        width: 100%;
+        max-width: 870px;
+        position: relative;
+    }
     
     .main-search-field {
         flex: 1;
@@ -201,7 +207,6 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         border-radius: 40px;
         height: 48px;
         width: 100%;
-        max-width: 870px;
         background-color:#f4f4f4;
     }
     
@@ -209,7 +214,7 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         font-size: 13px;
         line-height: 1.4;
         min-height: 36px;
-        min-width: 36px;
+        min-width: 61px;
         padding: 10px;
         margin: 0px 20px;
         background-color: Transparent;

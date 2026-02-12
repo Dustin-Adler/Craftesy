@@ -8,7 +8,8 @@ import { currentSearch, clearSearch } from '../../actions/search_actions'
 const mSTP = (state) => ({
     currentUser: Object.values(state.entities.users)[0],
     searchString: '',
-    numberOfItemsInCart: Object.values(state.entities.cart).length
+    numberOfItemsInCart: Object.values(state.entities.cart).length,
+    searchAssistResults: state.ui.search.searchAssist
 })
 
 const mDTP = (dispatch) => ({

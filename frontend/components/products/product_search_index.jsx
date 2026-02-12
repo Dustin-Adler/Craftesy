@@ -10,7 +10,6 @@ class ProductSearchIndex extends React.Component {
     render() {
         const anyProducts = this.props.products.length
         if (!anyProducts){
-            console.log(`render product search index`, anyProducts)
             return (
                 <EmptyCartContainer
                     history={this.props.history}/>
