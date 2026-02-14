@@ -9,25 +9,23 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-}
 
-.search-assist-list {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+  .search-assist-list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
-.search-assist-item {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  color: whitesmoke;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 14px;
+    .width-up {
+      width: 20px;
+      padding-left: 10px;
+    }
+  }
 
-  &:hover {
-    background-color: rgba(0,0,0,0.25);
-    cursor: pointer;
+  .search-assist-item {
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faDungeon, faHamburger, faHandPointer, faHouseCrack } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faDungeon, faHamburger, faHandPointer} from '@fortawesome/free-solid-svg-icons'
 import { faAngellist, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { debounce } from '../../helpers/time'
 import SearchAssist from './search_assistance'
@@ -39,10 +39,8 @@ class Header extends React.Component {
         }
     }
 
-    clearSearchBar() {
-        return (
-            this.setState({searchString: ''})
-        )
+    clearSearchBar = () => {
+        this.setState({searchString: ''})
     }
 
     searchSuggestions = (search_string) => {
@@ -65,20 +63,32 @@ class Header extends React.Component {
         }
     }
 
-    handleSearchSelect(category) {
+    closeSearchAssist() {
+        if (this.state.showSearchAssist) {
+            this.setState({showSearchAssist: false})
+        }
+    }
+
+    closeCategorySelect() {
+        if (this.state.catSelOpen) {
+            this.setState({catSelOpen: false})
+        }
+    }
+
+    handleSearchSelect = (category) => {
         this.props.currentSearch(category)
         this.props.searchByProductName(category)
         this.routeToProductSearchIndex()
     }
 
     handleSearchInput(e) {
-        const categorySelectorOpen = () => {this.state.catSelOpen ? this.togglePopUp('catSelOpen') : null}
+        if (this.state.catSelOpen) this.togglePopUp('catSelOpen')
+        if (!this.state.showSearchAssist) this.togglePopUp('showSearchAssist')
         if (e.key === "Enter") {
             this.props.currentSearch(this.state.searchString)
             this.props.searchByProductName(this.state.searchString)
             .then(
                 this.clearSearchBar(),
-                categorySelectorOpen(),
                 this.routeToProductSearchIndex()
             )
         }
@@ -122,7 +132,11 @@ class Header extends React.Component {
                 <div className="category-select">
                     {options}
                 </div>
-                <div onClick={() => this.togglePopUp('catSelOpen')} className='grey-screen-cover'/>
+                <div 
+                    onClick={() => {
+                        this.closeCategorySelect();
+                        this.closeSearchAssist()}}
+                    className='grey-screen-cover'/>
             </>
         )
     }
@@ -132,11 +146,13 @@ class Header extends React.Component {
         return(
             <div className='header'>
                 <div className='search-sign-in-and-cart'>
-                    <Link className="logo-link" to='/'>
-                        <div className="logo">Craftesy</div>
+                    <Link
+                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        className="logo-link" to='/'>
+                            <div className="logo">Craftesy</div>
                     </Link>
                     <div className="category-select-container button-transition"
-                        onClick={() => this.togglePopUp('catSelOpen')}>
+                        onClick={() => {this.togglePopUp('catSelOpen'); this.closeSearchAssist()}}>
                             <FontAwesomeIcon className="nav-icon" icon={faHamburger}/>
                             Categories
                             {this.createCategoryOptions()}
@@ -144,16 +160,20 @@ class Header extends React.Component {
                     <div className="search-field-container">
                         <input
                             className='main-search-field'
-                            onClick={() => this.togglePopUp('showSearchAssist')}
+                            onClick={() => {
+                                if (!this.state.showSearchAssist) this.setState({showSearchAssist: true});
+                                this.closeCategorySelect()}}
                             onKeyDown={(e) => this.handleSearchInput(e)}
                             onChange={this.update()}
                             value= {this.state.searchString}
                             type="search"
                             placeholder="It's dangerous to go alone..."/>
-                        <SearchAssist 
-                            searchAssist={this.props.searchAssistResults} 
+                        <SearchAssist
+                            searchAssist={this.props.searchAssistResults}
                             handleSearchSelect={this.handleSearchSelect}
                             togglePopUp={() => this.togglePopUp('showSearchAssist')}
+                            clearSearchBar={this.clearSearchBar}
+                            clearSearchAssist={this.props.clearSearchAssist}
                             display={this.state.showSearchAssist}/>
                     </div>
                     {this.signInButton()}

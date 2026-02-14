@@ -160,13 +160,13 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
     }
 
     .category-option {
+        color: whitesmoke;
         padding: 5px;
         display: flex;
         justify-content: start;
         align-items: start;
         padding: 10px 0px;
         font-family: 'Press Start 2P', cursive;
-        // height: 48px;
 
         .option-name {
             text-wrap: nowrap;

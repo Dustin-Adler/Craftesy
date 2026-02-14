@@ -1,4 +1,4 @@
-import { CURRENT_SEARCH, CLEAR_SEARCH, RECEIVE_SEARCHED_PRODUCT_IDS } from '../actions/search_actions';
+import { CURRENT_SEARCH, CLEAR_SEARCH, RECEIVE_SEARCHED_PRODUCT_IDS, CLEAR_SEARCH_ASSIST} from '../actions/search_actions';
 import { RECEIVE_MATCHED_SEARCH } from '../actions/product_actions';
 
 const searchReducer = (state = {searchString: "", searchAssist: [], productIds: []}, action) => {
@@ -11,6 +11,8 @@ const searchReducer = (state = {searchString: "", searchAssist: [], productIds: 
             return {...state, searchAssist: action.matched_terms};
         case CLEAR_SEARCH:
             return {searchString: "", searchAssist: [], productIds: []};
+        case CLEAR_SEARCH_ASSIST:
+            return {...state, searchAssist: []};
         default:
             return state;
     }
