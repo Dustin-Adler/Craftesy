@@ -5,6 +5,8 @@ import { faCartShopping, faDungeon, faHamburger, faHandPointer} from '@fortaweso
 import { faAngellist, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { debounce } from '../../helpers/time'
 import SearchAssist from './search_assistance'
+import { formatNameAsTitle } from '../../helpers/name_formatter'
+import { ALL_CATEGORIES } from '../../utils/game_names'
 
 class Header extends React.Component {
     constructor(props){
@@ -111,10 +113,10 @@ class Header extends React.Component {
         if (!this.state.catSelOpen) {
             return null
         }
-        const categories = ['mario', 'final fantasy', 'sonic', 'zelda', 'fortnite', 'league of legends'];
+        const categories = ALL_CATEGORIES;
         let options = [];
         for (let i = 0; i < categories.length; i++) {
-            const optionName = categories[i].replace(/\b[a-z](?!\s)/g, (char) => {return char.toUpperCase()})
+            const optionName = formatNameAsTitle(categories[i])
             const option =
                 <div key={i} className='category-option'
                     onClick={() => this.handleSearchSelect(categories[i])}>

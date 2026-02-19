@@ -1,6 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons'
+import { formatNameAsTitle } from '../../helpers/name_formatter'
+import { ALL_CATEGORIES } from '../../utils/game_names'
 
 class SearchAssist extends React.Component {
     constructor(props) {
@@ -12,13 +14,6 @@ class SearchAssist extends React.Component {
         }
     }
 
-    handleListSelection(listing) {
-        this.props.handleSearchSelect(listing)
-        this.props.togglePopUp()
-        this.props.clearSearchBar()
-        this.props.clearSearchAssist()
-    }
-
     componentDidUpdate(prevProps) {
       const stateKeys = Object.keys(this.state)
       for (let key of stateKeys) {
@@ -28,9 +23,25 @@ class SearchAssist extends React.Component {
       }
     }
 
+    handleListSelection(listing) {
+        this.props.handleSearchSelect(listing)
+        this.props.togglePopUp()
+        this.props.clearSearchBar()
+        this.props.clearSearchAssist()
+    }
+
+    searchSuggestions() {
+      if (this.searchAssist.length < 5) return null
+      const categories = ALL_CATEGORIES
+
+    }
+
     generateSearchAssistListItems() {
-      const searchAssistResults = this.state.searchAssist.map((result, idx) => {
-        const formattedResult = result.replace(/\b[a-z](?!\s)/g, (char) => {return char.toUpperCase()})
+      let searchAssistResults = this.state.searchAssist.length < 5 ? 
+        [...this.state.searchAssist, ...ALL_CATEGORIES] : this.state.searchAssist
+      // debugger
+      searchAssistResults = searchAssistResults.map((result, idx) => {
+        const formattedResult = formatNameAsTitle(result)
         return (
           <li 
             key={`${result}-${idx}`} 
