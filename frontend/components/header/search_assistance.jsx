@@ -24,22 +24,32 @@ class SearchAssist extends React.Component {
     }
 
     handleListSelection(listing) {
-        this.props.handleSearchSelect(listing)
-        this.props.togglePopUp()
-        this.props.clearSearchBar()
-        this.props.clearSearchAssist()
+        this.props.handleSearchSelect(listing);
+        this.props.togglePopUp();
+        this.props.clearSearchAssist();
     }
 
-    searchSuggestions() {
-      if (this.searchAssist.length < 5) return null
-      const categories = ALL_CATEGORIES
+    noMatches() {
+      if (this.state.searchAssist.length > 0) return null
+      return (
+          <li 
+            key={`no-matched-term`}
+            className="category-option search-assist-item" 
+            onClick={() => this.handleListSelection('')}>
+              <div className='select-hand-container width-up'>
+                <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
+              </div>
+              <p className="option-name">
+                Nothing matched your search. Look at everything?!
+              </p>
+          </li>
+        )
 
     }
 
     generateSearchAssistListItems() {
       let searchAssistResults = this.state.searchAssist.length < 5 ? 
         [...this.state.searchAssist, ...ALL_CATEGORIES] : this.state.searchAssist
-      // debugger
       searchAssistResults = searchAssistResults.map((result, idx) => {
         const formattedResult = formatNameAsTitle(result)
         return (
@@ -56,6 +66,7 @@ class SearchAssist extends React.Component {
           </li>
         )
       });
+      searchAssistResults.unshift(this.noMatches())
       return searchAssistResults;
     }
 

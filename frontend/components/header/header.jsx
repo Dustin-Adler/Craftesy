@@ -41,8 +41,8 @@ class Header extends React.Component {
         }
     }
 
-    clearSearchBar = () => {
-        this.setState({searchString: ''})
+    updateSearchBar = (searchString = '') => {
+        this.setState({searchString})
     }
 
     searchSuggestions = (search_string) => {
@@ -65,6 +65,12 @@ class Header extends React.Component {
         }
     }
 
+    openSearchAssist() {
+        if (!this.state.showSearchAssist) {
+            this.setState({showSearchAssist: true})
+        }
+    }
+
     closeSearchAssist() {
         if (this.state.showSearchAssist) {
             this.setState({showSearchAssist: false})
@@ -80,19 +86,24 @@ class Header extends React.Component {
     handleSearchSelect = (category) => {
         this.props.currentSearch(category)
         this.props.searchByProductName(category)
+        this.updateSearchBar(category)
         this.routeToProductSearchIndex()
     }
 
     handleSearchInput(e) {
-        if (this.state.catSelOpen) this.togglePopUp('catSelOpen')
-        if (!this.state.showSearchAssist) this.togglePopUp('showSearchAssist')
+        this.closeCategorySelect();
+        this.openSearchAssist();
         if (e.key === "Enter") {
             this.props.currentSearch(this.state.searchString)
             this.props.searchByProductName(this.state.searchString)
             .then(
-                this.clearSearchBar(),
-                this.routeToProductSearchIndex()
+                () => {
+                    if (this.state.showSearchAssist) this.togglePopUp('showSearchAssist');
+                    this.routeToProductSearchIndex()  
+                }
             )
+        } else if (e.key === "Escape") {
+            this.closeSearchAssist();
         }
     }
 
@@ -115,19 +126,22 @@ class Header extends React.Component {
         }
         const categories = ALL_CATEGORIES;
         let options = [];
-        for (let i = 0; i < categories.length; i++) {
-            const optionName = formatNameAsTitle(categories[i])
-            const option =
-                <div key={i} className='category-option'
-                    onClick={() => this.handleSearchSelect(categories[i])}>
+        for (let idx = 0; idx < categories.length; idx++) {
+            const category = categories[idx]
+            const formattedCategory = formatNameAsTitle(category)
+            options.push(
+                <div key={`${idx}-${category}`} className='category-option'
+                    onClick={() => {
+                        this.handleSearchSelect(category);
+                        this.debouncedSearchSuggestions(category)}}>
                     <div className='select-hand-container'>
                         <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
                     </div>
                     <p className='option-name'>
-                        {optionName}
+                        {formattedCategory}
                     </p>
                 </div>
-            options.push(option)
+            )
         }
         return (
             <>
@@ -162,9 +176,7 @@ class Header extends React.Component {
                     <div className="search-field-container">
                         <input
                             className='main-search-field'
-                            onClick={() => {
-                                if (!this.state.showSearchAssist) this.setState({showSearchAssist: true});
-                                this.closeCategorySelect()}}
+                            onClick={() => this.togglePopUp('showSearchAssist')}
                             onKeyDown={(e) => this.handleSearchInput(e)}
                             onChange={this.update()}
                             value= {this.state.searchString}
@@ -174,7 +186,6 @@ class Header extends React.Component {
                             searchAssist={this.props.searchAssistResults}
                             handleSearchSelect={this.handleSearchSelect}
                             togglePopUp={() => this.togglePopUp('showSearchAssist')}
-                            clearSearchBar={this.clearSearchBar}
                             clearSearchAssist={this.props.clearSearchAssist}
                             display={this.state.showSearchAssist}/>
                     </div>
