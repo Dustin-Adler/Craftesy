@@ -6,17 +6,18 @@ import { faFaceDizzy, faFaceFlushed, faFaceGrin, faFaceGrinHearts, faFaceAngry, 
 class EmptyCart extends React.Component {
     constructor(props){
         super(props)
-
     }
 
     componentDidMount() {    
-      if (this.props.products.length < 4) {
-        this.props.getProducts()
-      };
+      if (this.props.products.length < 4) this.props.getProducts();
     }
 
     searchByGameName(gameName) {
         this.props.searchByProductName(gameName);
+    }
+
+    getRandomIdx(arr) {
+      return Math.floor(Math.random() * arr.length)
     }
 
     createProductCoins() {
@@ -25,13 +26,12 @@ class EmptyCart extends React.Component {
       let icons = [faFaceDizzy, faFaceFlushed, faFaceGrin, faFaceGrinHearts, faFaceAngry, faFaceGrinBeam, faFaceGrinTongueWink, faFaceGrinWide]
       let iconContainerColor = ["rgb(253, 55, 55)", "rgb(255, 187,61)", "yellow", "lime", "cyan", "fuchsia"]
       for (let i = 0; i < 4; i++) {
-        const currentIndex = i
-        const selectedProductIndex = Math.floor(Math.random() * randomlySelectedProducts.length);
-        const selectedIconIndex = Math.floor(Math.random() * icons.length);
-        const selectedColorIndex = Math.floor(Math.random() * iconContainerColor.length);
-        const selectedIcon = icons.splice(selectedIconIndex, 1)[0]
-        const selectedProduct = randomlySelectedProducts.splice(selectedProductIndex, 1)[0]
-        const selectedColor = iconContainerColor.splice(selectedColorIndex, 1)[0]
+        const productIndex = this.getRandomIdx(randomlySelectedProducts);
+        const iconIndex = this.getRandomIdx(icons);
+        const colorIndex = this.getRandomIdx(iconContainerColor);
+        const selectedIcon = icons.splice(iconIndex, 1)[0]
+        const selectedProduct = randomlySelectedProducts.splice(productIndex, 1)[0]
+        const selectedColor = iconContainerColor.splice(colorIndex, 1)[0]
         productCoins.push(
           <Link
             onClick={() => this.searchByGameName(selectedProduct.game_name)}

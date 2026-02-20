@@ -14,9 +14,9 @@ module Api
     end
 
     def search_products_by_name
-      search_string = product_search_params.strip.downcase
+      search_string = product_search_params.strip
       @products = if search_string.present?
-                    Product.where('lower(name) LIKE (?) OR lower(game_name) LIKE (?)', "%#{search_string}%",
+                    Product.where('name ILIKE (?) OR game_name ILIKE (?)', "%#{search_string}%",
                                   "%#{search_string}%")
                            .with_attached_images
                            .includes(:reviews)
@@ -34,10 +34,12 @@ module Api
     end
 
     def search_assist
-      search_string = product_search_params.strip.downcase
+      search_string = product_search_params.strip
       @matched_terms = if search_string.present?
-                         Product.where('lower(name) LIKE (?) OR lower(game_name) LIKE (?)', "%#{search_string}%",
-                                       "%#{search_string}%").pluck(:name, :game_name).flatten.uniq
+                         Product.where('name ILIKE (?) OR game_name ILIKE (?)', "%#{search_string}%", "%#{search_string}%")
+                                .pluck(:name, :game_name)
+                                .flatten
+                                .uniq
                        else
                          []
                        end
