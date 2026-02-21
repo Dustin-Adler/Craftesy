@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Api
+  # Controller for users, including user registration and account retrieval by email
   class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
@@ -16,11 +17,11 @@ module Api
       end
     end
 
-    def getAccountFromEmail
+    def retrieve_account_via_email
       @user = User.find_by(email: params[:email])
 
       @user ||= { id: nil, email: params[:email] }
-      render 'api/users/getAccountFromEmail'
+      render 'api/users/retrieve_account_via_email'
     end
 
     #   def update

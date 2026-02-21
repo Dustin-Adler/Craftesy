@@ -328,6 +328,12 @@ GEM
     rubocop-ast (1.49.0)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
+    rubocop-rails (2.34.3)
+      activesupport (>= 4.2.0)
+      lint_roller (~> 1.1)
+      rack (>= 1.1)
+      rubocop (>= 1.75.0, < 2.0)
+      rubocop-ast (>= 1.44.0, < 2.0)
     ruby-progressbar (1.13.0)
     rubyzip (3.2.2)
     sass (3.7.4)
@@ -421,6 +427,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 7.1.2)
   rubocop
+  rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

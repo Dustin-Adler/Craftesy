@@ -16,33 +16,23 @@ module Api
     def search_products_by_name
       search_string = product_search_params.strip
       @products = if search_string.present?
-                    Product.where('name ILIKE (?) OR game_name ILIKE (?)', "%#{search_string}%",
-                                  "%#{search_string}%")
-                           .with_attached_images
-                           .includes(:reviews)
+                    Product.search_by_name(search_string)
                   else
                     Product.all.with_attached_images.includes(:reviews)
                   end
       render 'api/products/search_products_by_name'
     end
 
-    def get_game_images
+    def game_images
       product_names = ['Cape Feather', "Cloud's Buster Sword", 'Speed Boots', 'Heart Container', 'Llama Pinata',
                        'Trinity Force']
       @products = Product.where(name: product_names).with_attached_images
-      render 'api/products/get_game_images'
+      render 'api/products/game_images'
     end
 
     def search_assist
-      search_string = product_search_params.strip
-      @matched_terms = if search_string.present?
-                         Product.where('name ILIKE (?) OR game_name ILIKE (?)', "%#{search_string}%", "%#{search_string}%")
-                                .pluck(:name, :game_name)
-                                .flatten
-                                .uniq
-                       else
-                         []
-                       end
+      search_string = ActiveRecord::Base.connection.quote_string(product_search_params.strip)
+      @matched_terms = search_string.present? ? Product.search_assist(search_string) : []
       render 'api/products/search_assist'
     end
 

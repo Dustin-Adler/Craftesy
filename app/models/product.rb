@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# products table with name, description, price, seller_id, and optional game_name
 class Product < ApplicationRecord
   validates :name, :description, :price, :seller_id, presence: true
 
@@ -20,4 +21,25 @@ class Product < ApplicationRecord
   has_many :guest_buyers,
            through: :carts,
            source: :guest_shopper
+
+  scope :search_by_name, lambda { |search_string|
+    where('name ILIKE (?) OR game_name ILIKE (?)', "%#{search_string}%", "%#{search_string}%")
+      .with_attached_images
+      .includes(:reviews)
+  }
+
+  scope :search_assist, lambda { |search_string|
+    where('name ILIKE :search OR game_name ILIKE :search', search: "%#{search_string}%")
+      .order(Arel.sql(<<~SQL))
+        GREATEST(
+          similarity(name, '#{search_string}'),
+          similarity(game_name, '#{search_string}') * 1.2
+        ) DESC
+      SQL
+      .limit(7)
+      .pluck(:name, :game_name)
+      .flatten
+      .uniq
+      .first(7)
+  }
 end
