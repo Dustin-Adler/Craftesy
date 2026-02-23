@@ -23,7 +23,7 @@ class Product < ApplicationRecord
            source: :guest_shopper
 
   scope :search_by_name, lambda { |search_string|
-    where('name ILIKE (?) OR game_name ILIKE (?)', "%#{search_string}%", "%#{search_string}%")
+    where('name ILIKE :search OR game_name ILIKE :search', search: "%#{search_string}%")
       .with_attached_images
       .includes(:reviews)
   }
@@ -32,12 +32,12 @@ class Product < ApplicationRecord
     where('name ILIKE :search OR game_name ILIKE :search', search: "%#{search_string}%")
       .order(Arel.sql(<<~SQL))
         GREATEST(
-          similarity(name, '#{search_string}'),
-          similarity(game_name, '#{search_string}') * 1.2
+          similarity(game_name, '#{search_string}') * 0.8,
+          similarity(name, '#{search_string}')
         ) DESC
       SQL
       .limit(7)
-      .pluck(:name, :game_name)
+      .pluck(:game_name, :name)
       .flatten
       .uniq
       .first(7)
