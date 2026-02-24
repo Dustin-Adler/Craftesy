@@ -190,6 +190,11 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
             animation: oscillate-left-to-right 1s ease-out infinite;
         }
 
+        &:focus .select-hand {
+            display: block;
+            animation: oscillate-left-to-right 1s ease-out infinite;
+        }
+
         &:hover .option-name {
             border-bottom: 2px solid whitesmoke;
         }

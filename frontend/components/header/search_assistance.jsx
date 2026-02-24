@@ -24,10 +24,12 @@ class SearchAssist extends React.Component {
       }
     }
 
-    handleListSelection(listing) {
-        this.props.handleSearchSelect(listing);
-        this.props.togglePopUp();
-        this.props.clearSearchAssist();
+    handleListSelection(listing, e) {
+        if (e.type === 'click' || e.key === 'Enter') {
+          this.props.handleSearchSelect(listing);
+          this.props.togglePopUp();
+          this.props.clearSearchAssist();
+        }
     }
 
     noMatches() {
@@ -35,8 +37,10 @@ class SearchAssist extends React.Component {
       return (
           <li 
             key={`no-matched-term`}
-            className="category-option search-assist-item" 
-            onClick={() => this.handleListSelection('')}>
+            className="category-option search-assist-item"
+            tabIndex={0}
+            onKeyDown={(e) => this.handleListSelection('', e)}
+            onClick={(e) => this.handleListSelection('', e)}>
               <div className='select-hand-container width-up'>
                 <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
               </div>
@@ -55,9 +59,11 @@ class SearchAssist extends React.Component {
         const formattedResult = formatNameAsTitle(result)
         return (
           <li 
-            key={`${result}-${idx}`} 
-            className="category-option search-assist-item" 
-            onClick={() => this.handleListSelection(result)}>
+            key={`${result}-${idx}`}
+            className="category-option search-assist-item"
+            tabIndex={0}
+            onKeyDown={(e) => this.handleListSelection(result, e)}
+            onClick={(e) => this.handleListSelection(result, e)}>
               <div className='select-hand-container width-up'>
                 <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
               </div>
