@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 import { ALL_CATEGORIES } from '../../utils/game_names'
+import { ContactsOutlined } from '@material-ui/icons'
 
 class SearchAssist extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class SearchAssist extends React.Component {
 
     generateSearchAssistListItems() {
       let searchAssistResults = this.state.searchAssist.length < 5 ? 
-        [...this.state.searchAssist, ...ALL_CATEGORIES] : this.state.searchAssist
+        [...this.state.searchAssist, ...ALL_CATEGORIES.filter(category => !this.state.searchAssist.includes(category))] : this.state.searchAssist
       searchAssistResults = searchAssistResults.map((result, idx) => {
         const formattedResult = formatNameAsTitle(result)
         return (
