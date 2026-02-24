@@ -29,17 +29,23 @@ class Product < ApplicationRecord
   }
 
   scope :search_assist, lambda { |search_string|
-    where('name ILIKE :search OR game_name ILIKE :search', search: "%#{search_string}%")
-      .order(Arel.sql(<<~SQL))
-        GREATEST(
-          similarity(game_name, '#{search_string}') * 0.8,
-          similarity(name, '#{search_string}')
-        ) DESC
-      SQL
+    from("(
+      SELECT name AS suggestion,
+      SIMILARITY(name, '#{search_string}') +
+        (CASE WHEN name ILIKE '#{search_string}%' THEN 0.5 ELSE 0 END) AS score
+      FROM products
+      WHERE name ILIKE '%#{search_string}%'
+      UNION ALL
+      SELECT game_name AS suggestion,
+      SIMILARITY(game_name, '#{search_string}') +
+        (CASE WHEN game_name ILIKE '#{search_string}%' THEN 0.5 ELSE 0 END) AS score
+      FROM products
+      WHERE game_name ILIKE '%#{search_string}%'
+    ) suggestions")
+      .select('suggestion, MAX(score) AS max_score')
+      .group('suggestion')
+      .order('MAX(score) DESC')
       .limit(7)
-      .pluck(:game_name, :name)
-      .flatten
-      .uniq
-      .first(7)
+      .pluck(:suggestion)
   }
 end
