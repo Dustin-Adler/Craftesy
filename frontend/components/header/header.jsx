@@ -176,7 +176,7 @@ class Header extends React.Component {
                     <div className="search-field-container">
                         <input
                             className='main-search-field'
-                            onClick={() => this.togglePopUp('showSearchAssist')}
+                        onClick={() => {this.togglePopUp('showSearchAssist'); this.closeCategorySelect()}}
                             onKeyDown={(e) => this.handleSearchInput(e)}
                             onChange={this.update()}
                             value= {this.state.searchString}

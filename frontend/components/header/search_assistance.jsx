@@ -57,6 +57,7 @@ class SearchAssist extends React.Component {
         [...this.state.searchAssist, ...ALL_CATEGORIES.filter(category => !this.state.searchAssist.includes(category))] : this.state.searchAssist
       searchAssistResults = searchAssistResults.map((result, idx) => {
         const formattedResult = formatNameAsTitle(result)
+        const categoryTag = ALL_CATEGORIES.includes(result) ? <p className="option-category">Category</p> : null
         return (
           <li 
             key={`${result}-${idx}`}
@@ -67,9 +68,8 @@ class SearchAssist extends React.Component {
               <div className='select-hand-container width-up'>
                 <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
               </div>
-              <p className="option-name">
-                {formattedResult}
-              </p>
+              <p className="option-name">{formattedResult}</p>
+              {categoryTag}
           </li>
         )
       });
