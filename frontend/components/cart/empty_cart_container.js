@@ -11,13 +11,15 @@ const randomlySelectOneProduct = (products) => {
 
 const oneProductFromEachGame = (products) => {
     const productsByGame = {}
-    productsByGame.zelda = products.filter( product => product.game_name.trim().toLowerCase() === "zelda")
-    productsByGame.pokemon = products.filter( product => product.game_name.trim().toLowerCase() === "pokemon")
-    productsByGame.mario = products.filter( product => product.game_name.trim().toLowerCase() === "mario")
-    productsByGame.finalFantasy = products.filter( product => product.game_name.trim().toLowerCase() === "final fantasy")
-    productsByGame.leagueOfLegends = products.filter( product => product.game_name.trim().toLowerCase() === "league of legends")
-    productsByGame.sonic = products.filter( product => product.game_name.trim().toLowerCase() === "sonic")
-    productsByGame.fortnite = products.filter( product => product.game_name.trim().toLowerCase() === "fortnite")
+
+    for (const product of products) {
+        const game_name = product.game_name.trim().toLowerCase()
+        if (productsByGame[game_name]) {
+            productsByGame[game_name].push(product)
+        } else {
+            productsByGame[game_name] = [product]
+        }
+    }
 
     const selectedProducts = []
     for (const game in productsByGame) {
@@ -28,7 +30,7 @@ const oneProductFromEachGame = (products) => {
 }
 
 const mSTP = (state) => {
-    const products = oneProductFromEachGame(Object.values(state.entities.products)).filter(product => product !== null);
+    const products = oneProductFromEachGame(Object.values(state.entities.products));
 
     return {
         products: products

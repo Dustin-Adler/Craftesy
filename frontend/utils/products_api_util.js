@@ -42,3 +42,11 @@ export const searchByProductName = (search_string) => (
         data: {search_string}
     })
 )
+
+export const searchAssist = (search_string) => (
+    $.ajax({
+        url: '/api/products/search_assist',
+        method: 'get',
+        data: {search_string}
+    })
+)

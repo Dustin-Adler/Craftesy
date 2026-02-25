@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Api
+  # Controller for guests, including guest session management and potential upgrade to user accounts
   class GuestsController < ApplicationController
     def show
       # gets all of the items in the guest's cart

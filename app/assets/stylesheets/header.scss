@@ -160,15 +160,15 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
     }
 
     .category-option {
+        color: whitesmoke;
         padding: 5px;
         display: flex;
         justify-content: start;
         align-items: start;
         padding: 10px 0px;
         font-family: 'Press Start 2P', cursive;
-        // height: 48px;
 
-        .option-name {
+        .option-name, .option-category {
             text-wrap: nowrap;
             margin-left: 12px;
             text-shadow: 2px 2px black;
@@ -190,9 +190,20 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
             animation: oscillate-left-to-right 1s ease-out infinite;
         }
 
+        &:focus .select-hand {
+            display: block;
+            animation: oscillate-left-to-right 1s ease-out infinite;
+        }
+
         &:hover .option-name {
             border-bottom: 2px solid whitesmoke;
         }
+    }
+
+    .search-field-container {
+        width: 100%;
+        max-width: 870px;
+        position: relative;
     }
     
     .main-search-field {
@@ -201,7 +212,6 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         border-radius: 40px;
         height: 48px;
         width: 100%;
-        max-width: 870px;
         background-color:#f4f4f4;
     }
     
@@ -209,7 +219,7 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         font-size: 13px;
         line-height: 1.4;
         min-height: 36px;
-        min-width: 36px;
+        min-width: 61px;
         padding: 10px;
         margin: 0px 20px;
         background-color: Transparent;

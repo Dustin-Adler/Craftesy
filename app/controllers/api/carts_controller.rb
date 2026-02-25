@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Api
+  # Handles cart-related API actions for the current actor (user or guest),
+  # including listing cart items, creating new entries, updating quantities/details,
+  # and removing items from the cart.
   class CartsController < ApplicationController
     def index
       @cart = current_actor.cart_items.includes({ product: [:carts] }, :images)

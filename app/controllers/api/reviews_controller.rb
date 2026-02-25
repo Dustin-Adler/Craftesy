@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Api
+  # Controller for reviews, including listing reviews for a product and creating/updating/deleting reviews by users
   class ReviewsController < ApplicationController
     def index
       @reviews = Product.find_by(id: params[:product_id]).reviews.includes(:author)

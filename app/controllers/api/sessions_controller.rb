@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Api
+  # Controller for sessions, including user login/logout and guest session management
   class SessionsController < ApplicationController
     # def new
     #   if @user.present?
@@ -23,10 +24,7 @@ module Api
     # end
 
     def create
-      @user = User.find_by_credentials(
-        params[:user][:email],
-        params[:user][:password]
-      )
+      @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
       if @user.present?
         current_guest.transfer_items_to_user(@user) if current_actor.is_a?(Guest)
         @cart = @user.cart_items

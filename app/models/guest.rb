@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Model for guests, representing temporary users who can have a cart and potentially upgrade to a full user account
 class Guest < ApplicationRecord
   include SessionTokenable
 
@@ -13,7 +14,7 @@ class Guest < ApplicationRecord
   has_many :cart_items,
            foreign_key: :guest_id,
            class_name: :Cart,
-            dependent: :destroy
+           dependent: :destroy
 
   has_many :items_in_cart,
            through: :cart_items,

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: %i[create show destroy update] do
       collection do
-        get 'getAccountFromEmail'
+        get 'retrieve_account_via_email'
       end
     end
     resources :guests, only: %i[show create] do
@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     resources :products, only: %i[create update destroy show index] do
       collection do
         get 'search_products_by_name'
-        get 'get_game_images'
+        get 'game_images'
+        get 'search_assist'
       end
       resources :reviews, only: %i[index create]
     end

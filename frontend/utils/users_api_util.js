@@ -23,7 +23,7 @@ export const deleteAccount = (id) => (
 
 export const getAccountFromEmail = (email) => (
     $.ajax({
-      url: `/api/users/getAccountFromEmail?email=${email}`,
+      url: `/api/users/retrieve_account_via_email?email=${email}`,
       method: 'get'
     })
   )

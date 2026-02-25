@@ -1,15 +1,20 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faDungeon, faHamburger, faHandPointer, faHouseCrack } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faDungeon, faHamburger, faHandPointer} from '@fortawesome/free-solid-svg-icons'
 import { faAngellist, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { debounce } from '../../helpers/time'
+import SearchAssist from './search_assistance'
+import { formatNameAsTitle } from '../../helpers/name_formatter'
+import { ALL_CATEGORIES } from '../../utils/game_names'
 
 class Header extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             searchString: this.props.searchString,
-            catSelOpen: false
+            catSelOpen: false,
+            showSearchAssist: false
         }
     }
 
@@ -32,27 +37,19 @@ class Header extends React.Component {
     update() {
         return (e) => {
             this.setState({searchString: e.currentTarget.value})
+            this.debouncedSearchSuggestions(e.currentTarget.value)
         }
     }
 
-    clearSearchBar() {
-        return (
-            this.setState({searchString: ''})
-        )
+    updateSearchBar = (searchString = '') => {
+        this.setState({searchString})
     }
 
-    handleSearchInput(e) {
-        const checkCatSelOpen = () => {this.state.catSelOpen ? this.toggleCatMenu() : null}
-        if (e.key === "Enter") {
-            this.props.currentSearch(this.state.searchString)
-            this.props.searchByProductName(this.state.searchString)
-            .then(
-                this.clearSearchBar(),
-                checkCatSelOpen(),
-                this.routeToProductSearchIndex()
-            )
-        }
+    searchSuggestions = (search_string) => {
+        this.props.searchAssist(search_string)
     }
+
+    debouncedSearchSuggestions = debounce(this.searchSuggestions, 250)
 
     routeToProductSearchIndex() {
         if(this.props.history.location.pathname !== '/products/search') {
@@ -60,48 +57,54 @@ class Header extends React.Component {
         }
     }
 
-    handleCategorySelect(category) {
+    togglePopUp(popUp) {
+        if (this.state[popUp]) {
+            this.setState({[popUp]: false})
+        } else {
+            this.setState({[popUp]: true})
+        }
+    }
+
+    openSearchAssist() {
+        if (!this.state.showSearchAssist) {
+            this.setState({showSearchAssist: true})
+        }
+    }
+
+    closeSearchAssist() {
+        if (this.state.showSearchAssist) {
+            this.setState({showSearchAssist: false})
+        }
+    }
+
+    closeCategorySelect() {
+        if (this.state.catSelOpen) {
+            this.setState({catSelOpen: false})
+        }
+    }
+
+    handleSearchSelect = (category) => {
         this.props.currentSearch(category)
         this.props.searchByProductName(category)
+        this.updateSearchBar(category)
         this.routeToProductSearchIndex()
     }
 
-    toggleCatMenu() {
-        if (this.state.catSelOpen) {
-            this.setState({catSelOpen: false})
-        } else {
-            this.setState({catSelOpen: true})
+    handleSearchInput(e) {
+        this.closeCategorySelect();
+        this.openSearchAssist();
+        if (e.key === "Enter") {
+            this.props.currentSearch(this.state.searchString)
+            this.props.searchByProductName(this.state.searchString)
+            .then(
+                () => {
+                    if (this.state.showSearchAssist) this.togglePopUp('showSearchAssist');
+                    this.routeToProductSearchIndex()  
+                }
+            )
+        } else if (e.key === "Escape") {
+            this.closeSearchAssist();
         }
-    }
-
-    createCategoryOptions() {
-        if (!this.state.catSelOpen) {
-            return null
-        }
-        const categories = ['mario', 'final fantasy', 'sonic', 'zelda', 'fortnite', 'league of legends'];
-        let options = [];
-        for (let i = 0; i < categories.length; i++) {
-            const optionName = categories[i].replace(/\b[a-z](?!\s)/g, (char) => {return char.toUpperCase()})
-            const option =
-                <div key={i} className='category-option'
-                    onClick={() => this.handleCategorySelect(categories[i])}>
-                    <div className='select-hand-container'>
-                        <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
-                    </div>
-                    <p className='option-name'>
-                            {optionName}
-                    </p>
-                </div>
-            options.push(option)
-        }
-        return (
-            <>
-                <div className="category-select">
-                    {options}
-                </div>
-                <div onClick={() => this.toggleCatMenu()} className='grey-screen-cover'></div>
-            </>
-        )
     }
 
     numberOfItemsInCart() {
@@ -117,27 +120,75 @@ class Header extends React.Component {
         }
     }
 
+    createCategoryOptions() {
+        if (!this.state.catSelOpen) {
+            return null
+        }
+        const categories = ALL_CATEGORIES;
+        let options = [];
+        for (let idx = 0; idx < categories.length; idx++) {
+            const category = categories[idx]
+            const formattedCategory = formatNameAsTitle(category)
+            options.push(
+                <div key={`${idx}-${category}`} className='category-option'
+                    onClick={() => {
+                        this.handleSearchSelect(category);
+                        this.debouncedSearchSuggestions(category)}}>
+                    <div className='select-hand-container'>
+                        <FontAwesomeIcon className='select-hand' icon={faHandPointer}/>
+                    </div>
+                    <p className='option-name'>
+                        {formattedCategory}
+                    </p>
+                </div>
+            )
+        }
+        return (
+            <>
+                <div className="category-select">
+                    {options}
+                </div>
+                <div 
+                    onClick={() => {
+                        this.closeCategorySelect();
+                        this.closeSearchAssist()}}
+                    className='grey-screen-cover'/>
+            </>
+        )
+    }
+ 
     render() {
         
         return(
             <div className='header'>
                 <div className='search-sign-in-and-cart'>
-                    <Link className="logo-link" to='/'>
-                        <div className="logo">Craftesy</div>
+                    <Link
+                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        className="logo-link" to='/'>
+                            <div className="logo">Craftesy</div>
                     </Link>
                     <div className="category-select-container button-transition"
-                        onClick={() => this.toggleCatMenu()}>
+                        onClick={() => {this.togglePopUp('catSelOpen'); this.closeSearchAssist()}}>
                             <FontAwesomeIcon className="nav-icon" icon={faHamburger}/>
                             Categories
                             {this.createCategoryOptions()}
                     </div>
-                    <input
-                        onKeyDown={(e) => this.handleSearchInput(e)}
-                        onChange={this.update()}
-                        value= {this.state.searchString}
-                        type="search"
-                        className='main-search-field'
-                        placeholder="It's dangerous to go alone..."/>
+                    <div className="search-field-container">
+                        <input
+                            className='main-search-field'
+                        onClick={() => {this.togglePopUp('showSearchAssist'); this.closeCategorySelect()}}
+                            onKeyDown={(e) => this.handleSearchInput(e)}
+                            onChange={this.update()}
+                            value= {this.state.searchString}
+                            type="search"
+                            placeholder="It's dangerous to go alone..."/>
+                        <SearchAssist
+                            searchAssist={this.props.searchAssistResults}
+                            handleSearchSelect={this.handleSearchSelect}
+                            togglePopUp={() => this.togglePopUp('showSearchAssist')}
+                            clearSearchAssist={this.props.clearSearchAssist}
+                            display={this.state.showSearchAssist}/>
+                    </div>
                     {this.signInButton()}
                     <Link className='cart-container button-transition' to='/cart'>
                         <FontAwesomeIcon className='cart' icon={faCartShopping}/>
@@ -160,10 +211,6 @@ class Header extends React.Component {
                     <a className='header-links button-transition' target="_blank" href="https://dustin-adler.github.io/Relda_Legend_of_Nitsud/">
                         <FontAwesomeIcon className='nav-icon relda' icon={faDungeon}/>
                         The Legend of Relda
-                    </a>
-                    <a className='header-links button-transition' target="_blank" href="https://come-what-may.herokuapp.com/#/">
-                        <FontAwesomeIcon className='nav-icon come-what-may' icon={faHouseCrack}/>
-                        Come What May
                     </a>
                 </div>
             </div>

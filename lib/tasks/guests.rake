@@ -1,5 +1,5 @@
 namespace :guests do
-  desc "Delete all guest records older than 90 days"
+  desc 'Delete all guest records older than 90 days'
   task cleanup: :environment do
     stale_guests = Guest.stale
     guest_count = stale_guests.count
