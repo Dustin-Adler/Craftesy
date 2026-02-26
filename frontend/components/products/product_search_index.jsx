@@ -19,11 +19,11 @@ class ProductSearchIndex extends React.Component {
         const products = this.props.products.map(
             (product, i) =>
                 <ProductSearchItem 
-                    key={i}
+                    key={`${product.name}-${i}`}
                     product={product}
                     createCartItem={this.props.createCartItem}
-                    history={this.props.history}>
-                </ProductSearchItem>
+                    history={this.props.history}
+                    searchByProductName={this.props.searchByProductName}/>
         )
 
         return (

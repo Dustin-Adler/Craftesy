@@ -14,6 +14,12 @@ class ProductSearchItem extends React.Component {
         this.getStateOfConfirmationModal = this.getStateOfConfirmationModal.bind(this)
     }
 
+    goToSearch() {
+        if (this.props.history.location.pathname !== "/search") {
+            this.props.history.push(`/search`)
+        }
+    }
+
     getStateOfConfirmationModal(activeModal) {
         this.setState({confirmationModal: activeModal})
     }
@@ -100,7 +106,9 @@ class ProductSearchItem extends React.Component {
                             <p className='search-item-add-to-cart'>Add to Cart</p>
                     </div>
                     {/* todo: search based on a selected item */}
-                    <div className='more-like-this-container'>
+                    <div
+                        onClick={() => this.props.searchByProductName(product.game_name)}
+                        className='more-like-this-container'>
                         <div className='more-text'>More like this</div>
                         <FontAwesomeIcon className='more-arrow' icon={faArrowRight}/>
                     </div>
