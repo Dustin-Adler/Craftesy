@@ -7,6 +7,7 @@ import { debounce } from '../../helpers/time'
 import SearchAssist from './search_assistance'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 import { ALL_CATEGORIES } from '../../utils/game_names'
+import { appendOrRemoveScrollBarReplacement } from '../../helpers/scrollbar_calculator'
 
 class Header extends React.Component {
     constructor(props){
@@ -22,16 +23,21 @@ class Header extends React.Component {
         if (this.props.currentUser?.id){
             return (<button
                 className="sign-in-button button-transition"
-                onClick={()=> this.props.logout()}
+                onClick={()=> {this.props.logout(); this.closeCategorySelect(); this.closeSearchAssist()}}
                 >Sign Out
             </button>)
         } else {
             return (<button
                 className="sign-in-button button-transition"
-                onClick={() => this.props.openModal("login")}
+                onClick={() => {this.props.openModal("login"); this.closeCategorySelect(); this.closeSearchAssist()}}
                 >Sign In
             </button>)
         }
+    }
+
+    handleScrolling() {
+        document.body.className = this.state.catSelOpen || this.state.showSearchAssist ? '' : 'no-scroll'
+        appendOrRemoveScrollBarReplacement();
     }
 
     update() {
@@ -63,23 +69,27 @@ class Header extends React.Component {
         } else {
             this.setState({[popUp]: true})
         }
+        this.handleScrolling()
     }
 
     openSearchAssist() {
         if (!this.state.showSearchAssist) {
             this.setState({showSearchAssist: true})
+            this.handleScrolling()
         }
     }
 
     closeSearchAssist() {
         if (this.state.showSearchAssist) {
             this.setState({showSearchAssist: false})
+            this.handleScrolling()
         }
     }
 
     closeCategorySelect() {
         if (this.state.catSelOpen) {
             this.setState({catSelOpen: false})
+            this.handleScrolling()
         }
     }
 
@@ -168,7 +178,7 @@ class Header extends React.Component {
                             <div className="logo">Craftesy</div>
                     </Link>
                     <div className="category-select-container button-transition"
-                        onClick={() => {this.togglePopUp('catSelOpen'); this.closeSearchAssist()}}>
+                        onClick={() => {this.togglePopUp('catSelOpen'); this.closeSearchAssist();}}>
                             <FontAwesomeIcon className="nav-icon" icon={faHamburger}/>
                             Categories
                             {this.createCategoryOptions()}
@@ -196,21 +206,37 @@ class Header extends React.Component {
                     </Link>
                 </div>
                 <div className='professional-links'>
-                    <a className='header-links button-transition' target="_blank" href="https://www.linkedin.com/in/dustin-adler-software-eng-web-dev/">
-                        <FontAwesomeIcon className='nav-icon linked-in' icon={faLinkedin}/>
-                        LinkedIn
+                    <a
+                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        className='header-links button-transition'
+                        target="_blank"
+                        href="https://www.linkedin.com/in/dustin-adler-software-eng-web-dev/">
+                            <FontAwesomeIcon className='nav-icon linked-in' icon={faLinkedin}/>
+                            LinkedIn
                     </a>
-                    <a className='header-links button-transition' target="_blank" href="https://wellfound.com/u/dustin-adler">
-                        <FontAwesomeIcon className='nav-icon well-found' icon={faAngellist}/>
-                        AngelList/WellFound
+                    <a
+                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        className='header-links button-transition'
+                        target="_blank"
+                        href="https://wellfound.com/u/dustin-adler">
+                            <FontAwesomeIcon className='nav-icon well-found' icon={faAngellist}/>
+                            AngelList/WellFound
                     </a>
-                    <a className='header-links button-transition' target="_blank" href="https://github.com/Dustin-Adler">
-                        <FontAwesomeIcon className='nav-icon github' icon={faGithub}/>
-                        Github
+                    <a
+                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        className='header-links button-transition'
+                        target="_blank"
+                        href="https://github.com/Dustin-Adler">
+                            <FontAwesomeIcon className='nav-icon github' icon={faGithub}/>
+                            Github
                     </a>
-                    <a className='header-links button-transition' target="_blank" href="https://dustin-adler.github.io/Relda_Legend_of_Nitsud/">
-                        <FontAwesomeIcon className='nav-icon relda' icon={faDungeon}/>
-                        The Legend of Relda
+                    <a
+                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        className='header-links button-transition'
+                        target="_blank"
+                        href="https://dustin-adler.github.io/Relda_Legend_of_Nitsud/">
+                            <FontAwesomeIcon className='nav-icon relda' icon={faDungeon}/>
+                            The Legend of Relda
                     </a>
                 </div>
             </div>

@@ -13,7 +13,7 @@ import ProductSearchIndexContainer from './products/product_search_index_contain
 import ScrollingProductsContainer from './products/scrolling_products_container'
 
 const App = () => (
-  <div className='master-layout'>
+  <div id='app'className='master-layout'>
     <Modal/>
     <header>
       <Route path='/' component={HeaderContainer} />
