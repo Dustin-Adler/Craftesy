@@ -66,7 +66,7 @@ class EmptyCart extends React.Component {
     }
 
     render() {
-      if (this.props.products.length === 0) return null
+      if (this.props.products.length < 4) return null
       const productCoins = this.createProductCoins();
       const searchOrCart = this.emptyCartOrSearchResults();
       return (

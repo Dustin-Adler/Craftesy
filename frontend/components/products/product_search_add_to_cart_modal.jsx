@@ -26,27 +26,41 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 
     moreLikeThis(game_name) {
-        if(this.onProductShow) {
-            this.props.history.push('/products/search')
-        }
         this.props.searchByProductName(game_name)
             .then(
                 this.closeModal()
             )
+        if(this.onProductShow) {
+            this.props.history.push('/products/search')
+        }
+    }
+
+    getRandomIdx(arr) {
+        return Math.floor(Math.random() * arr.length)
+    }
+
+    randomSimilarProducts() {
+        let prodArr = this.props.products
+        const numberOfProducts = prodArr.length >= 4 ? 4 : prodArr.length
+        const randomProducts = []
+        for (let i = 0; i < numberOfProducts; i++) {
+            const randomIdx = this.getRandomIdx(prodArr)
+            randomProducts.push(prodArr[randomIdx])
+            prodArr.splice(randomIdx, 1)
+        }
+        return randomProducts
     }
 
     listSimilarProducts() {
         if(!this.onProductShow) {
             return null;
         }
-        const similarProducts = {...this.props.products}
-        delete similarProducts[this.props.product.id]
-        const productArr = Object.values(similarProducts);
-        const numberOfProducts = productArr.length >= 4 ? 4 : productArr.length
-        const productElements = productArr.slice(0, numberOfProducts).map((product, i) => {
+        const productElements = this.randomSimilarProducts().map((product) => {
             return (
-                <div className="item" key={i}>
-                    <ProductSearchItem product={product}/>
+                <div
+                    className="item"
+                    key={`${product.name}-${product.id}`}>
+                        <ProductSearchItem product={product}/>
                 </div>
             )
         })
@@ -111,12 +125,16 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 }
 
-const mSTP = (state, ownProps) => ({
-    products: state.entities.products,
-    product: ownProps.product,
-    display: ownProps.display,
-    history: ownProps.history
-});
+const mSTP = (state, ownProps) => {
+    const products = Object.values(state.entities.products).filter(product => 
+        product.game_name === ownProps.product.game_name && product.id !== ownProps.product.id)
+    return {
+        products: products,
+        product: ownProps.product,
+        display: ownProps.display,
+        history: ownProps.history
+    }
+};
 
 const mDTP = (dispatch) => ({
     getProduct: (product_id) => dispatch(getProduct(product_id)),
