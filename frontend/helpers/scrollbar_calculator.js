@@ -15,14 +15,18 @@ const createScrollBarDivReplacement = () => {
     return scrollReplacement;
 }
 
-export const appendOrRemoveScrollBarReplacement = () => {
+export const appendOrRemoveScrollBarReplacement = (addScrollReplacement = true) => {
     let scrollReplacement = document.getElementsByClassName("scrollbar-replacement")
-    if (scrollReplacement.length) {
+    if (scrollReplacement.length && !addScrollReplacement) {
+        for (let replacement of scrollReplacement) {
+            document.body.removeChild(replacement);
+        }
         document.body.style.gridTemplateColumns = '1fr';
-        document.body.removeChild(scrollReplacement[0])
-    } else {
+        document.body.className = '';
+    } else if (!scrollReplacement.length && addScrollReplacement) {
         scrollReplacement = createScrollBarDivReplacement();
         document.body.appendChild(scrollReplacement);
         document.body.style.gridTemplateColumns = `1fr ${scrollReplacement.offsetWidth}px`;
+        document.body.className = 'no-scroll';
     }
 }

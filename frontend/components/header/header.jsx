@@ -10,34 +10,45 @@ import { ALL_CATEGORIES } from '../../utils/game_names'
 import { appendOrRemoveScrollBarReplacement } from '../../helpers/scrollbar_calculator'
 
 class Header extends React.Component {
+    #showCategories = 'showCategories';
+    #showSearchAssist = 'showSearchAssist';
     constructor(props){
         super(props)
         this.state = {
             searchString: this.props.searchString,
-            catSelOpen: false,
+            showCategories: false,
             showSearchAssist: false
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.showCategories !== this.state.showCategories || prevState.showSearchAssist !== this.state.showSearchAssist) {
+            appendOrRemoveScrollBarReplacement(this.state.showCategories || this.state.showSearchAssist);
         }
     }
 
     signInButton() {
         if (this.props.currentUser?.id){
-            return (<button
-                className="sign-in-button button-transition"
-                onClick={()=> {this.props.logout(); this.closeCategorySelect(); this.closeSearchAssist()}}
-                >Sign Out
-            </button>)
+            return (
+                <button
+                    className="sign-in-button button-transition"
+                    onClick={()=> {
+                        this.closePopUp([this.#showCategories, this.#showSearchAssist]);
+                        this.props.logout();}}>
+                            Sign Out
+                </button>
+            )
         } else {
-            return (<button
-                className="sign-in-button button-transition"
-                onClick={() => {this.props.openModal("login"); this.closeCategorySelect(); this.closeSearchAssist()}}
-                >Sign In
-            </button>)
+            return (
+                <button
+                    className="sign-in-button button-transition"
+                    onClick={() => {
+                        this.closePopUp([this.#showCategories, this.#showSearchAssist]);
+                        this.props.openModal("login");}}>
+                            Sign In
+                </button>
+            )
         }
-    }
-
-    handleScrolling() {
-        document.body.className = this.state.catSelOpen || this.state.showSearchAssist ? '' : 'no-scroll'
-        appendOrRemoveScrollBarReplacement();
     }
 
     update() {
@@ -69,27 +80,19 @@ class Header extends React.Component {
         } else {
             this.setState({[popUp]: true})
         }
-        this.handleScrolling()
     }
 
-    openSearchAssist() {
-        if (!this.state.showSearchAssist) {
-            this.setState({showSearchAssist: true})
-            this.handleScrolling()
+    openPopUp(popUp) {
+        if (!this.state[popUp]) {
+            this.setState({[popUp]: true})
         }
     }
 
-    closeSearchAssist() {
-        if (this.state.showSearchAssist) {
-            this.setState({showSearchAssist: false})
-            this.handleScrolling()
-        }
-    }
-
-    closeCategorySelect() {
-        if (this.state.catSelOpen) {
-            this.setState({catSelOpen: false})
-            this.handleScrolling()
+    closePopUp(popUpArray) {
+        for (let popUp of popUpArray) {
+            if (this.state[popUp]) {
+                this.setState({[popUp]: false})
+            }
         }
     }
 
@@ -101,19 +104,20 @@ class Header extends React.Component {
     }
 
     handleSearchInput(e) {
-        this.closeCategorySelect();
-        this.openSearchAssist();
+        this.closePopUp([this.#showCategories]);
+        this.openPopUp(this.#showSearchAssist);
         if (e.key === "Enter") {
             this.props.currentSearch(this.state.searchString)
             this.props.searchByProductName(this.state.searchString)
             .then(
                 () => {
-                    if (this.state.showSearchAssist) this.togglePopUp('showSearchAssist');
-                    this.routeToProductSearchIndex()  
+                    if (this.state.showSearchAssist)
+                        this.togglePopUp(this.#showSearchAssist);
+                        this.routeToProductSearchIndex();
                 }
             )
         } else if (e.key === "Escape") {
-            this.closeSearchAssist();
+            this.closePopUp([this.#showSearchAssist]);
         }
     }
 
@@ -131,7 +135,7 @@ class Header extends React.Component {
     }
 
     createCategoryOptions() {
-        if (!this.state.catSelOpen) {
+        if (!this.state.showCategories) {
             return null
         }
         const categories = ALL_CATEGORIES;
@@ -154,16 +158,15 @@ class Header extends React.Component {
             )
         }
         return (
-            <>
-                <div className="category-select">
+            <div>
+                <div className="category-select slide-in">
                     {options}
                 </div>
-                <div 
-                    onClick={() => {
-                        this.closeCategorySelect();
-                        this.closeSearchAssist()}}
-                    className='grey-screen-cover'/>
-            </>
+                <div
+                    className='grey-screen-cover'
+                    onClick={() => {this.closePopUp([this.#showCategories, this.#showSearchAssist])}}>
+                </div>
+            </div>
         )
     }
  
@@ -173,12 +176,12 @@ class Header extends React.Component {
             <div className='header'>
                 <div className='search-sign-in-and-cart'>
                     <Link
-                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        onClick={() => {this.closePopUp([this.#showCategories, this.#showSearchAssist])}}
                         className="logo-link" to='/'>
                             <div className="logo">Craftesy</div>
                     </Link>
                     <div className="category-select-container button-transition"
-                        onClick={() => {this.togglePopUp('catSelOpen'); this.closeSearchAssist();}}>
+                        onClick={() => {this.togglePopUp(this.#showCategories); this.closePopUp([this.#showSearchAssist]);}}>
                             <FontAwesomeIcon className="nav-icon" icon={faHamburger}/>
                             Categories
                             {this.createCategoryOptions()}
@@ -186,7 +189,7 @@ class Header extends React.Component {
                     <div className="search-field-container">
                         <input
                             className='main-search-field'
-                        onClick={() => {this.togglePopUp('showSearchAssist'); this.closeCategorySelect()}}
+                            onClick={() => {this.togglePopUp(this.#showSearchAssist); this.closePopUp([this.#showCategories])}}
                             onKeyDown={(e) => this.handleSearchInput(e)}
                             onChange={this.update()}
                             value= {this.state.searchString}
@@ -195,19 +198,22 @@ class Header extends React.Component {
                         <SearchAssist
                             searchAssist={this.props.searchAssistResults}
                             handleSearchSelect={this.handleSearchSelect}
-                            togglePopUp={() => this.togglePopUp('showSearchAssist')}
+                            togglePopUp={() => this.togglePopUp(this.#showSearchAssist)}
                             clearSearchAssist={this.props.clearSearchAssist}
                             display={this.state.showSearchAssist}/>
                     </div>
                     {this.signInButton()}
-                    <Link className='cart-container button-transition' to='/cart'>
-                        <FontAwesomeIcon className='cart' icon={faCartShopping}/>
-                        {this.numberOfItemsInCart()}
+                    <Link
+                        onClick={() => this.closePopUp([this.#showCategories, this.#showSearchAssist])}
+                        className='cart-container button-transition'
+                        to='/cart'>
+                            <FontAwesomeIcon className='cart' icon={faCartShopping}/>
+                            {this.numberOfItemsInCart()}
                     </Link>
                 </div>
                 <div className='professional-links'>
                     <a
-                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        onClick={() => this.closePopUp([this.#showCategories, this.#showSearchAssist])}
                         className='header-links button-transition'
                         target="_blank"
                         href="https://www.linkedin.com/in/dustin-adler-software-eng-web-dev/">
@@ -215,7 +221,7 @@ class Header extends React.Component {
                             LinkedIn
                     </a>
                     <a
-                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        onClick={() => this.closePopUp([this.#showCategories, this.#showSearchAssist])}
                         className='header-links button-transition'
                         target="_blank"
                         href="https://wellfound.com/u/dustin-adler">
@@ -223,7 +229,7 @@ class Header extends React.Component {
                             AngelList/WellFound
                     </a>
                     <a
-                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        onClick={() => this.closePopUp([this.#showCategories, this.#showSearchAssist])}
                         className='header-links button-transition'
                         target="_blank"
                         href="https://github.com/Dustin-Adler">
@@ -231,7 +237,7 @@ class Header extends React.Component {
                             Github
                     </a>
                     <a
-                        onClick={() => {this.closeCategorySelect(); this.closeSearchAssist()}}
+                        onClick={() => this.closePopUp([this.#showCategories, this.#showSearchAssist])}
                         className='header-links button-transition'
                         target="_blank"
                         href="https://dustin-adler.github.io/Relda_Legend_of_Nitsud/">
