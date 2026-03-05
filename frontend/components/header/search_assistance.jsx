@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 import { ALL_CATEGORIES } from '../../utils/game_names'
-import { addClass, removeClass } from '../../helpers/css_manipulation'
 
 class SearchAssist extends React.Component {
     constructor(props) {
