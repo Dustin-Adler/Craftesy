@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 import { ALL_CATEGORIES } from '../../utils/game_names'
-import { ContactsOutlined } from '@material-ui/icons'
 
 class SearchAssist extends React.Component {
     constructor(props) {
@@ -82,7 +81,9 @@ class SearchAssist extends React.Component {
         const searchAssistResults = this.generateSearchAssistListItems()
         return (
           <>
-            <div className="search-assist-window">
+            <div
+              id={'search-assist'}
+              className="search-assist-window search-assist-slide-in">
               <ul className="search-assist-list">
                 {searchAssistResults}
               </ul>
