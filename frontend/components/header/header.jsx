@@ -27,30 +27,6 @@ class Header extends React.Component {
         }
     }
 
-    signInButton() {
-        if (this.props.currentUser?.id){
-            return (
-                <button
-                    className="sign-in-button button-transition"
-                    onClick={()=> {
-                        this.closePopUp([this.#showCategories, this.#showSearchAssist]);
-                        this.props.logout();}}>
-                            Sign Out
-                </button>
-            )
-        } else {
-            return (
-                <button
-                    className="sign-in-button button-transition"
-                    onClick={() => {
-                        this.closePopUp([this.#showCategories, this.#showSearchAssist]);
-                        this.props.openModal("login");}}>
-                            Sign In
-                </button>
-            )
-        }
-    }
-
     update() {
         return (e) => {
             this.setState({searchString: e.currentTarget.value})
@@ -67,6 +43,12 @@ class Header extends React.Component {
     }
 
     debouncedSearchSuggestions = debounce(this.searchSuggestions, 250)
+
+    routeToHome() {
+        if(this.props.history.location.pathname !== '/') {
+            return this.props.history.push('/')
+        }
+    }
 
     routeToProductSearchIndex() {
         if(this.props.history.location.pathname !== '/products/search') {
@@ -122,15 +104,39 @@ class Header extends React.Component {
     }
 
     numberOfItemsInCart() {
-        const numberOfItemsInCart = this.props.numberOfItemsInCart
-        if (numberOfItemsInCart > 0) {
+        if (this.props.numberOfItemsInCart > 0) {
             return (
                 <div className='cart-ref'>
-                    <span>{numberOfItemsInCart}</span>
+                    <span>{this.props.numberOfItemsInCart}</span>
                 </div>
             )
         } else {
             return null
+        }
+    }
+
+    signInButton() {
+        if (this.props.currentUser?.id){
+            return (
+                <button
+                    className="sign-in-button button-transition"
+                    onClick={()=> {
+                        this.closePopUp([this.#showCategories, this.#showSearchAssist]);
+                        this.props.logout();
+                        this.routeToHome();}}>
+                            Sign Out
+                </button>
+            )
+        } else {
+            return (
+                <button
+                    className="sign-in-button button-transition"
+                    onClick={() => {
+                        this.closePopUp([this.#showCategories, this.#showSearchAssist]);
+                        this.props.openModal("login");}}>
+                            Sign In
+                </button>
+            )
         }
     }
 
