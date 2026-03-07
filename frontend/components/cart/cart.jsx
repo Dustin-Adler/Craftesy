@@ -26,6 +26,14 @@ class Cart extends React.Component {
         this.props.getCartItems();
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.cartItemCount !== this.props.cartItemCount) {
+            this.setState({
+                cartItemCount: this.props.cartItemCount
+            })
+        }
+    }
+
     shippingModal(){
         if(!this.state.shipping){
             return null
