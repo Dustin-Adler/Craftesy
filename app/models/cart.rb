@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Validations and relations for carts
 class Cart < ApplicationRecord
   validates :quantity, :product_id, presence: true
   validate :belongs_to_shopper_or_guest

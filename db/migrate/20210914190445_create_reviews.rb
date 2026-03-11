@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Creates Reviews table to hold reviews for products
 class CreateReviews < ActiveRecord::Migration[5.2]
   def change
     create_table :reviews do |t|

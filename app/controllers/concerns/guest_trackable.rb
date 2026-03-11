@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Concern to handle guest session management, including tracking guest users, ensuring guest sessions,
+# and managing guest cookies
 module GuestTrackable
   extend ActiveSupport::Concern
 
@@ -13,7 +15,7 @@ module GuestTrackable
 
   def returning_guest
     @returning_guest ||= Guest.find_by(uuid: cookies.signed[:guest_uuid])
-    set_guest_cookie(@returning_guest) if @returning_guest
+    create_guest_cookie(@returning_guest) if @returning_guest
     @returning_guest
   end
 
@@ -22,11 +24,11 @@ module GuestTrackable
     return @returning_guest if returning_guest.present?
 
     guest = Guest.create!
-    set_guest_cookie(guest)
+    create_guest_cookie(guest)
     @current_guest = guest
   end
 
-  def set_guest_cookie(guest)
+  def create_guest_cookie(guest)
     cookies.signed[:guest_uuid] = {
       value: guest.uuid,
       httponly: true,

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# handle basic session management for both users and guests, including login/logout and session token management
 class ApplicationController < ActionController::Base
   include GuestTrackable
   include UserTrackable

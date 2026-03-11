@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# contains all of the session logic for both users and guests, currently this is just
+# a module that is included in both models,
+# but in the future it would be better to have a separate table for session tokens
+# if we plan to have more models using session tokens.
 module SessionTokenable
   extend ActiveSupport::Concern
 

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Adds index on session_token column in guests table for faster queries
 class AddIndexOnSessionTokenInGuest < ActiveRecord::Migration[7.1]
   def change
     remove_index :users, :email

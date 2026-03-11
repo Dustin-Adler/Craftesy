@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Creates guests table with session token and uuid, and indexes uuid for faster queries
 class CreateGuests < ActiveRecord::Migration[7.1]
   def change
     create_table :guests do |t|

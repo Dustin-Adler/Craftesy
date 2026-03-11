@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# creates join table that populates as Cart
 class CreateCarts < ActiveRecord::Migration[5.2]
   def change
     create_table :carts do |t|

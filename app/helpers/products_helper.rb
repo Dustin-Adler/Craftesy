@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Products helper
 module ProductsHelper
   def average_rating(reviews, review_count)
     return 0 unless review_count.positive?

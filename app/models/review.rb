@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Review model
 class Review < ApplicationRecord
   validates :author_id, :product_id, :rating, presence: true
 

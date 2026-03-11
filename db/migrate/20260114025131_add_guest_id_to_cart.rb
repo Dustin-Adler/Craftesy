@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adds guest_id column to carts table and indexes it for faster queries
 class AddGuestIdToCart < ActiveRecord::Migration[7.1]
   def change
     add_column :carts, :guest_id, :integer

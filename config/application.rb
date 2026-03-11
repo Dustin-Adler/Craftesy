@@ -9,8 +9,8 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Craftesy
+  # Initialize configuration defaults for originally generated Rails version.
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do

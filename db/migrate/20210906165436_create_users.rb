@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Creates users table with session token, password digest, email, and first name
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|

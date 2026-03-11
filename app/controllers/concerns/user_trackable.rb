@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Concern to handle user session management, including tracking logged-in users and managing user sessions
 module UserTrackable
   extend ActiveSupport::Concern
 
