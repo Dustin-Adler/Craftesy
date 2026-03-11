@@ -27,14 +27,14 @@ class Header extends React.Component {
         }
     }
 
-    update() {
+    updateSearchBarFromInput() {
         return (e) => {
             this.setState({searchString: e.currentTarget.value})
             this.debouncedSearchSuggestions(e.currentTarget.value)
         }
     }
 
-    updateSearchBar = (searchString = '') => {
+    updateSearchBarFromSelection = (searchString = '') => {
         this.setState({searchString})
     }
 
@@ -81,7 +81,7 @@ class Header extends React.Component {
     handleSearchSelect = (category) => {
         this.props.currentSearch(category)
         this.props.searchByProductName(category)
-        this.updateSearchBar(category)
+        this.updateSearchBarFromSelection(category)
         this.routeToProductSearchIndex()
     }
 
@@ -197,7 +197,7 @@ class Header extends React.Component {
                             className='main-search-field'
                             onClick={() => {this.togglePopUp(this.#showSearchAssist); this.closePopUp([this.#showCategories])}}
                             onKeyDown={(e) => this.handleSearchInput(e)}
-                            onChange={this.update()}
+                            onChange={this.updateSearchBarFromInput()}
                             value= {this.state.searchString}
                             type="search"
                             placeholder="It's dangerous to go alone..."/>
