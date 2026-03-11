@@ -10,12 +10,29 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "base";
+@import "craftesy";
+@import "helpers";
+@import "animations";
+@import "header";
+@import "footer";
+@import "modal";
+@import "search_assist";
+@import "game_bubbles";
+@import "products_index";
+@import "product_show";
+@import "product_search_item";
+@import "product_search_add_to_cart_modal";
+@import "scrolling_products";
+@import "carts";
+@import "empty_cart";
+@import "reviews";
+@import "shippling_modal";
+@import "thank_you_modal";
 
  /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
