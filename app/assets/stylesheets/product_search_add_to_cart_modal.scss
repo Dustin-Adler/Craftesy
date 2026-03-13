@@ -25,21 +25,10 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
-    .grey-screen {
-        position: fixed;
-        display: block;
-        left: 0px;
-        top: 0px;
-        width: calc(100vw - 495px);
-        height: 100vh;
-        z-index: -1;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
     .close-container {
-        position: absolute;
-        top: 25px;
-        left: -50px;
+        position: fixed;
+        top: 20px;
+        right: 505px;
         width: 1em;
         height: 1em;
         cursor: pointer;
@@ -76,6 +65,17 @@
                 scale(1);
             background-color: rgba(245, 245, 245, 0.2);
         }
+    }
+
+    .grey-screen {
+        position: fixed;
+        display: block;
+        left: 0px;
+        top: 0px;
+        width: calc(100vw - 495px);
+        height: 100vh;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .product-cart-info-container {
