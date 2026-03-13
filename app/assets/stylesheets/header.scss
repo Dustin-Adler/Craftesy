@@ -175,9 +175,11 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
         font-family: 'Press Start 2P', cursive;
 
         .option-name, .option-category {
-            text-wrap: nowrap;
             margin-left: 12px;
             text-shadow: 2px 2px black;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
 
         .select-hand {
@@ -191,12 +193,7 @@ $game-menu-background: linear-gradient(315deg, $dark-blue 10%, $bright-blue 91%)
             height: 20px;
         }
 
-        &:hover .select-hand {
-            display: block;
-            animation: oscillate-left-to-right 1s ease-out infinite;
-        }
-
-        &:focus .select-hand {
+        &:hover .select-hand, &:focus .select-hand {
             display: block;
             animation: oscillate-left-to-right 1s ease-out infinite;
         }
