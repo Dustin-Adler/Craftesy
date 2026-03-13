@@ -4,11 +4,14 @@ import * as reviewActions from '../../actions/review_actions'
 import { openRevModal } from "../../actions/modal_actions";
 import ProductReviews from "./product_reviews";
 
-const mSTP = (state, ownProps) => ({
-    reviews: Object.values(state.entities.reviews),
-    session: state.session.id, 
-    productId: ownProps.productId
-})
+const mSTP = (state, ownProps) => {
+    const currentUser = state.entities.users[state.session.id]
+    return {
+        reviews: Object.values(state.entities.reviews),
+        session: currentUser ? currentUser.id : null, 
+        productId: ownProps.productId
+    }
+}
 
 const mDTP = (dispatch, ownProps) => ({
     getProductReviews: () => dispatch(reviewActions.getProductReviews(ownProps.productId)),

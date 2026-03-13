@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductReview from '../reviews/product_reviews_container';
 import ProductSearchAddToCartModal from './product_search_add_to_cart_modal'
+import { scrollToTopOfPage } from '../../helpers/scroll_helper'
 
 class ProductIndexItem extends React.Component {
     constructor(props){
@@ -14,7 +15,8 @@ class ProductIndexItem extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getProduct()
+        this.props.getProduct();
+        scrollToTopOfPage();
     }
 
     componentDidUpdate(prevProps) {
