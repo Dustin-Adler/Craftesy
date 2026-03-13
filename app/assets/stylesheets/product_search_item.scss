@@ -79,12 +79,17 @@
         
         .seller-star-container {
             position: relative;
+            width: 16px;
             margin-right: 4px;
         }
 
         .seller-star-certificate-background {
             font-size: 16px;
             color: #2174f8;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .seller-star-inner-star {
