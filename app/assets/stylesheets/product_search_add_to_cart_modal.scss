@@ -83,8 +83,12 @@
         flex-direction: column;
     }
 
-    .img-link, .text-link, .edit, .price {
+    .product-img, .product-name-container, .edit, .price {
         margin-top: 15px;
+    }
+
+    .product-img {
+        cursor: pointer;
     }
 
     .confirm-added-to-cart-container {
@@ -110,14 +114,11 @@
         background-color: rgba(0, 0, 0, 0.2);
     }
 
-    .text-link {
-        text-decoration: none;
-    }
-
     .product-name {
         color: whitesmoke;
         height: 1.5em;
         transition: text-shadow 150ms ease-out;
+        cursor: pointer;
 
         &:hover {
             text-shadow: 0 0 8px rgba(245, 245, 245, 0.8)

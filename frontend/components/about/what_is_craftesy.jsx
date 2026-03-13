@@ -1,13 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { scrollToTopOfPage } from '../../helpers/scroll_helper';
 
 class AboutCraftesy extends React.Component {
     constructor(props) {
         super(props)
-    }
-
-    scrollToTopOfPage() {
-        window.scrollTo(0, 0);
     }
 
     render() {
@@ -52,7 +48,7 @@ class AboutCraftesy extends React.Component {
                     </div>
                     <div className='back-to-top-link'>
                         <h4>Not done looking? Quick, jump back to the top!</h4>
-                        <button onClick={() => this.scrollToTopOfPage()}>To the Top!</button>
+                        <button onClick={() => scrollToTopOfPage()}>To the Top!</button>
                     </div>
                 </div>
             </section>

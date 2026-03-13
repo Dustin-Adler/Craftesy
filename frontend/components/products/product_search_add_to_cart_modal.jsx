@@ -30,13 +30,21 @@ class ProductSearchAddToCartModal extends React.Component {
             .then(
                 this.closeModal()
             )
-        if(this.onProductShow) {
+        if (this.onProductShow) {
             this.props.history.push('/products/search')
         }
     }
 
     getRandomIdx(arr) {
         return Math.floor(Math.random() * arr.length)
+    }
+
+    handleImgClick() {
+        if (this.onProductShow) {
+            this.closeModal()
+        } else {
+            this.props.history.push(`/products/${this.props.product.id}`)
+        }
     }
 
     randomSimilarProducts() {
@@ -89,12 +97,12 @@ class ProductSearchAddToCartModal extends React.Component {
                         <FontAwesomeIcon className="check" icon={faCircleCheck} />
                         <p>{quantity} {quantity === 1 ? "Item" : "Items"} added to cart</p>
                     </div>
-                    <Link className="img-link" to={`/products/${product.id}`}>
+                    <div className="product-img" onClick={() => this.handleImgClick()}>
                         <img className="modal-img"src={product.images[0].url} alt={product.name} />
-                    </Link>
-                    <Link className="text-link" to={`/products/${product.id}`}>
+                    </div>
+                    <div className="product-name-container" onClick={() => this.handleImgClick()}>
                         <span className="product-name">{product.name}</span>
-                    </Link>
+                    </div>
                     <p className="price">${product.price.toFixed(2)}</p>
                     <div className="edit">
                         <p>Edit the following variations from your cart</p>
