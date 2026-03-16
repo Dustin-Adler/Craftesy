@@ -10,29 +10,29 @@ import ProductSearchItem from "./product_search_item"
 class ProductSearchAddToCartModal extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            display: this.props.display
-        }
         this.onProductShow = this.props.history.location.pathname === `/products/${this.props.product.id}`
     }
 
     componentDidMount() {
-        this.props.autoSearchByProductAssociation(this.props.product.game_name)
+        if (this.props.products.length < 4) {
+            this.props.autoSearchByProductAssociation(this.props.product.game_name)
+        }
     }
 
     closeModal() {
-        this.setState({display: false})
         this.props.modalState(false)
     }
 
     moreLikeThis(game_name) {
         this.props.searchByProductName(game_name)
             .then(
-                this.closeModal()
+                () => {
+                    this.closeModal()
+                    if (this.onProductShow) {
+                        this.props.history.push('/products/search')
+                    }
+                }
             )
-        if (this.onProductShow) {
-            this.props.history.push('/products/search')
-        }
     }
 
     getRandomIdx(arr) {
@@ -48,7 +48,7 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 
     randomSimilarProducts() {
-        let prodArr = this.props.products
+        let prodArr = [...this.props.products]
         const numberOfProducts = prodArr.length >= 4 ? 4 : prodArr.length
         const randomProducts = []
         for (let i = 0; i < numberOfProducts; i++) {
@@ -80,7 +80,8 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 
     render() {
-        if (!this.state.display) {
+        console.log(this.props.display)
+        if (!this.props.display) {
             return null
         }
         const product = this.props.product;
