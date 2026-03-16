@@ -80,7 +80,6 @@ class ProductSearchAddToCartModal extends React.Component {
     }
 
     render() {
-        console.log(this.props.display)
         if (!this.props.display) {
             return null
         }
