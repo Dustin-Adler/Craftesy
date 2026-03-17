@@ -45,8 +45,6 @@ class ProductSearchItem extends React.Component {
 
     render() {
         const product = this.props.product
-        const averageRating = product.average_rating ?
-            product.average_rating : "No reviews"
         return(
             <li className='product-search-item-container'>
                 {this.cartConfirmationModal()}
@@ -64,11 +62,11 @@ class ProductSearchItem extends React.Component {
                     <h3 className='title'>{product.name}</h3>
                     <div className='search-reviews-container'>
                         <div className='star-rating-container'>
-                            <p className='average-rating'>{averageRating}</p>
+                            <p className='average-rating'>{this.props.averageRating}</p>
                             <FontAwesomeIcon className='review-star' icon={faStar} />
                             {/* todo: if navigating in any way other than search
                             loses the average rating and review count */}
-                            <p className='number-of-reviews'>({product.review_count})</p>
+                            <p className='number-of-reviews'>({this.props.reviewCount})</p>
                         </div>
                         <FontAwesomeIcon className='dot' icon={faCircle}/>
                         <div className='star-seller-name-container'>
@@ -119,10 +117,16 @@ class ProductSearchItem extends React.Component {
 
 };
 
-const mSTP = (state, ownProps) => ({
-    product: ownProps.product,
-    history: ownProps.history
-});
+const mSTP = (state, ownProps) => {
+    const reviewCount = ownProps.product.review_count
+    const averageRating = reviewCount ? ownProps.product.average_rating : 'No reviews'
+    return {
+        product: ownProps.product,
+        history: ownProps.history,
+        reviewCount: reviewCount,
+        averageRating: averageRating
+    }
+};
 
 const mDTP = (dispatch) => ({
     getProduct: (product_id) => dispatch(getProduct(product_id))

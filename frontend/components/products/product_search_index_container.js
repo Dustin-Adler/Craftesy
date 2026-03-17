@@ -12,6 +12,7 @@ const mSTP = (state) => {
     )
 
     return {
+        allProducts: Object.values(state.entities.products),
         products: productsArr
     }
 }

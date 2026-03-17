@@ -7,6 +7,15 @@ class ProductSearchIndex extends React.Component {
         super(props)
     }
 
+    componentDidMount() {
+        if (!this.props.products.length && !this.props.allProducts.length) {
+            const searchParams = new URLSearchParams(this.props.location.search)
+            let query = searchParams.get('q')
+            if (query === null) query = ''
+            this.props.searchByProductName(query)
+        }
+    }
+
     render() {
         const anyProducts = this.props.products.length
         if (!anyProducts){

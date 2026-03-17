@@ -34,7 +34,7 @@ class Header extends React.Component {
         }
     }
 
-    updateSearchBarFromSelection = (searchString = '') => {
+    updateSearchBarFromSelection = (searchString) => {
         this.setState({searchString})
     }
 
@@ -51,8 +51,11 @@ class Header extends React.Component {
     }
 
     routeToProductSearchIndex() {
-        if(this.props.history.location.pathname !== '/products/search') {
-            return this.props.history.push('/products/search')
+        const query = encodeURIComponent(this.state.searchString.trim())
+        const searchPath = !query ? "/products/search" : `/products/search?q=${query}`
+        const currentPath = `${this.props.history.location.pathname}${this.props.history.location.search}`
+        if(currentPath !== searchPath) {
+            return this.props.history.push(searchPath)
         }
     }
 
@@ -80,9 +83,13 @@ class Header extends React.Component {
 
     handleSearchSelect = (category) => {
         this.props.currentSearch(category)
-        this.props.searchByProductName(category)
         this.updateSearchBarFromSelection(category)
-        this.routeToProductSearchIndex()
+        this.props.searchByProductName(category)
+            .then(
+                () => {
+                    this.routeToProductSearchIndex()
+                }
+            )
     }
 
     handleSearchInput(e) {
