@@ -1,4 +1,5 @@
 import React from 'react'
+import { routeToProductSearchIndex } from '../../helpers/routing'
 
 class GameBubbles extends React.Component {
     constructor(props){
@@ -12,17 +13,13 @@ class GameBubbles extends React.Component {
         }
     }
 
-    routeToProductSearchIndex() {
-        if(this.props.history.location.pathname !== '/products/search') {
-            return this.props.history.push('/products/search')
-        }
-    }
-
     handleClickBubble(game) {
         this.props.currentSearch(game)
         this.props.searchByProductName(game)
             .then(
-                this.routeToProductSearchIndex()
+                () => {
+                    routeToProductSearchIndex(game, this.props.history)
+                }
             )
     }
 

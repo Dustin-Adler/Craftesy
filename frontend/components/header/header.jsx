@@ -8,6 +8,7 @@ import SearchAssist from './search_assistance'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 import { ALL_CATEGORIES } from '../../utils/game_names'
 import { appendOrRemoveScrollBarReplacement } from '../../helpers/scrollbar_calculator'
+import { routeToProductSearchIndex } from '../../helpers/routing'
 
 class Header extends React.Component {
     #showCategories = 'showCategories';
@@ -34,7 +35,7 @@ class Header extends React.Component {
         }
     }
 
-    updateSearchBarFromSelection = (searchString = '') => {
+    updateSearchBarFromSelection = (searchString) => {
         this.setState({searchString})
     }
 
@@ -47,12 +48,6 @@ class Header extends React.Component {
     routeToHome() {
         if(this.props.history.location.pathname !== '/') {
             return this.props.history.push('/')
-        }
-    }
-
-    routeToProductSearchIndex() {
-        if(this.props.history.location.pathname !== '/products/search') {
-            return this.props.history.push('/products/search')
         }
     }
 
@@ -80,9 +75,13 @@ class Header extends React.Component {
 
     handleSearchSelect = (category) => {
         this.props.currentSearch(category)
-        this.props.searchByProductName(category)
         this.updateSearchBarFromSelection(category)
-        this.routeToProductSearchIndex()
+        this.props.searchByProductName(category)
+            .then(
+                () => {
+                    routeToProductSearchIndex(this.state.searchString, this.props.history)
+                }
+            )
     }
 
     handleSearchInput(e) {
@@ -95,7 +94,7 @@ class Header extends React.Component {
                 () => {
                     if (this.state.showSearchAssist)
                         this.togglePopUp(this.#showSearchAssist);
-                        this.routeToProductSearchIndex();
+                        routeToProductSearchIndex(this.state.searchString, this.props.history);
                 }
             )
         } else if (e.key === "Escape") {
