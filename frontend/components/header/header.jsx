@@ -8,6 +8,7 @@ import SearchAssist from './search_assistance'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 import { ALL_CATEGORIES } from '../../utils/game_names'
 import { appendOrRemoveScrollBarReplacement } from '../../helpers/scrollbar_calculator'
+import { routeToProductSearchIndex } from '../../helpers/routing'
 
 class Header extends React.Component {
     #showCategories = 'showCategories';
@@ -50,15 +51,6 @@ class Header extends React.Component {
         }
     }
 
-    routeToProductSearchIndex() {
-        const query = encodeURIComponent(this.state.searchString.trim())
-        const searchPath = !query ? "/products/search" : `/products/search?q=${query}`
-        const currentPath = `${this.props.history.location.pathname}${this.props.history.location.search}`
-        if(currentPath !== searchPath) {
-            return this.props.history.push(searchPath)
-        }
-    }
-
     togglePopUp(popUp) {
         if (this.state[popUp]) {
             this.setState({[popUp]: false})
@@ -87,7 +79,7 @@ class Header extends React.Component {
         this.props.searchByProductName(category)
             .then(
                 () => {
-                    this.routeToProductSearchIndex()
+                    routeToProductSearchIndex(this.state.searchString, this.props.history)
                 }
             )
     }
@@ -102,7 +94,7 @@ class Header extends React.Component {
                 () => {
                     if (this.state.showSearchAssist)
                         this.togglePopUp(this.#showSearchAssist);
-                        this.routeToProductSearchIndex();
+                        routeToProductSearchIndex(this.state.searchString, this.props.history);
                 }
             )
         } else if (e.key === "Escape") {
