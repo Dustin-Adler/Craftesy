@@ -9,11 +9,9 @@ class EmptyCart extends React.Component {
     }
 
     componentDidMount() {    
-      if (this.props.products.length < 4) this.props.getProducts();
-    }
-
-    searchByGameName(gameName) {
-        this.props.searchByProductName(gameName);
+      if (this.props.products.length < 4) {
+        this.props.getImages();
+      }
     }
 
     getRandomIdx(arr) {
@@ -21,22 +19,22 @@ class EmptyCart extends React.Component {
     }
 
     createProductCoins() {
-      let randomlySelectedProducts = this.props.products
+      let productFromEachGame = this.props.products
       let productCoins = [];
       let icons = [faFaceDizzy, faFaceFlushed, faFaceGrin, faFaceGrinHearts, faFaceAngry, faFaceGrinBeam, faFaceGrinTongueWink, faFaceGrinWide]
       let iconContainerColor = ["rgb(253, 55, 55)", "rgb(255, 187,61)", "yellow", "lime", "cyan", "fuchsia"]
       for (let i = 0; i < 4; i++) {
-        const productIndex = this.getRandomIdx(randomlySelectedProducts);
+        const productIndex = this.getRandomIdx(productFromEachGame);
         const iconIndex = this.getRandomIdx(icons);
         const colorIndex = this.getRandomIdx(iconContainerColor);
         const selectedIcon = icons.splice(iconIndex, 1)[0]
-        const selectedProduct = randomlySelectedProducts.splice(productIndex, 1)[0]
+        const selectedProduct = productFromEachGame.splice(productIndex, 1)[0]
         const selectedColor = iconContainerColor.splice(colorIndex, 1)[0]
         productCoins.push(
           <Link
-            onClick={() => this.searchByGameName(selectedProduct.game_name)}
+            onClick={() => this.props.searchByProductName(selectedProduct.game_name)}
             key={`product-coin-${selectedProduct?.id}`}
-            to="/products/search"
+            to={`/products/search?q=${selectedProduct.game_name}`}
             className="empty-cart-link coin-container">
               <div className="coin">
                 <div className="icon-container" style={{backgroundColor: selectedColor}}>
