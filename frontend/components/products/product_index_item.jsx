@@ -23,7 +23,7 @@ class ProductIndexItem extends React.Component {
         if(!prevProps.product || !this.props.product) {
             return null
         } else if(prevProps.product.id != this.props.product.id) {
-            this.toggleConfModal();
+            this.toggleConfModal(false);
         }
     }
 
@@ -81,6 +81,7 @@ class ProductIndexItem extends React.Component {
     }
 
     toggleConfModal(kingBoo) {
+
         this.setState({dispConfModal: kingBoo})
     }
 

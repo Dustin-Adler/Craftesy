@@ -9,9 +9,7 @@ class EmptyCart extends React.Component {
     }
 
     componentDidMount() {    
-      if (this.props.products.length < 4) {
-        this.props.getImages();
-      }
+      if (this.props.products.length < 4) { this.props.getImages(); }
     }
 
     getRandomIdx(arr) {
