@@ -84,7 +84,8 @@ class ProductIndexItem extends React.Component {
         this.setState({dispConfModal: kingBool})
     }
 
-    addToCart() {
+    addToCart(e) {
+        e.preventDefault();
         this.props.createCartItem({
             product_id: this.props.product.id,
             quantity: this.state.quantity
@@ -146,7 +147,7 @@ class ProductIndexItem extends React.Component {
                             </label>
                             <button 
                                 className='add-to-cart-button'
-                                onClick={() => this.addToCart()}>
+                                onClick={(e) => this.addToCart(e)}>
                                 Add to cart
                             </button>
                         </form>
