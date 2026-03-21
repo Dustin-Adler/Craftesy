@@ -17,7 +17,7 @@ module Api
 
     def create
       @cart_item = Cart.new(cart_params)
-      user? ? @cart_item.shopper_id = current_user.id : @cart_item.guest_id = current_guest.id
+      user? ? @cart_item.shopper_id = current_actor.id : @cart_item.guest_id = current_actor.id
       if @cart_item.save
         @cart = current_actor.items_in_cart
         render 'api/carts/show'

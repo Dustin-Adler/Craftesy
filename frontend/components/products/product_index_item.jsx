@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductReview from '../reviews/product_reviews_container';
+import ProductReviews from '../reviews/product_reviews_container';
 import ProductSearchAddToCartModal from './product_search_add_to_cart_modal'
 import { scrollToTopOfPage } from '../../helpers/scroll_helper'
 
@@ -80,9 +80,8 @@ class ProductIndexItem extends React.Component {
             : null
     }
 
-    toggleConfModal(kingBoo) {
-
-        this.setState({dispConfModal: kingBoo})
+    toggleConfModal(kingBool) {
+        this.setState({dispConfModal: kingBool})
     }
 
     addToCart() {
@@ -117,7 +116,7 @@ class ProductIndexItem extends React.Component {
                                 alt={product.name}/> <br />
                             {this.createReview()}
                         </div>
-                        <ProductReview productId={product.id}/>
+                        <ProductReviews productId={product.id}/>
                     </div>
                     <div className='product-info'>
                         <div className='product-show-seller-shop-name'>Super Totally Awesome Seller</div>
