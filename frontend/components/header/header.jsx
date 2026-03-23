@@ -22,6 +22,12 @@ class Header extends React.Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.history.location.pathname !== '/cart') {
+            this.props.getCartItems();
+        }
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (prevState.showCategories !== this.state.showCategories || prevState.showSearchAssist !== this.state.showSearchAssist) {
             appendOrRemoveScrollBarReplacement(this.state.showCategories || this.state.showSearchAssist);

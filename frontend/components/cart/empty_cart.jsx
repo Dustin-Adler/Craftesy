@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceDizzy, faFaceFlushed, faFaceGrin, faFaceGrinHearts, faFaceAngry, faFaceGrinBeam, faFaceGrinTongueWink, faFaceGrinWide } from '@fortawesome/free-solid-svg-icons';
+import { formatNameAsHTMLSafe } from '../../helpers/name_formatter';
 
 class EmptyCart extends React.Component {
     constructor(props){
@@ -31,7 +32,7 @@ class EmptyCart extends React.Component {
         productCoins.push(
           <Link
             onClick={() => this.props.searchByProductName(selectedProduct.game_name)}
-            key={`product-coin-${selectedProduct?.id}`}
+            key={`product-coin-${formatNameAsHTMLSafe(selectedProduct.game_name)}-${i}`}
             to={`/products/search?q=${selectedProduct.game_name}`}
             className="empty-cart-link coin-container">
               <div className="coin">
