@@ -7,7 +7,7 @@ const FFTProductWheel = ({ products }) => {
 
   if (products.length === 0) return null;
 
-  const productItems = products.map((product, idx) => (
+  const productItems = products.slice(0, 1).map((product, idx) => (
     <FFTProductWheelItem key={idx} product={product} />
   ));
 
