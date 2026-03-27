@@ -9,6 +9,7 @@ import{
     faGamepad,
     faGhost, 
  } from '@fortawesome/free-solid-svg-icons'
+ import { scrollToTopOfPage } from '../../helpers/scroll_helper';
 
 class ProductReviews extends React.Component {
     constructor(props){
@@ -28,7 +29,11 @@ class ProductReviews extends React.Component {
     updateReview(review){
         if (review.author_id === this.props.session){
             return (
-                <button className="update-review-button" onClick={() => this.props.openRevModal('UpdateReview')}>
+                <button 
+                    className="update-review-button"
+                    onClick={() => 
+                        {this.props.openRevModal('UpdateReview');
+                        scrollToTopOfPage()}}>
                     <Link 
                         className="rev-link"
                         to={`/products/${review.product_id}/reviews/${review.id}`}>

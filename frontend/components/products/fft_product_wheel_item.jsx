@@ -5,7 +5,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 
-const FFTProductWheelItem = ({ product }) => {
+const FFTProductWheelItem = ({ product, position }) => {
   const [active, setActive] = useState(false);
 
   if (!product) return null;
@@ -16,7 +16,7 @@ const FFTProductWheelItem = ({ product }) => {
   }
 
   return (
-    <div className="mtg-item-container">
+    <li className="mtg-item-container" style={{ "--position": position }}>
       <Link className="card" to={`/products/${product.id}`}>
         <span className="card-background"/>
         <div className="title-bar-container">
@@ -45,7 +45,7 @@ const FFTProductWheelItem = ({ product }) => {
         </div>
       </Link>
       <span className="shadow"></span>
-    </div>
+    </li>
   );
 };
 

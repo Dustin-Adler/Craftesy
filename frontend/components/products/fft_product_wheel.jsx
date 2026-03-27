@@ -7,16 +7,21 @@ const FFTProductWheel = ({ products }) => {
 
   if (products.length === 0) return null;
 
-  const productItems = products.slice(0, 1).map((product, idx) => (
-    <FFTProductWheelItem key={idx} product={product} />
+  const productItems = products.slice(0, 10).map((product, idx) => (
+    <FFTProductWheelItem
+      className="fft-product-wheel-item"
+      key={idx}
+      product={product}
+      position={idx}
+    />
   ));
 
   return (
     <div className="fft-product-wheel-container">
-      <div className="fft-product-wheel">
+      <ul className="fft-product-wheel">
         {productItems}
-      </div>
-    </div>
+      </ul>
+    </div> 
   );
 };
 
