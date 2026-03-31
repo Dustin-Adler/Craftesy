@@ -19,14 +19,24 @@
         &::after {
             content: "";
             position: absolute;
-            bottom: -125px;
+            bottom: -100px;
             left: 50%;
             width: calc(100% - 20px);
-            height: 250px;
+            height: 200px;
             background-color: rgba(0,0,0,0.2);
             border-radius: 50%;
             filter: blur(10px);
             transform: translateX(-50%) translateZ(-100px);
+        }
+
+        &:hover {
+            .mtg-item-container {
+                animation-play-state: paused;
+
+                &::after {
+                    animation-play-state: paused;
+                }
+            }
         }
     }
 
@@ -38,6 +48,9 @@
         width: 200px;
         height: 280px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        -webkit-font-smoothing: antialiased;
+        will-change: transform;
+        backface-visibility: hidden;
         animation: rotate 40s linear infinite;
         animation-delay: calc(var(--position) * -4s);
 
@@ -51,7 +64,7 @@
             background-color: rgba(0,0,0,0.5);
             opacity: 0;
             z-index: 1;
-            animation: fade 40s linear infinite;
+            animation: fade-and-cover 40s linear infinite;
             animation-delay: calc(var(--position) * -4s);
         }
 
