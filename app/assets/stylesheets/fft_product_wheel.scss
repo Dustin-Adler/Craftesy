@@ -2,9 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px 0;
     height: 400px;
-    margin-bottom: 140px;
+    margin-bottom: 200px;
 
     .fft-product-wheel {
         position: relative;
@@ -14,22 +13,11 @@
         width: 80%;
         height: inherit;
         transform-style: preserve-3d;
-        perspective: 1000px;
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: -100px;
-            left: 50%;
-            width: calc(100% - 20px);
-            height: 200px;
-            background-color: rgba(0,0,0,0.2);
-            border-radius: 50%;
-            filter: blur(10px);
-            transform: translateX(-50%) translateZ(-100px);
-        }
+        animation: fft-product-wheel-spin 40s linear infinite forwards;
 
         &:hover {
+            animation-play-state: paused;
+
             .mtg-item-container {
                 animation-play-state: paused;
 
@@ -49,10 +37,10 @@
         height: 280px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         -webkit-font-smoothing: antialiased;
+        -webkit-backface-visibility: hidden;
         will-change: transform;
         backface-visibility: hidden;
-        animation: rotate 40s linear infinite;
-        animation-delay: calc(var(--position) * -4s);
+        animation: mtg-card-counter-spin 40s linear infinite forwards;
 
         &::after {
             content: "";
@@ -64,7 +52,7 @@
             background-color: rgba(0,0,0,0.5);
             opacity: 0;
             z-index: 1;
-            animation: fade-and-cover 40s linear infinite;
+            animation: fade-and-cover 40s linear infinite forwards;
             animation-delay: calc(var(--position) * -4s);
         }
 

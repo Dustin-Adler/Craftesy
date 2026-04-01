@@ -5,7 +5,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { formatNameAsTitle } from '../../helpers/name_formatter'
 
-const FFTProductWheelItem = ({ product, position }) => {
+const FFTProductWheelItem = ({ product, position, productCount }) => {
   const [active, setActive] = useState(false);
 
   if (!product) return null;
@@ -16,7 +16,11 @@ const FFTProductWheelItem = ({ product, position }) => {
   }
 
   return (
-    <li className="mtg-item-container" style={{ "--position": position }}>
+    <li 
+      className="mtg-item-container"
+      style={{ 
+        "--position": position,
+        "--product-count": productCount }}>
       <Link className="card" to={`/products/${product.id}`}>
         <span className="card-background"/>
         <div className="title-bar-container">

@@ -63,63 +63,6 @@
     }
 }
 
-@keyframes rotate {
-    0% {
-        transform: 
-            rotate(0deg)
-            rotate(0deg)
-            translate3d(0, 100px, 100px);
-    }
-    13% {
-        transform: 
-            rotate(45deg)
-            rotate(-45deg)
-            translate3d(-375px, 80px, 80px);
-    }
-    25% {
-        transform: 
-            rotate(90deg)
-            rotate(-90deg)
-            translate3d(-600px, 0, 0);
-    }
-    38% {
-        transform: 
-            rotate(135deg)
-            rotate(-135deg)
-            translate3d(-400px, -80px, -80px);
-    }
-    50% {
-        transform: 
-            rotate(180deg)
-            rotate(-180deg)
-            translate3d(0, -100px, -100px);
-    }
-    63% {
-        transform: 
-            rotate(225deg)
-            rotate(-225deg)
-            translate3d(400px, -80px, -80px);
-    }
-    75% {
-        transform: 
-            rotate(270deg)
-            rotate(-270deg)
-            translate3d(600px, 0, 0);
-    }
-    88% {
-        transform: 
-            rotate(315deg)
-            rotate(-315deg)
-            translate3d(375px, 80px, 80px);
-    }
-    100% {
-        transform: 
-            rotate(360deg)
-            rotate(-360deg)
-            translate3d(0, 100px, 100px);
-    }
-}
-
 @keyframes fade-and-cover {
     0% {
         opacity: 0;
@@ -148,5 +91,37 @@
     100% {
         opacity: 0;
         z-index: -1;
+    }
+}
+
+@keyframes fft-product-wheel-spin {
+    from {
+        transform:
+            perspective(1800px)
+            rotateX(-8deg)
+            rotateY(0deg)
+    }
+    to {
+        transform:
+            perspective(1800px)
+            rotateX(-8deg)
+            rotateY(360deg)
+    }
+}
+
+@keyframes mtg-card-counter-spin {
+    from {
+        transform:
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * 1deg))
+            translateZ(600px)
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * -1deg + 0deg))
+            rotateX(5deg);
+    }
+    to {
+        transform:
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * 1deg))
+            translateZ(600px)
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * -1deg + -360deg))
+            rotateX(5deg);
     }
 }
