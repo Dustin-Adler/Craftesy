@@ -62,3 +62,66 @@
         opacity: 1;
     }
 }
+
+@keyframes fade-and-cover {
+    0% {
+        opacity: 0;
+        z-index: -1;
+    }
+    25% {
+        opacity: 0;
+        z-index: -1;
+    }
+    26% {
+        opacity: 0.1;
+        z-index: 1;
+    }
+    50% {
+        opacity: 1;
+        z-index: 1;
+    }
+    74% {
+        opacity: 0.1;
+        z-index: 1;
+    }
+    75% {
+        opacity: 0;
+        z-index: -1;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+@keyframes fft-product-wheel-spin {
+    from {
+        transform:
+            perspective(1800px)
+            rotateX(-8deg)
+            rotateY(0deg)
+    }
+    to {
+        transform:
+            perspective(1800px)
+            rotateX(-8deg)
+            rotateY(360deg)
+    }
+}
+
+@keyframes mtg-card-counter-spin {
+    from {
+        transform:
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * 1deg))
+            translateZ(600px)
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * -1deg + 0deg))
+            rotateX(5deg);
+    }
+    to {
+        transform:
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * 1deg))
+            translateZ(600px)
+            rotateY(calc(var(--position) * calc(360 / var(--product-count)) * -1deg + -360deg))
+            rotateX(5deg);
+    }
+}

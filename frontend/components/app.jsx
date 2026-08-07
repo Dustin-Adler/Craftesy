@@ -11,26 +11,29 @@ import ProductIndexItemContainer from './products/product_index_item_container';
 import CartContainer from './cart/cart_container'
 import ProductSearchIndexContainer from './products/product_search_index_container'
 import ScrollingProductsContainer from './products/scrolling_products_container'
+import FFTProductWheel from './products/fft_product_wheel_container';
 
 const App = () => (
   <div id='app'className='master-layout'>
     <Modal/>
     <header>
-      <Route path='/' component={HeaderContainer} />
+      <Route path='/' component={HeaderContainer}/>
     </header>
     <main>
-      <Route exact path='/' component={GameBubblesContainer} />
-      <Route exact path='/' component={ScrollingProductsContainer} />
-      <Route exact path='/products/search' component={GameBubblesContainer} />
+      <Route exact path='/' component={GameBubblesContainer}/>
+      <Route exact path='/' component={ScrollingProductsContainer}/>
+      <Route exact path='/products/search' component={GameBubblesContainer}/>
       <Switch>
-        <Route path='/products/search' component={ProductSearchIndexContainer} />
-        <Route path='/products/:id' component={ProductIndexItemContainer} />
+        <Route path='/products/search' component={ProductSearchIndexContainer}/>
+        <Route path='/products/:id' component={ProductIndexItemContainer}/>
       </Switch>
       <Route exact path='/products/:id' component={ReviewModal}/>
       <Route path='/products/:id/reviews/:reviewId' component={ReviewModal}/>
       <Route path='/cart' component={CartContainer}/>
-      <Route exact path='/' component={ProductIndexContainer} />
-      <Route exact path='/' component={AboutCraftesy} />
+      <Route exact path='/' component={ProductIndexContainer}/>
+      <Route exact path='/' component={FFTProductWheel}/>
+      <Route exact path='/' component={ProductIndexContainer}/>
+      <Route exact path='/' component={AboutCraftesy}/>
     </main>
     <footer>
       <Route path='/' component={Footer} />

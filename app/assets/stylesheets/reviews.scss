@@ -1,3 +1,7 @@
+.review-form {
+    z-index: 10;
+}
+
 .create-review {
     display: flex;
     flex-direction: column;
@@ -26,7 +30,6 @@
         margin-right: .5em;
         cursor: pointer;
     }
-
 
     .create-review-form {
         position: relative;
